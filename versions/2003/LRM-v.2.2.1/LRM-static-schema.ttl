@@ -1,0 +1,831 @@
+@prefix : <http://www.semanticweb.org/owl/owlapi/turtle#> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix lrm: <http://xrce.xerox.com/LRM#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xrce: <http://www.xrce.xerox.com/> .
+@base <http://xrce.xerox.com/LRM#LRM-static> .
+
+<http://xrce.xerox.com/LRM#LRM-static> rdf:type owl:Ontology ;
+                                       
+                                       owl:versionInfo "2.0.1" .
+
+
+#################################################################
+#
+#    Object Properties
+#
+#################################################################
+
+
+###  http://xrce.xerox.com/LRM#accessProtocol
+
+lrm:accessProtocol rdf:type owl:ObjectProperty ;
+                   
+                   rdfs:domain lrm:Location ;
+                   
+                   rdfs:range lrm:Protocol ;
+                   
+                   rdfs:subPropertyOf lrm:describedBy .
+
+
+
+###  http://xrce.xerox.com/LRM#birthTime
+
+lrm:birthTime rdf:type owl:ObjectProperty ;
+              
+              rdfs:domain lrm:HumanAgent ;
+              
+              rdfs:range lrm:TimeInstant ;
+              
+              rdfs:subPropertyOf lrm:creationTime .
+
+
+
+###  http://xrce.xerox.com/LRM#creationTime
+
+lrm:creationTime rdf:type owl:FunctionalProperty ,
+                          owl:ObjectProperty ;
+                 
+                 rdfs:domain lrm:Resource ;
+                 
+                 rdfs:range lrm:TimeInstant ;
+                 
+                 rdfs:subPropertyOf lrm:describedBy .
+
+
+
+###  http://xrce.xerox.com/LRM#deathTime
+
+lrm:deathTime rdf:type owl:ObjectProperty ;
+              
+              rdfs:domain lrm:HumanAgent ;
+              
+              rdfs:subPropertyOf lrm:deletionTime .
+
+
+
+###  http://xrce.xerox.com/LRM#deletionTime
+
+lrm:deletionTime rdf:type owl:FunctionalProperty ,
+                          owl:ObjectProperty ;
+                 
+                 rdfs:domain lrm:Resource ;
+                 
+                 rdfs:range lrm:TimeInstant ;
+                 
+                 rdfs:subPropertyOf lrm:describedBy .
+
+
+
+###  http://xrce.xerox.com/LRM#describedBy
+
+lrm:describedBy rdf:type owl:ObjectProperty .
+
+
+
+###  http://xrce.xerox.com/LRM#describes
+
+lrm:describes rdf:type owl:ObjectProperty ;
+              
+              owl:inverseOf lrm:describedBy .
+
+
+
+###  http://xrce.xerox.com/LRM#durationTime
+
+lrm:durationTime rdf:type owl:FunctionalProperty ,
+                          owl:ObjectProperty ;
+                 
+                 rdfs:comment "correspond to a duration"@en ;
+                 
+                 rdfs:domain lrm:Resource ;
+                 
+                 rdfs:range lrm:TimeDuration ;
+                 
+                 rdfs:subPropertyOf lrm:describedBy .
+
+
+
+###  http://xrce.xerox.com/LRM#fingerprint
+
+lrm:fingerprint rdf:type owl:FunctionalProperty ,
+                         owl:ObjectProperty ;
+                
+                rdfs:comment "could be a checksum or any digital signature that uniquely represents the bitstream extension of the digital object"@en ;
+                
+                rdfs:domain lrm:DigitalResource ;
+                
+                rdfs:range lrm:DigitalSignature ;
+                
+                rdfs:subPropertyOf lrm:describedBy .
+
+
+
+###  http://xrce.xerox.com/LRM#following
+
+lrm:following rdf:type owl:ObjectProperty ,
+                       owl:TransitiveProperty ;
+              
+              rdfs:comment "correspond to a strict time ordering between any lrm:Resource instances (interpreted consistently w.r.t. interval or instant semantic)"@en ;
+              
+              rdfs:domain lrm:Resource ;
+              
+              rdfs:range lrm:Resource ;
+              
+              owl:inverseOf lrm:preceding .
+
+
+
+###  http://xrce.xerox.com/LRM#from
+
+lrm:from rdf:type owl:ObjectProperty .
+
+
+
+###  http://xrce.xerox.com/LRM#hasContributor
+
+lrm:hasContributor rdf:type owl:ObjectProperty ;
+                   
+                   rdfs:domain lrm:Community ;
+                   
+                   rdfs:range lrm:HumanAgent ;
+                   
+                   rdfs:subPropertyOf lrm:hasPart .
+
+
+
+###  http://xrce.xerox.com/LRM#hasMember
+
+lrm:hasMember rdf:type owl:ObjectProperty ;
+              
+              rdfs:range lrm:Agent ;
+              
+              rdfs:domain lrm:Organization ;
+              
+              rdfs:subPropertyOf lrm:hasPart .
+
+
+
+###  http://xrce.xerox.com/LRM#hasPart
+
+lrm:hasPart rdf:type owl:ObjectProperty ,
+                     owl:TransitiveProperty ;
+            
+            rdfs:domain lrm:AggregatedResource ;
+            
+            rdfs:range lrm:Resource .
+
+
+
+###  http://xrce.xerox.com/LRM#identification
+
+lrm:identification rdf:type owl:FunctionalProperty ,
+                            owl:ObjectProperty ;
+                   
+                   rdfs:comment "an Identity instance uniquely identifies a resource (hence the functional property)"@en ;
+                   
+                   rdfs:subPropertyOf lrm:describedBy .
+
+
+
+###  http://xrce.xerox.com/LRM#impact
+
+lrm:impact rdf:type owl:FunctionalProperty ,
+                    owl:ObjectProperty ;
+           
+           rdfs:comment """Designates the lrm:Plan instance that characterizes how the change of a dependee(s) 
+        impacts the depending resource(s): what must be done if the dependency is activated"""@en ;
+           
+           rdfs:domain lrm:Dependency ;
+           
+           rdfs:range lrm:Plan .
+
+
+
+###  http://xrce.xerox.com/LRM#implementedBy
+
+lrm:implementedBy rdf:type owl:ObjectProperty ;
+                  
+                  rdfs:comment "useful when a Plan is defined through an exogenous resource, e.g. a source file" ;
+                  
+                  rdfs:range lrm:ConcreteResource ;
+                  
+                  rdfs:domain lrm:Plan ;
+                  
+                  rdfs:subPropertyOf lrm:realizedAs .
+
+
+
+###  http://xrce.xerox.com/LRM#intention
+
+lrm:intention rdf:type owl:FunctionalProperty ,
+                       owl:ObjectProperty ;
+              
+              rdfs:comment "This property allows describing, formally or not, the intented usage of the resource (answer to the WHY question)"@en ;
+              
+              rdfs:range lrm:Intention ;
+              
+              rdfs:domain lrm:Resource ;
+              
+              rdfs:subPropertyOf lrm:describedBy .
+
+
+
+###  http://xrce.xerox.com/LRM#invariant
+
+lrm:invariant rdf:type owl:FunctionalProperty ,
+                       owl:ObjectProperty ;
+              
+              rdfs:comment "also relates to the so-called \"significant properties\" used in digital preservation."@en ,
+                           "specifies what must be always verified along the whole object life."@en ;
+              
+              rdfs:seeAlso <http://plato.stanford.edu/entries/identity-time/> ;
+              
+              rdfs:domain lrm:Resource ;
+              
+              rdfs:range lrm:Specification ;
+              
+              rdfs:subPropertyOf lrm:describedBy .
+
+
+
+###  http://xrce.xerox.com/LRM#isContributorOf
+
+lrm:isContributorOf rdf:type owl:ObjectProperty ;
+                    
+                    owl:inverseOf lrm:hasContributor ;
+                    
+                    rdfs:subPropertyOf lrm:partOf .
+
+
+
+###  http://xrce.xerox.com/LRM#isMemberOf
+
+lrm:isMemberOf rdf:type owl:ObjectProperty ;
+               
+               owl:inverseOf lrm:hasMember ;
+               
+               rdfs:subPropertyOf lrm:partOf .
+
+
+
+###  http://xrce.xerox.com/LRM#lifeTime
+
+lrm:lifeTime rdf:type owl:ObjectProperty ;
+             
+             rdfs:domain lrm:HumanAgent ;
+             
+             rdfs:subPropertyOf lrm:durationTime .
+
+
+
+###  http://xrce.xerox.com/LRM#location
+
+lrm:location rdf:type owl:ObjectProperty ;
+             
+             rdfs:comment "distinct resources cannot have the same location  descriptor(hence the inverse functional property)"@en ;
+             
+             rdfs:domain lrm:ConcreteResource ;
+             
+             rdfs:range lrm:Location ;
+             
+             rdfs:subPropertyOf lrm:describedBy .
+
+
+
+###  http://xrce.xerox.com/LRM#partOf
+
+lrm:partOf rdf:type owl:ObjectProperty ;
+           
+           owl:inverseOf lrm:hasPart .
+
+
+
+###  http://xrce.xerox.com/LRM#preceding
+
+lrm:preceding rdf:type owl:ObjectProperty ,
+                       owl:TransitiveProperty ;
+              
+              rdfs:comment "correspond to a strict time ordering between any lrm:Resource instances (interpreted consistently w.r.t. interval or instant semantic)"@en ;
+              
+              rdfs:range lrm:Resource ;
+              
+              rdfs:domain lrm:Resource .
+
+
+
+###  http://xrce.xerox.com/LRM#precondition
+
+lrm:precondition rdf:type owl:FunctionalProperty ,
+                          owl:ObjectProperty ;
+                 
+                 rdfs:comment """Designates the lrm:Plan instance that characterizes the conditions for the change of dependee(s) 
+        to trigger a change propagation to depending resources."""@en ;
+                 
+                 rdfs:domain lrm:Dependency ;
+                 
+                 rdfs:range lrm:Plan .
+
+
+
+###  http://xrce.xerox.com/LRM#realizedAs
+
+lrm:realizedAs rdf:type owl:ObjectProperty ;
+               
+               rdfs:comment "This must be used to link an abstract resource to one or several concrete realizations of it"@en ;
+               
+               rdfs:domain lrm:AbstractResource ;
+               
+               rdfs:range lrm:ConcreteResource .
+
+
+
+###  http://xrce.xerox.com/LRM#realizes
+
+lrm:realizes rdf:type owl:ObjectProperty ;
+             
+             owl:inverseOf lrm:realizedAs .
+
+
+
+###  http://xrce.xerox.com/LRM#spaceLocation
+
+lrm:spaceLocation rdf:type owl:FunctionalProperty ,
+                           owl:ObjectProperty ;
+                  
+                  rdfs:comment "correspond to a place (a point or an area in space )"@en ;
+                  
+                  rdfs:domain lrm:ConcreteResource ;
+                  
+                  rdfs:range lrm:SpatialDescription ;
+                  
+                  rdfs:subPropertyOf lrm:describedBy .
+
+
+
+###  http://xrce.xerox.com/LRM#spanTime
+
+lrm:spanTime rdf:type owl:FunctionalProperty ,
+                      owl:ObjectProperty ;
+             
+             rdfs:domain lrm:Resource ;
+             
+             rdfs:range lrm:TimeInterval ;
+             
+             rdfs:subPropertyOf lrm:describedBy .
+
+
+
+###  http://xrce.xerox.com/LRM#specifiedBy
+
+lrm:specifiedBy rdf:type owl:FunctionalProperty ,
+                         owl:ObjectProperty ;
+                
+                rdfs:comment """
+        This property is used to express, formally or not, the semantical properties of the resource: it must be compatible with the invariant property attached to the resource, if any.
+        """@en ;
+                
+                rdfs:domain lrm:Resource ;
+                
+                rdfs:range lrm:Specification ;
+                
+                rdfs:subPropertyOf lrm:describedBy ;
+                
+                owl:inverseOf lrm:specifies .
+
+
+
+###  http://xrce.xerox.com/LRM#specifies
+
+lrm:specifies rdf:type owl:ObjectProperty .
+
+
+
+###  http://xrce.xerox.com/LRM#synchronousWith
+
+lrm:synchronousWith rdf:type owl:ObjectProperty ,
+                             owl:SymmetricProperty ,
+                             owl:TransitiveProperty ;
+                    
+                    rdfs:comment "correspond to a strict time equality between any lrm:Resources instances (interpreted consistently w.r.t. interval or instant semantic)"@en ;
+                    
+                    rdfs:domain lrm:Resource ;
+                    
+                    rdfs:range lrm:Resource .
+
+
+
+###  http://xrce.xerox.com/LRM#to
+
+lrm:to rdf:type owl:ObjectProperty .
+
+
+
+###  http://xrce.xerox.com/LRM#uniqueIdentification
+
+lrm:uniqueIdentification rdf:type owl:FunctionalProperty ,
+                                  owl:ObjectProperty ;
+                         
+                         rdfs:comment "an Identity instance that uniquely designates the digital object"@en ;
+                         
+                         rdfs:domain lrm:DigitalResource ;
+                         
+                         rdfs:range lrm:Identity ;
+                         
+                         rdfs:subPropertyOf lrm:identification .
+
+
+
+###  http://xrce.xerox.com/LRM#url
+
+lrm:url rdf:type owl:ObjectProperty ;
+        
+        rdfs:comment "The acronym URL stands fo Uniform Resource Locator..."@en ;
+        
+        rdfs:domain lrm:Location ;
+        
+        rdfs:subPropertyOf lrm:describedBy .
+
+
+
+
+
+#################################################################
+#
+#    Data properties
+#
+#################################################################
+
+
+###  http://xrce.xerox.com/LRM#definition
+
+lrm:definition rdf:type owl:DatatypeProperty ;
+               
+               rdfs:range rdfs:Literal ;
+               
+               rdfs:domain lrm:Resource .
+
+
+
+###  http://xrce.xerox.com/LRM#extension
+
+lrm:extension rdf:type owl:DatatypeProperty ,
+                       owl:FunctionalProperty ;
+              
+              rdfs:comment "This property allows defining formally the digital extension of a resource (its bit stream)"@en ;
+              
+              rdfs:range rdfs:Literal ;
+              
+              rdfs:seeAlso <http://www.w3.org/TR/Content-in-RDF10> ;
+              
+              rdfs:domain lrm:DigitalResource ;
+              
+              rdfs:subPropertyOf lrm:definition .
+
+
+
+
+
+#################################################################
+#
+#    Classes
+#
+#################################################################
+
+
+###  http://www.semanticweb.org/ontologies/mklab/2016/4/tate_2003#ComputerBased
+
+<http://www.semanticweb.org/ontologies/mklab/2016/4/tate_2003#ComputerBased> rdf:type owl:Class .
+
+
+
+###  http://xrce.xerox.com/LRM#AbstractResource
+
+lrm:AbstractResource rdf:type owl:Class ;
+                     
+                     rdfs:subClassOf lrm:Resource .
+
+
+
+###  http://xrce.xerox.com/LRM#Agent
+
+lrm:Agent rdf:type owl:Class ;
+          
+          rdfs:subClassOf lrm:Resource ;
+          
+          owl:disjointUnionOf ( lrm:HumanAgent
+                                lrm:Organization
+                                lrm:SoftwareAgent
+                              ) .
+
+
+
+###  http://xrce.xerox.com/LRM#AggregatedResource
+
+lrm:AggregatedResource rdf:type owl:Class ;
+                       
+                       rdfs:subClassOf lrm:Resource .
+
+
+
+###  http://xrce.xerox.com/LRM#Community
+
+lrm:Community rdf:type owl:Class ;
+              
+              rdfs:subClassOf lrm:AggregatedResource .
+
+
+
+###  http://xrce.xerox.com/LRM#ConcreteResource
+
+lrm:ConcreteResource rdf:type owl:Class ;
+                     
+                     rdfs:subClassOf lrm:Resource .
+
+
+
+###  http://xrce.xerox.com/LRM#ConjunctiveDependency
+
+lrm:ConjunctiveDependency rdf:type owl:Class ;
+                          
+                          rdfs:subClassOf lrm:Dependency ;
+                          
+                          rdfs:comment " all 'lrm:from' resources are needed by the 'lrm:to' resources for the intended usage" .
+
+
+
+###  http://xrce.xerox.com/LRM#DeletedResource
+
+lrm:DeletedResource rdf:type owl:Class ;
+                    
+                    rdfs:subClassOf lrm:ImmutableResource .
+
+
+
+###  http://xrce.xerox.com/LRM#Dependency
+
+lrm:Dependency rdf:type owl:Class ;
+               
+               rdfs:subClassOf lrm:EndogenousResource ;
+               
+               rdfs:comment """
+    A dependency, according to the LRM model, is oriented, and may relate at least one lrm:Resource instance to at 
+    least one lrm:Resource instance. One dependency instance may bind several resources together: this captures the
+    'co-dependencies' phenomenon, also named 'conjunctive dependencies', meaning that all resources must be considered 
+    simultaneously, together as a whole. Disjunctive dependencies are naturally expressed using different instances 
+    relating the same set of resources.
+    The semantics of the instances of this dependency class is conveyed by an instance of lrm:Plan. This last may give 
+    information about the intent (WHY), its specification (WHAT), and how it is satisfied (HOW see lrm:Plan, lrm:Description).
+    When 'how' is specified, it involves an Agent to perform the plan.
+    """@en ;
+               
+               owl:disjointUnionOf ( lrm:ConjunctiveDependency
+                                     lrm:DisjunctiveDependency
+                                   ) .
+
+
+
+###  http://xrce.xerox.com/LRM#Description
+
+lrm:Description rdf:type owl:Class ;
+                
+                rdfs:subClassOf lrm:EndogenousResource .
+
+
+
+###  http://xrce.xerox.com/LRM#DigitalResource
+
+lrm:DigitalResource rdf:type owl:Class ;
+                    
+                    rdfs:subClassOf lrm:ConcreteResource ;
+                    
+                    rdfs:comment """
+        A data structure that can be located by a dedicated descriptor, and having
+        a unique identifier. The extension of a digital resource is a bit stream that can 
+        be fetched using the location descriptor.
+        """@en ,
+                                 """Jens[conf. Thibodeau/terminology overview (pericles internal documents)]: 
+        a technical object, processable by machines/computers (e.g. a set of files), 
+        as opposed to the physical or intellectual object
+        """@en ;
+                    
+                    rdfs:seeAlso <http://www.clir.org/pubs/reports/pub107/thibodeau.html> ,
+                                 <http://www.doi.org/doi_handbook/Glossary.html> ,
+                                 <http://www.doi.org/handbook_2000/glossary.html> .
+
+
+
+###  http://xrce.xerox.com/LRM#DigitalSignature
+
+lrm:DigitalSignature rdf:type owl:Class ;
+                     
+                     rdfs:subClassOf lrm:Description .
+
+
+
+###  http://xrce.xerox.com/LRM#DisjunctiveDependency
+
+lrm:DisjunctiveDependency rdf:type owl:Class ;
+                          
+                          rdfs:subClassOf lrm:Dependency ;
+                          
+                          rdfs:comment " only one among the 'lrm:from' resources is needed by the 'lrm:to' resources for the intended usage (can choose anyone)" .
+
+
+
+###  http://xrce.xerox.com/LRM#EndogenousResource
+
+lrm:EndogenousResource rdf:type owl:Class ;
+                       
+                       rdfs:subClassOf lrm:AbstractResource .
+
+
+
+###  http://xrce.xerox.com/LRM#ExogenousResource
+
+lrm:ExogenousResource rdf:type owl:Class ;
+                      
+                      rdfs:subClassOf lrm:Resource .
+
+
+
+###  http://xrce.xerox.com/LRM#HumanAgent
+
+lrm:HumanAgent rdf:type owl:Class ;
+               
+               rdfs:subClassOf lrm:Agent ,
+                               lrm:ConcreteResource ,
+                               lrm:ExogenousResource .
+
+
+
+###  http://xrce.xerox.com/LRM#Identity
+
+lrm:Identity rdf:type owl:Class ;
+             
+             rdfs:subClassOf lrm:Description ;
+             
+             rdfs:comment """
+        The identity of an Resource is uniquely defined via an instance of class lrm:Identity.
+        Although the structure of those instances are not defined at this level, it may use 
+        UUID mechanisms such as defined in RFC 4122.
+        """@en ;
+             
+             rdfs:seeAlso <http://tools.ietf.org/pdf/rfc4122> .
+
+
+
+###  http://xrce.xerox.com/LRM#ImmutableResource
+
+lrm:ImmutableResource rdf:type owl:Class ;
+                      
+                      rdfs:subClassOf lrm:Resource .
+
+
+
+###  http://xrce.xerox.com/LRM#Intention
+
+lrm:Intention rdf:type owl:Class ;
+              
+              rdfs:subClassOf lrm:Description ;
+              
+              rdfs:comment " Used to express the intention usage of the resource (or purpose of...)"@en .
+
+
+
+###  http://xrce.xerox.com/LRM#Location
+
+lrm:Location rdf:type owl:Class ;
+             
+             rdfs:subClassOf lrm:Description ;
+             
+             rdfs:comment """
+        Location descriptor is information about retrieving the concrete  resource. 
+        """@en .
+
+
+
+###  http://xrce.xerox.com/LRM#MutableResource
+
+lrm:MutableResource rdf:type owl:Class ;
+                    
+                    rdfs:subClassOf lrm:Resource .
+
+
+
+###  http://xrce.xerox.com/LRM#Organization
+
+lrm:Organization rdf:type owl:Class ;
+                 
+                 rdfs:subClassOf lrm:Agent ,
+                                 lrm:AggregatedResource .
+
+
+
+###  http://xrce.xerox.com/LRM#Plan
+
+lrm:Plan rdf:type owl:Class ;
+         
+         rdfs:subClassOf lrm:Description ;
+         
+         rdfs:comment """
+        Plans are specialized descriptions intended to be executed by some agent (either human or software based); this is thus a mean to 
+        give abstract or concrete operational semantics to dependencies."""@en ;
+         
+         rdfs:seeAlso <http://www.w3.org/TR/2013/REC-prov-o-20130430/#Plan> .
+
+
+
+###  http://xrce.xerox.com/LRM#Protocol
+
+lrm:Protocol rdf:type owl:Class ;
+             
+             rdfs:subClassOf lrm:Description ;
+             
+             rdfs:comment """
+        explain the method/protocol used to retrieve a concrete  resource (e.g. http, ftp, or an informal textual description). 
+        """@en .
+
+
+
+###  http://xrce.xerox.com/LRM#Resource
+
+lrm:Resource rdf:type owl:Class ;
+             
+             owl:disjointUnionOf ( lrm:AbstractResource
+                                   lrm:ConcreteResource
+                                 ) .
+
+
+
+###  http://xrce.xerox.com/LRM#SoftwareAgent
+
+lrm:SoftwareAgent rdf:type owl:Class ;
+                  
+                  rdfs:subClassOf lrm:Agent .
+
+
+
+###  http://xrce.xerox.com/LRM#SpatialDescription
+
+lrm:SpatialDescription rdf:type owl:Class ;
+                       
+                       rdfs:subClassOf lrm:Description ;
+                       
+                       rdfs:comment "Used to provide spatial knowledge about the resource" .
+
+
+
+###  http://xrce.xerox.com/LRM#Specification
+
+lrm:Specification rdf:type owl:Class ;
+                  
+                  rdfs:subClassOf lrm:Description ;
+                  
+                  rdfs:comment """
+        Used to express the semantical properties. could be a formal logical language, a test-oriented prog. language, a formal or informal policy, a textual description...
+        """@en .
+
+
+
+###  http://xrce.xerox.com/LRM#TemporalDescription
+
+lrm:TemporalDescription rdf:type owl:Class ;
+                        
+                        rdfs:subClassOf lrm:Description ;
+                        
+                        rdfs:comment "Used to provide temporal knowledge about the resource" .
+
+
+
+###  http://xrce.xerox.com/LRM#TimeDuration
+
+lrm:TimeDuration rdf:type owl:Class ;
+                 
+                 rdfs:subClassOf lrm:TemporalDescription .
+
+
+
+###  http://xrce.xerox.com/LRM#TimeInstant
+
+lrm:TimeInstant rdf:type owl:Class ;
+                
+                rdfs:subClassOf lrm:TemporalDescription .
+
+
+
+###  http://xrce.xerox.com/LRM#TimeInterval
+
+lrm:TimeInterval rdf:type owl:Class ;
+                 
+                 rdfs:subClassOf lrm:TemporalDescription .
+
+
+
+
+###  Generated by the OWL API (version 3.5.1) http://owlapi.sourceforge.net
+

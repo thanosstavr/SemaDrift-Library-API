@@ -1,0 +1,2231 @@
+<?xml version="1.0"?>
+
+
+<!DOCTYPE Ontology [
+    <!ENTITY xsd "http://www.w3.org/2001/XMLSchema#" >
+    <!ENTITY xml "http://www.w3.org/XML/1998/namespace" >
+    <!ENTITY rdfs "http://www.w3.org/2000/01/rdf-schema#" >
+    <!ENTITY rdf "http://www.w3.org/1999/02/22-rdf-syntax-ns#" >
+]>
+
+
+<Ontology xmlns="http://www.w3.org/2002/07/owl#"
+     xml:base="http://www.semanticweb.org/ontologies/mklab/2016/4/tate_2011"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:xml="http://www.w3.org/XML/1998/namespace"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     ontologyIRI="http://www.semanticweb.org/ontologies/mklab/2016/4/tate_2011">
+    <Prefix name="" IRI="http://www.w3.org/2002/07/owl#"/>
+    <Prefix name="owl" IRI="http://www.w3.org/2002/07/owl#"/>
+    <Prefix name="rdf" IRI="http://www.w3.org/1999/02/22-rdf-syntax-ns#"/>
+    <Prefix name="xsd" IRI="http://www.w3.org/2001/XMLSchema#"/>
+    <Prefix name="rdfs" IRI="http://www.w3.org/2000/01/rdf-schema#"/>
+    <Import>http://xrce.xerox.com/LRM#LRM-schema</Import>
+    <Declaration>
+        <Class IRI="#Artist"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Camera"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Computer"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#ComputerBased"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#DataDependency"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Database"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#DigitalArtwork"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#DisplayDevice"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Equipment"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#GlassChandelier"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#HardwareDependency"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Illuminator"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Material"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#MixedMedia"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Monitor"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#MorseCodeUnit"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#NetworkInfrastructure"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#OperatingSystem"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Person"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#PrintingDevice"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Program"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#ProgrammingLanguage"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Projector"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#RuntimeEnvironment"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Sensor"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Size"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#SoftwareBased"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#SoftwareDependency"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#StatusFlag"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#hasProgrammingLanguage"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#hasSize"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#hasStatusFlag"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#wasAttributedTo"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="#date"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="#hasUnit"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="#value"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#artist_1"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#artist_2"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#artist_3"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#artist_4"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#artist_5"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#artist_6"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#artwork_1"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#artwork_2"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#artwork_3"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#artwork_4"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#artwork_5"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#artwork_6"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#artwork_7"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#camera_1"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#computer_1"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#computer_2"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#data_dependency_1"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#data_dependency_2"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#data_dependency_3"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#data_dependency_4"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#database_1"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#description_1"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#description_2"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#description_3"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#description_4"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#description_5"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#description_6"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#duration_1"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#glass_chandelier_1"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#hardware_dependency_1"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#hardware_dependency_2"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#hardware_dependency_3"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#hardware_dependency_4"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#hardware_dependency_5"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#hardware_dependency_6"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#hardware_dependency_7"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#id_1"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#id_2"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#id_3"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#id_4"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#id_5"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#id_6"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#id_7"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#illuminator_1"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#material_1"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#monitor_1"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#monitor_2"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#monitor_3"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#monitor_4"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#monitor_5"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#morse_code_unit_1"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#network_infrastructure_1"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#network_infrastructure_2"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#network_infrastructure_3"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#operating_system_1"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#operating_system_2"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#operating_system_3"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#printer_1"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#printer_2"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#printer_3"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#program_1"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#programming_language_1"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#programming_language_2"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#programming_langugage_3"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#projector_1"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#projector_2"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#projector_3"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#projector_4"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#projector_5"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#runtime_environment_1"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#sensor_1"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#sensor_2"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#size_1"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#size_2"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#size_3"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#size_4"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#software_dependency_1"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#software_dependency_2"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#software_dependency_3"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#software_dependency_4"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#software_dependency_5"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#software_dependency_6"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#software_dependency_7"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#status_flag_1"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#status_flag_10"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#status_flag_11"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#status_flag_2"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#status_flag_3"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#status_flag_4"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#status_flag_5"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#status_flag_6"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#status_flag_7"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#status_flag_8"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#status_flag_9"/>
+    </Declaration>
+    <SubClassOf>
+        <Class IRI="#Artist"/>
+        <Class IRI="#Person"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Camera"/>
+        <Class IRI="#Equipment"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Computer"/>
+        <Class IRI="#Equipment"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#ComputerBased"/>
+        <Class IRI="#DigitalArtwork"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#DataDependency"/>
+        <Class IRI="http://xrce.xerox.com/LRM#Dependency"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Database"/>
+        <Class IRI="http://xrce.xerox.com/LRM#SoftwareAgent"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#DigitalArtwork"/>
+        <Class IRI="http://xrce.xerox.com/LRM#DigitalResource"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#DisplayDevice"/>
+        <Class IRI="#Equipment"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Equipment"/>
+        <Class IRI="http://xrce.xerox.com/LRM#ConcreteResource"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#GlassChandelier"/>
+        <Class IRI="#Illuminator"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#HardwareDependency"/>
+        <Class IRI="http://xrce.xerox.com/LRM#Dependency"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Illuminator"/>
+        <Class IRI="#Equipment"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Material"/>
+        <Class IRI="#Equipment"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#MixedMedia"/>
+        <Class IRI="#DigitalArtwork"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Monitor"/>
+        <Class IRI="#DisplayDevice"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#MorseCodeUnit"/>
+        <Class IRI="#Equipment"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#NetworkInfrastructure"/>
+        <Class IRI="#Equipment"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#OperatingSystem"/>
+        <Class IRI="http://xrce.xerox.com/LRM#SoftwareAgent"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Person"/>
+        <Class IRI="http://xrce.xerox.com/LRM#HumanAgent"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#PrintingDevice"/>
+        <Class IRI="#Equipment"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Program"/>
+        <Class IRI="http://xrce.xerox.com/LRM#SoftwareAgent"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#ProgrammingLanguage"/>
+        <Class IRI="http://xrce.xerox.com/LRM#Description"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Projector"/>
+        <Class IRI="#DisplayDevice"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#RuntimeEnvironment"/>
+        <Class IRI="http://xrce.xerox.com/LRM#SoftwareAgent"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Sensor"/>
+        <Class IRI="#Equipment"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Size"/>
+        <Class IRI="http://xrce.xerox.com/LRM#Description"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#SoftwareBased"/>
+        <Class IRI="#DigitalArtwork"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#SoftwareDependency"/>
+        <Class IRI="http://xrce.xerox.com/LRM#Dependency"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#StatusFlag"/>
+        <Class IRI="http://xrce.xerox.com/LRM#Description"/>
+    </SubClassOf>
+    <DisjointClasses>
+        <Class IRI="#ComputerBased"/>
+        <Class IRI="#MixedMedia"/>
+        <Class IRI="#SoftwareBased"/>
+    </DisjointClasses>
+    <DisjointClasses>
+        <Class IRI="#DataDependency"/>
+        <Class IRI="#HardwareDependency"/>
+    </DisjointClasses>
+    <DisjointClasses>
+        <Class IRI="#DataDependency"/>
+        <Class IRI="#SoftwareDependency"/>
+    </DisjointClasses>
+    <DisjointClasses>
+        <Class IRI="#HardwareDependency"/>
+        <Class IRI="#SoftwareDependency"/>
+    </DisjointClasses>
+    <DisjointClasses>
+        <Class IRI="#Monitor"/>
+        <Class IRI="#Projector"/>
+    </DisjointClasses>
+    <ClassAssertion>
+        <Class IRI="#Artist"/>
+        <NamedIndividual IRI="#artist_1"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Artist"/>
+        <NamedIndividual IRI="#artist_2"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Artist"/>
+        <NamedIndividual IRI="#artist_3"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Artist"/>
+        <NamedIndividual IRI="#artist_4"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Artist"/>
+        <NamedIndividual IRI="#artist_5"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Artist"/>
+        <NamedIndividual IRI="#artist_6"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#ComputerBased"/>
+        <NamedIndividual IRI="#artwork_1"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#MixedMedia"/>
+        <NamedIndividual IRI="#artwork_2"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#SoftwareBased"/>
+        <NamedIndividual IRI="#artwork_3"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#SoftwareBased"/>
+        <NamedIndividual IRI="#artwork_4"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#MixedMedia"/>
+        <NamedIndividual IRI="#artwork_5"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#MixedMedia"/>
+        <NamedIndividual IRI="#artwork_6"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#ComputerBased"/>
+        <NamedIndividual IRI="#artwork_7"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Camera"/>
+        <NamedIndividual IRI="#camera_1"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Computer"/>
+        <NamedIndividual IRI="#computer_1"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Computer"/>
+        <NamedIndividual IRI="#computer_2"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#DataDependency"/>
+        <NamedIndividual IRI="#data_dependency_1"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#DataDependency"/>
+        <NamedIndividual IRI="#data_dependency_2"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#DataDependency"/>
+        <NamedIndividual IRI="#data_dependency_3"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#DataDependency"/>
+        <NamedIndividual IRI="#data_dependency_4"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Database"/>
+        <NamedIndividual IRI="#database_1"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://xrce.xerox.com/LRM#Description"/>
+        <NamedIndividual IRI="#description_1"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://xrce.xerox.com/LRM#Description"/>
+        <NamedIndividual IRI="#description_2"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://xrce.xerox.com/LRM#Description"/>
+        <NamedIndividual IRI="#description_3"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://xrce.xerox.com/LRM#Description"/>
+        <NamedIndividual IRI="#description_4"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://xrce.xerox.com/LRM#Description"/>
+        <NamedIndividual IRI="#description_5"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://xrce.xerox.com/LRM#Description"/>
+        <NamedIndividual IRI="#description_6"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Size"/>
+        <NamedIndividual IRI="#duration_1"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#GlassChandelier"/>
+        <NamedIndividual IRI="#glass_chandelier_1"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#HardwareDependency"/>
+        <NamedIndividual IRI="#hardware_dependency_1"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#HardwareDependency"/>
+        <NamedIndividual IRI="#hardware_dependency_2"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#HardwareDependency"/>
+        <NamedIndividual IRI="#hardware_dependency_3"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#HardwareDependency"/>
+        <NamedIndividual IRI="#hardware_dependency_4"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#HardwareDependency"/>
+        <NamedIndividual IRI="#hardware_dependency_5"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#HardwareDependency"/>
+        <NamedIndividual IRI="#hardware_dependency_6"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#HardwareDependency"/>
+        <NamedIndividual IRI="#hardware_dependency_7"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://xrce.xerox.com/LRM#Identity"/>
+        <NamedIndividual IRI="#id_1"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://xrce.xerox.com/LRM#Identity"/>
+        <NamedIndividual IRI="#id_2"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://xrce.xerox.com/LRM#Identity"/>
+        <NamedIndividual IRI="#id_3"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://xrce.xerox.com/LRM#Identity"/>
+        <NamedIndividual IRI="#id_4"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://xrce.xerox.com/LRM#Identity"/>
+        <NamedIndividual IRI="#id_5"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://xrce.xerox.com/LRM#Identity"/>
+        <NamedIndividual IRI="#id_6"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://xrce.xerox.com/LRM#Identity"/>
+        <NamedIndividual IRI="#id_7"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Illuminator"/>
+        <NamedIndividual IRI="#illuminator_1"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Material"/>
+        <NamedIndividual IRI="#material_1"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Monitor"/>
+        <NamedIndividual IRI="#monitor_1"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Monitor"/>
+        <NamedIndividual IRI="#monitor_2"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Monitor"/>
+        <NamedIndividual IRI="#monitor_3"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Monitor"/>
+        <NamedIndividual IRI="#monitor_4"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Monitor"/>
+        <NamedIndividual IRI="#monitor_5"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#MorseCodeUnit"/>
+        <NamedIndividual IRI="#morse_code_unit_1"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#NetworkInfrastructure"/>
+        <NamedIndividual IRI="#network_infrastructure_1"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#NetworkInfrastructure"/>
+        <NamedIndividual IRI="#network_infrastructure_2"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#NetworkInfrastructure"/>
+        <NamedIndividual IRI="#network_infrastructure_3"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#OperatingSystem"/>
+        <NamedIndividual IRI="#operating_system_1"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#OperatingSystem"/>
+        <NamedIndividual IRI="#operating_system_2"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#OperatingSystem"/>
+        <NamedIndividual IRI="#operating_system_3"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#PrintingDevice"/>
+        <NamedIndividual IRI="#printer_1"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#PrintingDevice"/>
+        <NamedIndividual IRI="#printer_2"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#PrintingDevice"/>
+        <NamedIndividual IRI="#printer_3"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Program"/>
+        <NamedIndividual IRI="#program_1"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#ProgrammingLanguage"/>
+        <NamedIndividual IRI="#programming_language_1"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#ProgrammingLanguage"/>
+        <NamedIndividual IRI="#programming_language_2"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#ProgrammingLanguage"/>
+        <NamedIndividual IRI="#programming_langugage_3"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Projector"/>
+        <NamedIndividual IRI="#projector_1"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Projector"/>
+        <NamedIndividual IRI="#projector_2"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Projector"/>
+        <NamedIndividual IRI="#projector_3"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Projector"/>
+        <NamedIndividual IRI="#projector_4"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Projector"/>
+        <NamedIndividual IRI="#projector_5"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#RuntimeEnvironment"/>
+        <NamedIndividual IRI="#runtime_environment_1"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Sensor"/>
+        <NamedIndividual IRI="#sensor_1"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Sensor"/>
+        <NamedIndividual IRI="#sensor_2"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Size"/>
+        <NamedIndividual IRI="#size_1"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Size"/>
+        <NamedIndividual IRI="#size_2"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Size"/>
+        <NamedIndividual IRI="#size_3"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Size"/>
+        <NamedIndividual IRI="#size_4"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#SoftwareDependency"/>
+        <NamedIndividual IRI="#software_dependency_1"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#SoftwareDependency"/>
+        <NamedIndividual IRI="#software_dependency_2"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#SoftwareDependency"/>
+        <NamedIndividual IRI="#software_dependency_3"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#SoftwareDependency"/>
+        <NamedIndividual IRI="#software_dependency_4"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#SoftwareDependency"/>
+        <NamedIndividual IRI="#software_dependency_5"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#SoftwareDependency"/>
+        <NamedIndividual IRI="#software_dependency_6"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#SoftwareDependency"/>
+        <NamedIndividual IRI="#software_dependency_7"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#StatusFlag"/>
+        <NamedIndividual IRI="#status_flag_1"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#StatusFlag"/>
+        <NamedIndividual IRI="#status_flag_10"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#StatusFlag"/>
+        <NamedIndividual IRI="#status_flag_11"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#StatusFlag"/>
+        <NamedIndividual IRI="#status_flag_2"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#StatusFlag"/>
+        <NamedIndividual IRI="#status_flag_3"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#StatusFlag"/>
+        <NamedIndividual IRI="#status_flag_4"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#StatusFlag"/>
+        <NamedIndividual IRI="#status_flag_5"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#StatusFlag"/>
+        <NamedIndividual IRI="#status_flag_6"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#StatusFlag"/>
+        <NamedIndividual IRI="#status_flag_7"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#StatusFlag"/>
+        <NamedIndividual IRI="#status_flag_8"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#StatusFlag"/>
+        <NamedIndividual IRI="#status_flag_9"/>
+    </ClassAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasProgrammingLanguage"/>
+        <NamedIndividual IRI="#artwork_1"/>
+        <NamedIndividual IRI="#programming_language_1"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasSize"/>
+        <NamedIndividual IRI="#artwork_1"/>
+        <NamedIndividual IRI="#size_1"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasStatusFlag"/>
+        <NamedIndividual IRI="#artwork_1"/>
+        <NamedIndividual IRI="#status_flag_2"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#wasAttributedTo"/>
+        <NamedIndividual IRI="#artwork_1"/>
+        <NamedIndividual IRI="#artist_1"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://xrce.xerox.com/LRM#describedBy"/>
+        <NamedIndividual IRI="#artwork_1"/>
+        <NamedIndividual IRI="#description_1"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://xrce.xerox.com/LRM#identification"/>
+        <NamedIndividual IRI="#artwork_1"/>
+        <NamedIndividual IRI="#id_1"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasProgrammingLanguage"/>
+        <NamedIndividual IRI="#artwork_2"/>
+        <NamedIndividual IRI="#programming_language_2"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasStatusFlag"/>
+        <NamedIndividual IRI="#artwork_2"/>
+        <NamedIndividual IRI="#status_flag_5"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#wasAttributedTo"/>
+        <NamedIndividual IRI="#artwork_2"/>
+        <NamedIndividual IRI="#artist_2"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://xrce.xerox.com/LRM#describedBy"/>
+        <NamedIndividual IRI="#artwork_2"/>
+        <NamedIndividual IRI="#description_2"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://xrce.xerox.com/LRM#identification"/>
+        <NamedIndividual IRI="#artwork_2"/>
+        <NamedIndividual IRI="#id_2"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasSize"/>
+        <NamedIndividual IRI="#artwork_3"/>
+        <NamedIndividual IRI="#size_2"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasStatusFlag"/>
+        <NamedIndividual IRI="#artwork_3"/>
+        <NamedIndividual IRI="#status_flag_10"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#wasAttributedTo"/>
+        <NamedIndividual IRI="#artwork_3"/>
+        <NamedIndividual IRI="#artist_3"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://xrce.xerox.com/LRM#describedBy"/>
+        <NamedIndividual IRI="#artwork_3"/>
+        <NamedIndividual IRI="#description_3"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://xrce.xerox.com/LRM#identification"/>
+        <NamedIndividual IRI="#artwork_3"/>
+        <NamedIndividual IRI="#id_3"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasProgrammingLanguage"/>
+        <NamedIndividual IRI="#artwork_4"/>
+        <NamedIndividual IRI="#programming_language_1"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasSize"/>
+        <NamedIndividual IRI="#artwork_4"/>
+        <NamedIndividual IRI="#size_3"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasStatusFlag"/>
+        <NamedIndividual IRI="#artwork_4"/>
+        <NamedIndividual IRI="#status_flag_11"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#wasAttributedTo"/>
+        <NamedIndividual IRI="#artwork_4"/>
+        <NamedIndividual IRI="#artist_1"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://xrce.xerox.com/LRM#describedBy"/>
+        <NamedIndividual IRI="#artwork_4"/>
+        <NamedIndividual IRI="#description_4"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://xrce.xerox.com/LRM#identification"/>
+        <NamedIndividual IRI="#artwork_4"/>
+        <NamedIndividual IRI="#id_4"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasSize"/>
+        <NamedIndividual IRI="#artwork_5"/>
+        <NamedIndividual IRI="#size_4"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasStatusFlag"/>
+        <NamedIndividual IRI="#artwork_5"/>
+        <NamedIndividual IRI="#status_flag_7"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#wasAttributedTo"/>
+        <NamedIndividual IRI="#artwork_5"/>
+        <NamedIndividual IRI="#artist_4"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://xrce.xerox.com/LRM#identification"/>
+        <NamedIndividual IRI="#artwork_5"/>
+        <NamedIndividual IRI="#id_5"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasSize"/>
+        <NamedIndividual IRI="#artwork_6"/>
+        <NamedIndividual IRI="#duration_1"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasStatusFlag"/>
+        <NamedIndividual IRI="#artwork_6"/>
+        <NamedIndividual IRI="#status_flag_8"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#wasAttributedTo"/>
+        <NamedIndividual IRI="#artwork_6"/>
+        <NamedIndividual IRI="#artist_5"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://xrce.xerox.com/LRM#describedBy"/>
+        <NamedIndividual IRI="#artwork_6"/>
+        <NamedIndividual IRI="#description_5"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://xrce.xerox.com/LRM#identification"/>
+        <NamedIndividual IRI="#artwork_6"/>
+        <NamedIndividual IRI="#id_6"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasStatusFlag"/>
+        <NamedIndividual IRI="#artwork_7"/>
+        <NamedIndividual IRI="#status_flag_9"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#wasAttributedTo"/>
+        <NamedIndividual IRI="#artwork_7"/>
+        <NamedIndividual IRI="#artist_6"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://xrce.xerox.com/LRM#describedBy"/>
+        <NamedIndividual IRI="#artwork_7"/>
+        <NamedIndividual IRI="#description_6"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://xrce.xerox.com/LRM#identification"/>
+        <NamedIndividual IRI="#artwork_7"/>
+        <NamedIndividual IRI="#id_7"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://xrce.xerox.com/LRM#from"/>
+        <NamedIndividual IRI="#data_dependency_1"/>
+        <NamedIndividual IRI="#programming_language_1"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://xrce.xerox.com/LRM#to"/>
+        <NamedIndividual IRI="#data_dependency_1"/>
+        <NamedIndividual IRI="#artwork_1"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://xrce.xerox.com/LRM#from"/>
+        <NamedIndividual IRI="#data_dependency_2"/>
+        <NamedIndividual IRI="#programming_language_2"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://xrce.xerox.com/LRM#to"/>
+        <NamedIndividual IRI="#data_dependency_2"/>
+        <NamedIndividual IRI="#artwork_2"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://xrce.xerox.com/LRM#from"/>
+        <NamedIndividual IRI="#data_dependency_3"/>
+        <NamedIndividual IRI="#programming_language_1"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://xrce.xerox.com/LRM#to"/>
+        <NamedIndividual IRI="#data_dependency_3"/>
+        <NamedIndividual IRI="#artwork_4"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://xrce.xerox.com/LRM#from"/>
+        <NamedIndividual IRI="#data_dependency_4"/>
+        <NamedIndividual IRI="#programming_langugage_3"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://xrce.xerox.com/LRM#to"/>
+        <NamedIndividual IRI="#data_dependency_4"/>
+        <NamedIndividual IRI="#artwork_6"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://xrce.xerox.com/LRM#from"/>
+        <NamedIndividual IRI="#hardware_dependency_1"/>
+        <NamedIndividual IRI="#monitor_1"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://xrce.xerox.com/LRM#to"/>
+        <NamedIndividual IRI="#hardware_dependency_1"/>
+        <NamedIndividual IRI="#artwork_1"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://xrce.xerox.com/LRM#from"/>
+        <NamedIndividual IRI="#hardware_dependency_2"/>
+        <NamedIndividual IRI="#projector_1"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://xrce.xerox.com/LRM#from"/>
+        <NamedIndividual IRI="#hardware_dependency_2"/>
+        <NamedIndividual IRI="#computer_1"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://xrce.xerox.com/LRM#from"/>
+        <NamedIndividual IRI="#hardware_dependency_2"/>
+        <NamedIndividual IRI="#illuminator_1"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://xrce.xerox.com/LRM#from"/>
+        <NamedIndividual IRI="#hardware_dependency_2"/>
+        <NamedIndividual IRI="#camera_1"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://xrce.xerox.com/LRM#from"/>
+        <NamedIndividual IRI="#hardware_dependency_2"/>
+        <NamedIndividual IRI="#projector_4"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://xrce.xerox.com/LRM#from"/>
+        <NamedIndividual IRI="#hardware_dependency_2"/>
+        <NamedIndividual IRI="#projector_3"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://xrce.xerox.com/LRM#from"/>
+        <NamedIndividual IRI="#hardware_dependency_2"/>
+        <NamedIndividual IRI="#projector_2"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://xrce.xerox.com/LRM#from"/>
+        <NamedIndividual IRI="#hardware_dependency_2"/>
+        <NamedIndividual IRI="#network_infrastructure_1"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://xrce.xerox.com/LRM#to"/>
+        <NamedIndividual IRI="#hardware_dependency_2"/>
+        <NamedIndividual IRI="#artwork_2"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://xrce.xerox.com/LRM#from"/>
+        <NamedIndividual IRI="#hardware_dependency_3"/>
+        <NamedIndividual IRI="#material_1"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://xrce.xerox.com/LRM#from"/>
+        <NamedIndividual IRI="#hardware_dependency_3"/>
+        <NamedIndividual IRI="#network_infrastructure_2"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://xrce.xerox.com/LRM#from"/>
+        <NamedIndividual IRI="#hardware_dependency_3"/>
+        <NamedIndividual IRI="#printer_3"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://xrce.xerox.com/LRM#from"/>
+        <NamedIndividual IRI="#hardware_dependency_3"/>
+        <NamedIndividual IRI="#sensor_1"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://xrce.xerox.com/LRM#from"/>
+        <NamedIndividual IRI="#hardware_dependency_3"/>
+        <NamedIndividual IRI="#computer_2"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://xrce.xerox.com/LRM#from"/>
+        <NamedIndividual IRI="#hardware_dependency_3"/>
+        <NamedIndividual IRI="#printer_1"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://xrce.xerox.com/LRM#from"/>
+        <NamedIndividual IRI="#hardware_dependency_3"/>
+        <NamedIndividual IRI="#printer_2"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://xrce.xerox.com/LRM#to"/>
+        <NamedIndividual IRI="#hardware_dependency_3"/>
+        <NamedIndividual IRI="#artwork_3"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://xrce.xerox.com/LRM#from"/>
+        <NamedIndividual IRI="#hardware_dependency_4"/>
+        <NamedIndividual IRI="#sensor_2"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://xrce.xerox.com/LRM#from"/>
+        <NamedIndividual IRI="#hardware_dependency_4"/>
+        <NamedIndividual IRI="#monitor_2"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://xrce.xerox.com/LRM#from"/>
+        <NamedIndividual IRI="#hardware_dependency_4"/>
+        <NamedIndividual IRI="#monitor_3"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://xrce.xerox.com/LRM#from"/>
+        <NamedIndividual IRI="#hardware_dependency_4"/>
+        <NamedIndividual IRI="#monitor_4"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://xrce.xerox.com/LRM#to"/>
+        <NamedIndividual IRI="#hardware_dependency_4"/>
+        <NamedIndividual IRI="#artwork_4"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://xrce.xerox.com/LRM#from"/>
+        <NamedIndividual IRI="#hardware_dependency_5"/>
+        <NamedIndividual IRI="#network_infrastructure_3"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://xrce.xerox.com/LRM#to"/>
+        <NamedIndividual IRI="#hardware_dependency_5"/>
+        <NamedIndividual IRI="#artwork_5"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://xrce.xerox.com/LRM#from"/>
+        <NamedIndividual IRI="#hardware_dependency_6"/>
+        <NamedIndividual IRI="#projector_5"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://xrce.xerox.com/LRM#to"/>
+        <NamedIndividual IRI="#hardware_dependency_6"/>
+        <NamedIndividual IRI="#artwork_6"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://xrce.xerox.com/LRM#from"/>
+        <NamedIndividual IRI="#hardware_dependency_7"/>
+        <NamedIndividual IRI="#morse_code_unit_1"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://xrce.xerox.com/LRM#from"/>
+        <NamedIndividual IRI="#hardware_dependency_7"/>
+        <NamedIndividual IRI="#glass_chandelier_1"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://xrce.xerox.com/LRM#from"/>
+        <NamedIndividual IRI="#hardware_dependency_7"/>
+        <NamedIndividual IRI="#monitor_5"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://xrce.xerox.com/LRM#to"/>
+        <NamedIndividual IRI="#hardware_dependency_7"/>
+        <NamedIndividual IRI="#artwork_7"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://xrce.xerox.com/LRM#from"/>
+        <NamedIndividual IRI="#software_dependency_1"/>
+        <NamedIndividual IRI="#operating_system_1"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://xrce.xerox.com/LRM#to"/>
+        <NamedIndividual IRI="#software_dependency_1"/>
+        <NamedIndividual IRI="#artwork_1"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://xrce.xerox.com/LRM#from"/>
+        <NamedIndividual IRI="#software_dependency_2"/>
+        <NamedIndividual IRI="#operating_system_1"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://xrce.xerox.com/LRM#to"/>
+        <NamedIndividual IRI="#software_dependency_2"/>
+        <NamedIndividual IRI="#artwork_2"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://xrce.xerox.com/LRM#from"/>
+        <NamedIndividual IRI="#software_dependency_3"/>
+        <NamedIndividual IRI="#program_1"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://xrce.xerox.com/LRM#from"/>
+        <NamedIndividual IRI="#software_dependency_3"/>
+        <NamedIndividual IRI="#runtime_environment_1"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://xrce.xerox.com/LRM#from"/>
+        <NamedIndividual IRI="#software_dependency_3"/>
+        <NamedIndividual IRI="#operating_system_2"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://xrce.xerox.com/LRM#from"/>
+        <NamedIndividual IRI="#software_dependency_3"/>
+        <NamedIndividual IRI="#database_1"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://xrce.xerox.com/LRM#to"/>
+        <NamedIndividual IRI="#software_dependency_3"/>
+        <NamedIndividual IRI="#artwork_3"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://xrce.xerox.com/LRM#from"/>
+        <NamedIndividual IRI="#software_dependency_4"/>
+        <NamedIndividual IRI="#operating_system_1"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://xrce.xerox.com/LRM#to"/>
+        <NamedIndividual IRI="#software_dependency_4"/>
+        <NamedIndividual IRI="#artwork_4"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://xrce.xerox.com/LRM#from"/>
+        <NamedIndividual IRI="#software_dependency_5"/>
+        <NamedIndividual IRI="#database_1"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://xrce.xerox.com/LRM#to"/>
+        <NamedIndividual IRI="#software_dependency_5"/>
+        <NamedIndividual IRI="#artwork_5"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://xrce.xerox.com/LRM#from"/>
+        <NamedIndividual IRI="#software_dependency_6"/>
+        <NamedIndividual IRI="#operating_system_3"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://xrce.xerox.com/LRM#to"/>
+        <NamedIndividual IRI="#software_dependency_6"/>
+        <NamedIndividual IRI="#artwork_6"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://xrce.xerox.com/LRM#from"/>
+        <NamedIndividual IRI="#software_dependency_7"/>
+        <NamedIndividual IRI="#operating_system_1"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://xrce.xerox.com/LRM#to"/>
+        <NamedIndividual IRI="#software_dependency_7"/>
+        <NamedIndividual IRI="#artwork_7"/>
+    </ObjectPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#date"/>
+        <NamedIndividual IRI="#artist_1"/>
+        <Literal datatypeIRI="&xsd;string">1941</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#date"/>
+        <NamedIndividual IRI="#artist_2"/>
+        <Literal datatypeIRI="&xsd;string">1967</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#date"/>
+        <NamedIndividual IRI="#artist_3"/>
+        <Literal datatypeIRI="&xsd;string">1974</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#date"/>
+        <NamedIndividual IRI="#artist_4"/>
+        <Literal datatypeIRI="&xsd;string">1972</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#date"/>
+        <NamedIndividual IRI="#artist_5"/>
+        <Literal datatypeIRI="&xsd;string">1978</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#date"/>
+        <NamedIndividual IRI="#artist_6"/>
+        <Literal datatypeIRI="&xsd;string">1958</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#date"/>
+        <NamedIndividual IRI="#artwork_1"/>
+        <Literal datatypeIRI="&xsd;string">2003</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#date"/>
+        <NamedIndividual IRI="#artwork_2"/>
+        <Literal datatypeIRI="&xsd;string">2005</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#date"/>
+        <NamedIndividual IRI="#artwork_3"/>
+        <Literal datatypeIRI="&xsd;string">2007</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#date"/>
+        <NamedIndividual IRI="#artwork_4"/>
+        <Literal datatypeIRI="&xsd;string">2007</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#date"/>
+        <NamedIndividual IRI="#artwork_5"/>
+        <Literal datatypeIRI="&xsd;string">2005</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#date"/>
+        <NamedIndividual IRI="#artwork_6"/>
+        <Literal datatypeIRI="&xsd;string">2005</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#date"/>
+        <NamedIndividual IRI="#artwork_7"/>
+        <Literal datatypeIRI="&xsd;string">2006</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#value"/>
+        <NamedIndividual IRI="#description_1"/>
+        <Literal datatypeIRI="&xsd;string">Computer-based LCD lightbox with digital display</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#value"/>
+        <NamedIndividual IRI="#description_2"/>
+        <Literal datatypeIRI="&xsd;string">Variable number of surveillance pods and data projectors, one night vision camera, one PC and an infrared illuminator</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#value"/>
+        <NamedIndividual IRI="#description_3"/>
+        <Literal datatypeIRI="&xsd;string">MDF, 3 printers, paper, tracking system, central processing unit, cables and web search program</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#value"/>
+        <NamedIndividual IRI="#description_4"/>
+        <Literal datatypeIRI="&xsd;string">3 wall-mounted LCD monitors with integrated software</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#value"/>
+        <NamedIndividual IRI="#description_5"/>
+        <Literal datatypeIRI="&xsd;string">Projection from digital source</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#value"/>
+        <NamedIndividual IRI="#description_6"/>
+        <Literal datatypeIRI="&xsd;string">Chandelier (Luca Italia), flat screen monitor, morse code unit and computer</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#hasUnit"/>
+        <NamedIndividual IRI="#duration_1"/>
+        <Literal datatypeIRI="&xsd;string">hours</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#value"/>
+        <NamedIndividual IRI="#duration_1"/>
+        <Literal datatypeIRI="&xsd;string">792</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#value"/>
+        <NamedIndividual IRI="#id_1"/>
+        <Literal datatypeIRI="&xsd;string">T11812</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#value"/>
+        <NamedIndividual IRI="#id_2"/>
+        <Literal datatypeIRI="&xsd;string">T12656</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#value"/>
+        <NamedIndividual IRI="#id_3"/>
+        <Literal datatypeIRI="&xsd;string">T13251</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#value"/>
+        <NamedIndividual IRI="#id_4"/>
+        <Literal datatypeIRI="&xsd;string">T13348</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#value"/>
+        <NamedIndividual IRI="#id_5"/>
+        <Literal datatypeIRI="&xsd;string">X26607</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#value"/>
+        <NamedIndividual IRI="#id_6"/>
+        <Literal datatypeIRI="&xsd;string">L02995</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#value"/>
+        <NamedIndividual IRI="#id_7"/>
+        <Literal datatypeIRI="&xsd;string">T13645</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#hasUnit"/>
+        <NamedIndividual IRI="#size_1"/>
+        <Literal datatypeIRI="&xsd;string">mm</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#value"/>
+        <NamedIndividual IRI="#size_1"/>
+        <Literal datatypeIRI="&xsd;string">390x320x110</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#hasUnit"/>
+        <NamedIndividual IRI="#size_2"/>
+        <Literal datatypeIRI="&xsd;string">mm</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#value"/>
+        <NamedIndividual IRI="#size_2"/>
+        <Literal datatypeIRI="&xsd;string">1830x2140x2550</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#hasUnit"/>
+        <NamedIndividual IRI="#size_3"/>
+        <Literal datatypeIRI="&xsd;string">mm</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#value"/>
+        <NamedIndividual IRI="#size_3"/>
+        <Literal datatypeIRI="&xsd;string">750x3780x120</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#hasUnit"/>
+        <NamedIndividual IRI="#size_4"/>
+        <Literal datatypeIRI="&xsd;string">mm</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#hasUnit"/>
+        <NamedIndividual IRI="#size_4"/>
+        <Literal datatypeIRI="&xsd;string">2460x1750x800</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#date"/>
+        <NamedIndividual IRI="#status_flag_1"/>
+        <Literal datatypeIRI="&xsd;string">15-04-2003</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#date"/>
+        <NamedIndividual IRI="#status_flag_10"/>
+        <Literal datatypeIRI="&rdf;PlainLiteral">15-03-2011</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#date"/>
+        <NamedIndividual IRI="#status_flag_11"/>
+        <Literal datatypeIRI="&rdf;PlainLiteral">30-03-2011</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#date"/>
+        <NamedIndividual IRI="#status_flag_2"/>
+        <Literal datatypeIRI="&xsd;string">2004</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#date"/>
+        <NamedIndividual IRI="#status_flag_3"/>
+        <Literal datatypeIRI="&xsd;string">12-09-2006</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#date"/>
+        <NamedIndividual IRI="#status_flag_4"/>
+        <Literal datatypeIRI="&xsd;string">01-10-2007</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#date"/>
+        <NamedIndividual IRI="#status_flag_5"/>
+        <Literal datatypeIRI="&xsd;string">2008</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#date"/>
+        <NamedIndividual IRI="#status_flag_6"/>
+        <Literal datatypeIRI="&xsd;string">05-09-2008</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#date"/>
+        <NamedIndividual IRI="#status_flag_7"/>
+        <Literal datatypeIRI="&xsd;string">11-04-2008</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#date"/>
+        <NamedIndividual IRI="#status_flag_8"/>
+        <Literal datatypeIRI="&xsd;string">19-10-2010</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#date"/>
+        <NamedIndividual IRI="#status_flag_9"/>
+        <Literal datatypeIRI="&xsd;string">15-09-2010</Literal>
+    </DataPropertyAssertion>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#hasProgrammingLanguage"/>
+        <ObjectUnionOf>
+            <Class IRI="#ComputerBased"/>
+            <Class IRI="#MixedMedia"/>
+            <Class IRI="#SoftwareBased"/>
+        </ObjectUnionOf>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#hasSize"/>
+        <ObjectUnionOf>
+            <Class IRI="#ComputerBased"/>
+            <Class IRI="#MixedMedia"/>
+            <Class IRI="#SoftwareBased"/>
+        </ObjectUnionOf>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#hasStatusFlag"/>
+        <ObjectUnionOf>
+            <Class IRI="#ComputerBased"/>
+            <Class IRI="#MixedMedia"/>
+            <Class IRI="#SoftwareBased"/>
+        </ObjectUnionOf>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#wasAttributedTo"/>
+        <ObjectUnionOf>
+            <Class IRI="#ComputerBased"/>
+            <Class IRI="#MixedMedia"/>
+            <Class IRI="#SoftwareBased"/>
+        </ObjectUnionOf>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="http://xrce.xerox.com/LRM#describedBy"/>
+        <ObjectUnionOf>
+            <Class IRI="#ComputerBased"/>
+            <Class IRI="#MixedMedia"/>
+            <Class IRI="#SoftwareBased"/>
+        </ObjectUnionOf>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="http://xrce.xerox.com/LRM#from"/>
+        <Class IRI="http://xrce.xerox.com/LRM#Dependency"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="http://xrce.xerox.com/LRM#identification"/>
+        <ObjectUnionOf>
+            <Class IRI="#ComputerBased"/>
+            <Class IRI="#MixedMedia"/>
+            <Class IRI="#SoftwareBased"/>
+        </ObjectUnionOf>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="http://xrce.xerox.com/LRM#to"/>
+        <Class IRI="http://xrce.xerox.com/LRM#Dependency"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#hasProgrammingLanguage"/>
+        <Class IRI="#ProgrammingLanguage"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#hasSize"/>
+        <Class IRI="#Size"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#hasStatusFlag"/>
+        <Class IRI="#StatusFlag"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#wasAttributedTo"/>
+        <Class IRI="#Artist"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="http://xrce.xerox.com/LRM#describedBy"/>
+        <Class IRI="http://xrce.xerox.com/LRM#Description"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="http://xrce.xerox.com/LRM#from"/>
+        <ObjectUnionOf>
+            <Class IRI="#Camera"/>
+            <Class IRI="#Computer"/>
+            <Class IRI="#Database"/>
+            <Class IRI="#GlassChandelier"/>
+            <Class IRI="#Illuminator"/>
+            <Class IRI="#Material"/>
+            <Class IRI="#Monitor"/>
+            <Class IRI="#MorseCodeUnit"/>
+            <Class IRI="#NetworkInfrastructure"/>
+            <Class IRI="#OperatingSystem"/>
+            <Class IRI="#PrintingDevice"/>
+            <Class IRI="#Program"/>
+            <Class IRI="#ProgrammingLanguage"/>
+            <Class IRI="#Projector"/>
+            <Class IRI="#RuntimeEnvironment"/>
+            <Class IRI="#Sensor"/>
+        </ObjectUnionOf>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="http://xrce.xerox.com/LRM#identification"/>
+        <Class IRI="http://xrce.xerox.com/LRM#Identity"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="http://xrce.xerox.com/LRM#to"/>
+        <ObjectUnionOf>
+            <Class IRI="#ComputerBased"/>
+            <Class IRI="#MixedMedia"/>
+            <Class IRI="#SoftwareBased"/>
+        </ObjectUnionOf>
+    </ObjectPropertyRange>
+    <DataPropertyDomain>
+        <DataProperty IRI="#date"/>
+        <ObjectUnionOf>
+            <Class IRI="#Artist"/>
+            <Class IRI="#ComputerBased"/>
+            <Class IRI="#MixedMedia"/>
+            <Class IRI="#SoftwareBased"/>
+            <Class IRI="#StatusFlag"/>
+        </ObjectUnionOf>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="#hasUnit"/>
+        <Class IRI="#Size"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="#value"/>
+        <ObjectUnionOf>
+            <Class IRI="#Size"/>
+            <Class IRI="http://xrce.xerox.com/LRM#Description"/>
+            <Class IRI="http://xrce.xerox.com/LRM#Identity"/>
+        </ObjectUnionOf>
+    </DataPropertyDomain>
+    <DataPropertyRange>
+        <DataProperty IRI="#date"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="#hasUnit"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="#value"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#Artist</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">Artist</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#Camera</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">Camera</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#Computer</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">Computer</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#ComputerBased</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">Computer Based Artwork</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#DataDependency</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">Data Dependency</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#Database</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">Database</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#DigitalArtwork</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">Digital Artwork</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#DisplayDevice</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">Display Device</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#Equipment</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">Equipment</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#GlassChandelier</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">Glass Chandelier</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#HardwareDependency</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">Hardware Dependency</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#Illuminator</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">Illuminator</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#Material</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">Material</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#MixedMedia</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">Mixed Media Artwork</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#Monitor</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">Monitor</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#MorseCodeUnit</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">Morse Code Unit</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#NetworkInfrastructure</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">Network Infrastructure</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#OperatingSystem</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">Operating System</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#Person</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">Person</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#PrintingDevice</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">Printing Device</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#Program</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">Program</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#ProgrammingLanguage</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">Programming Language</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#Projector</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">Projector</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#RuntimeEnvironment</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">Runtime Environment</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#Sensor</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">Sensor</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#Size</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">Size</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#SoftwareBased</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">Software Based Artwork</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#SoftwareDependency</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">Software Dependency</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#StatusFlag</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">Status Flag</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#artist_1</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">Michael Craig-Martin</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#artist_2</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">Rafael Lozano-Hemmer</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#artist_3</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">Jose Carlos Martinat Mendoza</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#artist_4</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">Sandra Gamarra</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#artist_5</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">Cory Arcangel</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#artist_6</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">Cerith Wyn Evans</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#artwork_1</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">Becoming</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#artwork_2</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">Público Subtitulado</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#artwork_2</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">Subtitled Public</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#artwork_3</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">Brutalism</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#artwork_4</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">Things Change</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#artwork_5</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">LiMac Museum Shop</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#artwork_6</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">Colors</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#artwork_7</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">Astrophotography</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#camera_1</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">night vision camera</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#database_1</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">MySQL</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#description_1</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">Becoming description</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#description_2</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">Subtitled Public description</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#description_3</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">Brutalism description</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#description_4</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">Things change description</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#description_5</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">Colors description</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#description_6</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">Astrophotography description</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#duration_1</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">Colors duration</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#id_1</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">Becoming ID</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#id_2</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">Subtitled Public ID</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#id_3</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">Brutalism ID</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#id_4</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">Things change ID</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#id_5</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">LiMac Museum Shop ID</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#id_6</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">Colors ID</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#id_7</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">Astrophotography ID</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#illuminator_1</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">infrared illuminator</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#material_1</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">fibreboard</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#operating_system_1</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">Windows XP</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#operating_system_2</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">Ubuntu</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#operating_system_3</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">Mac OS</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#program_1</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">web search program</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#programming_language_1</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">LINGO</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#programming_language_2</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">Delphi</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#programming_langugage_3</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">Objective C / C++</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#runtime_environment_1</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">Java</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#sensor_1</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">infrared sensor</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#size_1</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">Becoming dimensions</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#size_2</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">Brutalism dimensions</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#size_3</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">Things change dimensions</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#size_4</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">LiMac Museum Shop dimensions</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#status_flag_1</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">Becoming - Acquisition Candidate</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#status_flag_10</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">Brutalism - Entered Main Collection</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#status_flag_11</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">Things change - Entered Main Collection</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#status_flag_2</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">Becoming - Entered Main Collection</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#status_flag_3</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">Subtitled Public - Acquisition Candidate</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#status_flag_4</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">Brutalism - Acquisition Candidate</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#status_flag_5</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">Subtitled Public - Entered Main Collection</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#status_flag_6</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">Things change - Acquisition Candidate</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#status_flag_7</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">LiMac Museum Shop - Acquisition Candidate</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#status_flag_8</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">Colors - Acquisition Candidate</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#status_flag_9</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">Astrophotography - Acquisition Candidate</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>http://xrce.xerox.com/LRM#ConcreteResource</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">Concrete Resource</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>http://xrce.xerox.com/LRM#Dependency</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">Dependency</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>http://xrce.xerox.com/LRM#Description</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">Description</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>http://xrce.xerox.com/LRM#DigitalResource</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">Digital Resource</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>http://xrce.xerox.com/LRM#HumanAgent</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">Human Agent</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>http://xrce.xerox.com/LRM#Identity</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">Identity</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>http://xrce.xerox.com/LRM#SoftwareAgent</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">Software Agent</Literal>
+    </AnnotationAssertion>
+</Ontology>
+
+
+
+<!-- Generated by the OWL API (version 3.5.1) http://owlapi.sourceforge.net -->
+

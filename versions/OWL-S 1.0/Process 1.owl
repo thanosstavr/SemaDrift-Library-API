@@ -1,0 +1,996 @@
+<?xml version='1.0' encoding='ISO-8859-1'?>
+
+<!DOCTYPE uridef[
+  <!ENTITY rdf "http://www.w3.org/1999/02/22-rdf-syntax-ns">
+  <!ENTITY rdfs "http://www.w3.org/2000/01/rdf-schema">
+  <!ENTITY owl "http://www.w3.org/2002/07/owl">
+  <!ENTITY xsd "http://www.w3.org/2001/XMLSchema">
+  <!ENTITY time "http://www.isi.edu/~pan/damltime/time-entry.owl">  
+  <!ENTITY service "http://www.daml.org/services/owl-s/1.0/Service.owl">
+  <!ENTITY grounding "http://www.daml.org/services/owl-s/1.0/Grounding.owl">
+  <!ENTITY process "http://www.daml.org/services/owl-s/1.0/Process.owl">
+  <!ENTITY DEFAULT "http://www.daml.org/services/owl-s/1.0/Process.owl">
+]>
+
+<!--
+This document uses entity types as a shorthand for URIs.
+For a version with unexpanded entities, try loading this source
+into Internet Explorer.
+ -->
+
+<rdf:RDF
+  xmlns:rdf=	"&rdf;#"
+  xmlns:rdfs=	"&rdfs;#"
+  xmlns:owl = "&owl;#"
+  xmlns:xsd=	 "&xsd;#"
+  xmlns:service= "&service;#"
+  xmlns:process= "&process;#"
+  xmlns:grounding= "&grounding;#"
+  xmlns=	"&DEFAULT;#">
+
+<!-- MODIFICATION NOTES
+Monika/24/09/03 -replaced sameClassAs :equivalentClass
+Monika/24/09/03 -replaced samePropertyAs :equivalentProperty
+Monika/24/09/03 -replaced rdfs:domain :rdfs:domain
+Monika/24/09/03 -replaced rdfs:range :rdfs:range
+Monika/24/09/03 -replaced rdfs:subClassOf :rdfs:subClassOf
+Monika/24/09/03 -replaced rdfs:comment :rdfs:comment
+-->
+
+<owl:Ontology rdf:about="">
+  <owl:versionInfo>
+    $Id: Process.owl,v 1.53 2004/05/07 22:43:08 martin Exp $
+  </owl:versionInfo>
+  <rdfs:comment>
+    Upper-level OWL ontology for Processes.
+    Part of the DAML-S/OWL-S effort; see http://www.daml.org/services/.
+  </rdfs:comment>
+  <owl:imports rdf:resource="&time;"/>
+  <owl:imports rdf:resource="&service;"/>
+</owl:Ontology>
+
+<!--######################################################
+    Preliminaries
+    ######################################################-->
+
+<owl:Class rdf:ID="Condition">
+  <rdfs:comment>
+    This is a "place-holder" for now, which awaits further work from
+    the DAML/OWL community.  An instance of Condition is a logical
+    formula that evaluates to true or false.  Eventually we expect
+    this to be defined elsewhere, as part of a OWL extension allowing
+    for logical expressions.
+  </rdfs:comment>
+</owl:Class>
+
+<owl:Class rdf:ID="Effect">
+  <rdfs:comment>
+    This is a "place-holder" for now, which awaits further work from
+    the DAML/OWL community.  An instance of Effect is a logical
+    formula that evaluates to true or false.  Eventually we expect
+    this to be defined elsewhere, as part of a OWL extension allowing
+    for logical expressions.
+  </rdfs:comment>
+</owl:Class>
+
+<!--######################################################
+    Input / Output / Precondition / Effect
+    ######################################################-->
+
+<!--
+IOPE structure:
+
+ * class Parameter 
+ 	- properties:
+ 		- parameterType (minCard=1)
+ 	- subclasses:
+ 		- Input
+ 		- ConditionalOutput
+ 			-properties: coCondition (range Condition)
+ 			- subclass: UnConditionalOutput (maxCard=0 on coCondition)
+ * class Precondition
+ 	- properties:
+ 		- preCondition(range Condition)
+ 	
+ * class ConditionalEffect	
+ 	 - properties
+ 	 	- ceCondition(range Condition)
+ 	 	- ceEffect
+ 	 - subclass: UnConditionalEffect (maxCard=0 on ceCondition)
+ 	
+ * Use rdf:ID and/or rdf:label to assign unique names to instances of the 
+  above classes.
+ 
+-->
+
+<!--
+ * Parameter 
+ -->
+
+<owl:Class rdf:ID="Parameter">
+ <rdfs:subClassOf>
+   <owl:Restriction owl:minCardinality="1">
+     <owl:onProperty rdf:resource="#parameterType" />
+   </owl:Restriction>
+ </rdfs:subClassOf>
+</owl:Class>
+
+<rdf:Property rdf:ID="parameterType">
+  <rdfs:domain rdf:resource="#Parameter"/>
+  <rdfs:comment>
+      Range is left unspecified currently, to allow for both OWL classes and
+      XSD datatypes.  (However, this is subject to revision in the next
+      release.)
+  </rdfs:comment>
+</rdf:Property>
+
+<!--
+ * Input 
+ -->
+
+<owl:Class rdf:ID="Input">
+  <rdfs:subClassOf rdf:resource="#Parameter"/>
+</owl:Class>
+
+<!--
+ * ConditionalOutput 
+ -->
+
+<owl:Class rdf:ID="ConditionalOutput">
+  <rdfs:subClassOf rdf:resource="#Parameter"/>
+  </owl:Class>
+
+<owl:ObjectProperty rdf:ID="coCondition">
+  <rdfs:comment> The condition of a conditional output </rdfs:comment>
+  <rdfs:domain rdf:resource="#ConditionalOutput"/>
+  <rdfs:range rdf:resource="#Condition"/>
+</owl:ObjectProperty>
+
+<owl:Class rdf:ID="UnConditionalOutput">
+  <rdfs:comment>An UnConditionalOutput has no condition.  </rdfs:comment>
+  <owl:intersectionOf rdf:parseType="Collection">
+    <owl:Class rdf:about="#ConditionalOutput"/>
+    <owl:Restriction owl:cardinality="0">
+      <owl:onProperty rdf:resource="#coCondition"/>
+    </owl:Restriction>
+  </owl:intersectionOf>
+</owl:Class>
+
+<!-- 
+ * class Precondition
+ -->
+
+<owl:Class rdf:ID="Precondition"/>
+
+<!-- 
+ * class ConditionalEffect	
+
+A conditional effect is an effect that only occurs when a condition is
+true.  In the book-buying example, ceCondition would be something like
+"inStock(book)" and the ceEffect would be something like
+"purchased(book)".  It is encoded by the class ConditionalEffect.
+ConditionalEffect simply bundles a condition and an effect, using two
+properties, the condtion (ceCondition) of the conditional effect, and
+the effect (ceEffect) of the conditional effect.  
+
+An *un*conditional effect is simply a subclass of a conditional
+effect, where the condition is assumed to be true.  Currently, we
+represent this by having *no* condition.
+ -->
+
+<owl:ObjectProperty rdf:ID="preCondition">
+  <rdfs:domain rdf:resource="#Precondition"/>
+  <rdfs:range rdf:resource="#Condition"/>
+</owl:ObjectProperty>
+	
+<owl:Class rdf:ID="ConditionalEffect"/>
+
+<owl:ObjectProperty rdf:ID="ceCondition">
+  <rdfs:comment> The condition of a conditional effect. </rdfs:comment>
+  <rdfs:domain rdf:resource="#ConditionalEffect"/>
+  <rdfs:range rdf:resource="#Condition"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:ID="ceEffect">
+  <rdfs:comment> The effect of a conditional effect. </rdfs:comment>
+  <rdfs:domain rdf:resource="#ConditionalEffect"/>
+  <rdfs:range  rdf:resource="#Effect"/>
+</owl:ObjectProperty>
+
+<owl:Class rdf:ID="UnConditionalEffect">
+  <rdfs:comment>
+    An UnConditionalEffect has no condition.
+  </rdfs:comment>
+  <owl:intersectionOf rdf:parseType="Collection">
+    <owl:Class rdf:about="#ConditionalEffect"/>
+    <owl:Restriction owl:cardinality="0">
+      <owl:onProperty rdf:resource="#ceCondition"/>
+    </owl:Restriction>
+  </owl:intersectionOf>
+</owl:Class>
+
+<!--Inputs and outputs are disjoint -->
+
+<rdf:Description rdf:about="#Input">
+  <owl:disjointWith rdf:resource="#ConditionalOutput"/>
+</rdf:Description>
+
+<!--######################################################
+    Connection to upper level Service ontology 
+    ######################################################-->
+
+<owl:Class rdf:ID="ProcessModel">
+  <rdfs:comment>
+    A ServiceModel describes how a Service works, and
+    a ProcessModel is a type of ServiceModel (the only
+    type being defined for OWL-S).
+    See also the introductory comments to Service.daml.  
+  </rdfs:comment>
+  <rdfs:subClassOf rdf:resource="&service;#ServiceModel"/> 
+</owl:Class>
+
+<owl:ObjectProperty rdf:ID="hasProcess">
+  <rdfs:comment>
+    In the case of a composite process, indicates the top-level process class.
+  </rdfs:comment>
+  <rdfs:domain rdf:resource="#ProcessModel"/>
+  <rdfs:range rdf:resource="#Process"/>
+</owl:ObjectProperty>
+
+<owl:Class rdf:ID="ProcessControlModel">
+  <rdfs:comment>
+    A ProcessControlModel is used to monitor and control execution of 
+    a Process. This is just a "stub" for now; will be developed further
+    in future releases of OWL-S.
+  </rdfs:comment>
+</owl:Class>
+
+<owl:ObjectProperty rdf:ID="hasControlModel">
+  <rdfs:domain rdf:resource="#ProcessModel"/>
+  <rdfs:range rdf:resource="#ProcessControlModel"/>
+</owl:ObjectProperty>
+
+<owl:Class rdf:about="#ProcessModel">
+  <rdfs:comment>
+    A ProcessModel can have at most one Process and one ProcessControlModel.
+  </rdfs:comment>
+  <rdfs:subClassOf>
+    <owl:Restriction owl:maxCardinality="1">
+      <owl:onProperty rdf:resource="#hasProcess"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:subClassOf>
+    <owl:Restriction owl:maxCardinality="1">
+      <owl:onProperty rdf:resource="#hasControlModel"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+</owl:Class>
+
+<!--######################################################
+    Processes
+    ######################################################-->
+
+<owl:Class rdf:ID="Process">
+  <rdfs:comment> The most general class of processes </rdfs:comment>
+  <rdfs:subClassOf rdf:resource="&time;#IntervalEvent"/>
+  <owl:unionOf rdf:parseType="Collection">
+    <owl:Class rdf:about="#AtomicProcess"/>
+    <owl:Class rdf:about="#SimpleProcess"/>
+    <owl:Class rdf:about="#CompositeProcess"/>
+  </owl:unionOf>
+</owl:Class>
+
+<!--
+
+Processes can have a name, parameters, preconditions, and
+(conditional) effects.  Input, (conditional) output, and participant
+are parameters.
+
+Note: The basic attributes are similar to the PDDL definition of
+events with the addition of input, output and participant attributes.
+
+Processes can also be at an instant (atTime) or during an interval
+(during).
+
+-->
+
+<rdf:Property rdf:ID="name">
+  <rdfs:domain rdf:resource="#Process"/>
+  <rdfs:range rdf:resource="http://www.w3.org/2000/01/rdf-schema#Literal"/>
+</rdf:Property>
+
+<owl:Class rdf:about="#Process">
+  <rdfs:comment>
+    A Process can have at most one name, but names need not be unique.
+  </rdfs:comment>
+  <rdfs:subClassOf>
+    <owl:Restriction owl:maxCardinality="1">
+      <owl:onProperty rdf:resource="#name"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+</owl:Class>
+
+<!--
+
+A process can have parameters (inputs and outputs), preconditions, and effects.
+
+-->
+
+<owl:ObjectProperty rdf:ID="hasParameter">
+  <rdfs:domain rdf:resource="#Process"/>
+  <rdfs:range rdf:resource="#Parameter"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:ID="hasInput">
+  <rdfs:subPropertyOf rdf:resource="#hasParameter"/>
+  <rdfs:range rdf:resource="#Input"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:ID="hasOutput">
+  <rdfs:subPropertyOf rdf:resource="#hasParameter"/>
+  <rdfs:range rdf:resource="#ConditionalOutput"/>
+</owl:ObjectProperty>
+
+<!--
+hasPrecondition is a property of Process.  Specific processes will
+instantiate this property with specific instances of Condition,
+indicating such things as knowledge preconditions (agent knows credit
+card number) or world preconditions (baud rate > 56Kb).
+-->
+
+<owl:ObjectProperty rdf:ID="hasPrecondition">
+  <rdfs:domain rdf:resource="#Process"/>
+  <rdfs:range rdf:resource="#Precondition"/>
+</owl:ObjectProperty>
+
+<!-- 
+hasEffect is a property of Process, having the range ConditionalEffect.
+Processes can have conditional effects.  For example, if the book is
+in stock (condition), it will be purchased (effect) after executing
+the buy-book process.  In the trivial case (no conditions to be
+distinguished), the range of the effect property can be restricted
+to the subclass UnConditionalEffect.
+ -->
+
+<owl:ObjectProperty rdf:ID="hasEffect">
+  <rdfs:domain rdf:resource="#Process"/>
+  <rdfs:range rdf:resource="#ConditionalEffect"/>
+</owl:ObjectProperty>
+
+<!-- A participant is also a type of parameter. The top level ontology
+doesn't restrict them at all. A participant can be any kind of daml
+object (Thing).  Specific processes will specialize this property by
+restricting the range to types of agents, objects, entities, etc.  -->
+
+<rdf:Property rdf:ID="hasParticipant">  
+  <rdfs:subPropertyOf rdf:resource="#hasParameter"/>
+</rdf:Property>
+
+<!--######################################################
+    Atomic and Simple Processes
+    ######################################################-->
+
+<!-- 
+
+Atomic processes are the basic units of implementation.  To interact
+with an atomic process involves (at most) 2 messages: one carrying its
+inputs, and one carrying its outputs.  (Note, however, that messages
+are not explicitly defined in this ontology, but rather are specified
+by the Grounding.)
+
+An atomic process is a "black box" representation; that is, no
+description is given of how the process works (apart from inputs,
+outputs, preconditions, and effects).
+
+To be used, an atomic process must be associated with a Grounding.
+This association is expressed indirectly, by means of a Grounding
+instance, which is declared independently of the process.  Thus, to
+get to the grounding for a given atomic process, navigate from the
+process to the service object (via "describes"), and then from the
+service object to its grounding (via "supports").  The grounding
+contains a relation mapping atomic processes to their groundings.
+
+-->
+
+<owl:Class rdf:ID="AtomicProcess">
+  <rdfs:subClassOf rdf:resource="#Process"/>
+</owl:Class>
+
+<!-- 
+
+Simple processes provide an (optional) level of abstraction.  They
+describe themselves in the same way as Atomic processes, but, unlike
+atomics, they give additional characterization of how they work, in
+terms of other processes (using the "expandsTo" and "realizedBy"
+properties).  They are not directly callable.
+
+A simple process can be thought of as a "view" on either an atomic or
+a composite process.  Simple processes provide a means of
+characterizing other processes at varying levels of granularity, for
+purposes of planning and reasoning.
+
+Future releases will allow for a formal specification of a mapping
+between a simple process and the process that it abstracts.
+
+-->
+
+<owl:Class rdf:ID="SimpleProcess">
+  <rdfs:subClassOf rdf:resource="#Process"/>
+  <owl:disjointWith rdf:resource="#AtomicProcess"/>
+</owl:Class>
+<!-- 
+
+A simple process that abstracts an atomic process is "realized
+by" that process.
+
+-->
+
+<owl:ObjectProperty rdf:ID="realizedBy">
+  <rdfs:domain rdf:resource="#SimpleProcess"/>
+  <rdfs:range rdf:resource="#AtomicProcess"/>
+  <owl:inverseOf rdf:resource="#realizes"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:ID="realizes">
+  <rdfs:domain rdf:resource="#AtomicProcess"/>
+  <rdfs:range rdf:resource="#SimpleProcess"/>
+  <owl:inverseOf rdf:resource="#realizedBy"/>
+</owl:ObjectProperty>
+
+<!-- 
+
+There are two fundamental relations that can hold between simple
+processes and composite processes. One pertains to "expanding" a
+process to its underlying CompositeProcess (zoom-in) and the other
+corresponds to "collapsing" a composite process into a simple process
+(zoom-out).
+
+-->
+
+<owl:ObjectProperty rdf:ID="expandsTo">
+  <rdfs:domain rdf:resource="#SimpleProcess"/>
+  <rdfs:range rdf:resource="#CompositeProcess"/>
+  <owl:inverseOf rdf:resource="#collapsesTo"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:ID="collapsesTo">
+  <rdfs:domain rdf:resource="#CompositeProcess"/>
+  <rdfs:range rdf:resource="#SimpleProcess"/>
+  <owl:inverseOf rdf:resource="#expandsTo"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:ID="expand">
+  <rdfs:comment>This is a deprecated usage; expandsTo is preferred.</rdfs:comment>
+  <owl:equivalentProperty rdf:resource="#expandsTo"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:ID="collapse">
+  <rdfs:comment>This is a deprecated usage; collapsesTo is preferred.</rdfs:comment>
+  <owl:equivalentProperty rdf:resource="#collapsesTo"/>
+</owl:ObjectProperty>
+
+<!--######################################################
+    Composite Processes and Control Constructs
+    ######################################################-->
+
+<!-- 
+
+Composite processes are composed of subprocesses, and specify
+constraints on the ordering and conditional execution of these
+subprocesses.  These constraints are captured by the "composedOf"
+property, which is required for a composite process.
+
+Composite processes bottom out in non-composite (atomic and/or
+simple) processes.
+
+-->
+
+<owl:Class rdf:ID="CompositeProcess">
+  <rdfs:subClassOf rdf:resource="#Process"/>
+  <owl:disjointWith rdf:resource="#AtomicProcess"/>
+  <owl:disjointWith rdf:resource="#SimpleProcess"/>
+  <rdfs:comment>
+    A CompositeProcess must have exactly 1 composedOf property.
+  </rdfs:comment>
+  <owl:intersectionOf rdf:parseType="Collection">
+      <owl:Class rdf:about="#Process"/>
+      <owl:Restriction owl:cardinality="1">
+         <owl:onProperty rdf:resource="#composedOf"/>
+      </owl:Restriction>
+  </owl:intersectionOf>
+</owl:Class>
+
+<owl:ObjectProperty rdf:ID="composedOf">
+  <rdfs:domain rdf:resource="#CompositeProcess"/>
+  <rdfs:range rdf:resource="#ControlConstruct"/>
+</owl:ObjectProperty>
+
+<owl:DatatypeProperty rdf:ID="invocable">  
+  <rdfs:comment>
+    Invocable is a flag that tells whether the CompositeProcess bottoms 
+    out in atomic processes.  (If so, it is "invocable".)
+  </rdfs:comment>
+  <rdfs:domain rdf:resource="#CompositeProcess"/>
+  <rdfs:range  rdf:resource="&xsd;#boolean"/>
+</owl:DatatypeProperty>
+
+<rdf:Property rdf:ID="computedInput">  
+  <rdfs:comment>
+    A computed input is a single expression that characterizes the
+    inputs required by a composite process, and the conditions under
+    which they are required.  This expression may, if needed, tie
+    together 2 or more inputs; for example, "either a credit card number,
+    or a bank account number must be given", or "if product
+    id starts with 'M', no shipping method need be given".
+    Additionally, this expression may refer to things other than inputs;
+    for example; "if user's credit rating is 'excellent' or better,
+    Social Security number is not required", or "if product weight
+    is less than 1 lb., no shipping myth did need be given".
+
+    A "computed" input is so named because it is meant to be computed
+    automatically by some tool, by inspecting the makeup of the composite 
+    process.
+
+    The language used to represent a computed input is not specified
+    here, and will be the subject of future work; hence, the use of Thing
+    as range.  It will require expressiveness greater than that of
+    OWL.
+  </rdfs:comment>
+  <rdfs:domain rdf:resource="#CompositeProcess"/>
+  <rdfs:range  rdf:resource="&owl;#Thing"/>
+</rdf:Property>
+
+<rdf:Property rdf:ID="computedOutput">  
+  <rdfs:comment>
+    A computed output is a single expression that characterizes the
+    outputs required by a composite process, and the conditions under
+    which they are required.  See comment for computedInput.
+  </rdfs:comment>
+  <rdfs:domain rdf:resource="#CompositeProcess"/>
+  <rdfs:range  rdf:resource="&owl;#Thing"/>
+</rdf:Property>
+
+<rdf:Property rdf:ID="computedPrecondition">  
+  <rdfs:comment>
+    A computed precondition is a single expression that characterizes the
+    preconditions of a composite process, based on the preconditions
+    of its sub processes.
+  </rdfs:comment>
+  <rdfs:domain rdf:resource="#CompositeProcess"/>
+  <rdfs:range  rdf:resource="&owl;#Thing"/>
+</rdf:Property>
+
+<rdf:Property rdf:ID="computedEffect">  
+  <rdfs:comment>
+    A computed effect is a single expression that characterizes the
+    effects of a composite process, based on the effects
+    of its sub processes.
+  </rdfs:comment>
+  <rdfs:domain rdf:resource="#CompositeProcess"/>
+  <rdfs:range  rdf:resource="&owl;#Thing"/>
+</rdf:Property>
+
+<owl:Class rdf:about="#CompositeProcess">
+  <rdfs:comment>
+    A CompositeProcess can have at most one invocable property. Similarly for
+    computedInput, computedOutput, computedEffect, and
+    computedPrecondition.
+  </rdfs:comment>
+  <rdfs:subClassOf>
+    <owl:Restriction owl:maxCardinality="1">
+      <owl:onProperty rdf:resource="#invocable"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:subClassOf>
+    <owl:Restriction owl:maxCardinality="1">
+      <owl:onProperty rdf:resource="#computedInput"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:subClassOf>
+    <owl:Restriction owl:maxCardinality="1">
+      <owl:onProperty rdf:resource="#computedOutput"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:subClassOf>
+    <owl:Restriction owl:maxCardinality="1">
+      <owl:onProperty rdf:resource="#computedEffect"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:subClassOf>
+    <owl:Restriction owl:maxCardinality="1">
+      <owl:onProperty rdf:resource="#computedPrecondition"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+</owl:Class>
+
+<!-- 
+
+    ControlConstruct Class
+
+Here, we specify a minimal set of control constructs that can be used
+to specify a variety of web services. The minimal initial set are
+Sequence, Split, Split + Join, Unordered, Condition, If-Then-Else,
+Repeat-While, Repeat-Until.
+
+-->
+
+<owl:Class rdf:ID="ControlConstruct">
+  <rdfs:subClassOf rdf:resource="&time;#IntervalEvent"/>
+</owl:Class>
+
+<rdf:Property rdf:ID="components">
+ <rdfs:comment> 
+  The components propery of a control construct holds
+  a specific arrangement of subprocesses or control constructs. 
+  The range is declared at each subclass of ControlConstruct.
+ </rdfs:comment> 
+ <rdfs:domain rdf:resource="#ControlConstruct"/>
+</rdf:Property>
+
+<!-- ProcessComponent Class -->
+
+<owl:Class rdf:ID="ProcessComponent">
+  <rdfs:comment>
+    A ProcessComponent is either a Process or a ControlConstruct.    
+  </rdfs:comment>
+  <owl:unionOf rdf:parseType="Collection">
+    <owl:Class rdf:about="#Process"/>
+    <owl:Class rdf:about="#ControlConstruct"/>
+  </owl:unionOf>
+</owl:Class>
+
+<!-- Collections of Process Components -->
+
+<owl:Class rdf:ID="ProcessComponentBag">
+<rdfs:comment> A multiset of ProcessComponents </rdfs:comment>
+  <rdfs:subClassOf rdf:resource="&rdf;#List"/>
+  <rdfs:subClassOf>
+   <owl:Restriction>
+    <owl:onProperty rdf:resource="&rdf;#first"/>
+    <owl:allValuesFrom rdf:resource="#ProcessComponent"/>
+   </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:subClassOf>
+   <owl:Restriction>
+    <owl:onProperty rdf:resource="&rdf;#rest"/>
+    <owl:allValuesFrom rdf:resource="#ProcessComponentBag"/>
+   </owl:Restriction>
+  </rdfs:subClassOf>
+</owl:Class>
+
+<!-- 
+
+Daml does not make any distinction between bags and lists.  We
+redefine the ProcessComponentList class, rather than use equivalentClass,
+so as to make that distinction.
+
+-->
+
+<owl:Class rdf:ID="ProcessComponentList">
+<rdfs:comment> A list of ProcessComponents </rdfs:comment>
+  <rdfs:subClassOf rdf:resource="&rdf;#List"/>
+  <rdfs:subClassOf>
+   <owl:Restriction>
+    <owl:onProperty rdf:resource="&rdf;#first"/>
+    <owl:allValuesFrom rdf:resource="#ProcessComponent"/>
+   </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:subClassOf>
+   <owl:Restriction>
+    <owl:onProperty rdf:resource="&rdf;#rest"/>
+    <owl:allValuesFrom rdf:resource="#ProcessComponentList"/>
+   </owl:Restriction>
+  </rdfs:subClassOf>
+</owl:Class>
+
+<!-- 
+The various control constructs that can be used for specfifying
+and composing processes. The minimal initial set are Sequence, Split,
+Split + Join, Unordered, Condition, If-Then-Else,Iterate, Repeat-While
+and Repeat-Until 
+-->
+
+<!-- The sequence class.  Sequence is defined as having a list of
+component processes that specify the body. The Preconditions,
+parameters and effects of the sequence are not defined in the minimal
+version.  An obvious extension would be to define the effect of the
+sequence to be the union of the effect of the individual members, and
+the parameters of the sequence to be the union of the parameters of
+individual members. However, some implementations may decide to use
+the last event's effects as the effect of the sequence, etc.  
+-->
+
+<owl:Class rdf:ID="Sequence">
+  <rdfs:subClassOf rdf:resource="#ControlConstruct"/>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="#components"/>
+      <owl:allValuesFrom rdf:resource="#ProcessComponentList"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+</owl:Class>
+
+<!-- Split.  Here the process consists of concurrent execution of a
+bunch of sub-processes.  No further specification about waiting,
+synchronization, etc. Similar to other ontologies' use of "Concurrent" or
+"Parallel".  -->
+
+<owl:Class rdf:ID="Split">
+  <rdfs:subClassOf rdf:resource="#ControlConstruct"/>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="#components"/>
+      <owl:allValuesFrom rdf:resource="#ProcessComponentBag"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+</owl:Class>
+
+<!-- 
+Split and Join.  Here the process consists of concurrent execution of
+a bunch of sub-processes.  with barrier synchroniztion. With Split and
+Split and Join, we can define processes which have partial
+synchronization (ex. split all and join some subset)
+-->
+
+<owl:Class rdf:ID="Split-Join">
+  <rdfs:subClassOf rdf:resource="#ControlConstruct"/>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="#components"/>
+      <owl:allValuesFrom rdf:resource="#ProcessComponentBag"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+</owl:Class>
+
+<!-- end Split - Join  -->
+
+<!-- 
+
+Allows the process components (specified as a bag) to be executed in
+some unspecified order, or concurrently.  All components must be
+executed.  As with Split+Join, completion of all components is
+required.  Note that, while the unordered construct itself gives no
+constraints on the order of execution, nevertheless, in some cases,
+there may be constraints associated with subcomponents, which must be
+respected.
+
+-->
+
+<owl:Class rdf:ID="Unordered">
+  <rdfs:subClassOf rdf:resource="#ControlConstruct"/>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="#components"/>
+      <owl:allValuesFrom rdf:resource="#ProcessComponentBag"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+</owl:Class>
+
+<!-- end Unordered -->
+
+<!-- Choice
+Choice is the selection among a bag of Processes.
+The choose property, takes a choice bag and returns 
+a chosen bag. The cardinality of the bag can be specified
+through a restriction to get choose(n) (0<n<=|bag|).
+-->
+
+<owl:Class rdf:ID="Choice">
+  <rdfs:subClassOf rdf:resource="#ControlConstruct"/>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="#components"/>
+      <owl:allValuesFrom rdf:resource="#ProcessComponentBag"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+</owl:Class>
+
+<!-- 
+note given Chosen and ChooseFrom, we can define both a control
+operator such as sequence or unordered (ex. choose and do chosen in
+sequence, or choose and do chosen in parallel) as well as a class that
+restricts the size of the Process Bag that corresponds to the
+"components" of the chosen and chooseFrom subprocesses using
+cardinality, mincardinality, maxcardinality to get choose at least n
+from m, choose n from m, and choose at most n from m, etc.  
+These extensions are left as an exercises to the reader :)
+-->
+
+<rdf:Property rdf:ID="chooseFrom">
+   <rdfs:domain rdf:resource="#Choice"/>
+   <rdfs:range rdf:resource ="#ProcessComponentBag"/>
+</rdf:Property>
+
+<rdf:Property rdf:ID="chosen">
+   <rdfs:domain rdf:resource="#Choice"/>
+   <rdfs:range rdf:resource ="#ProcessComponent"/>
+</rdf:Property>
+
+<!-- end choice -->
+
+
+<!-- IF then Else Class is a ControlConstruct that consists of a Condition, a
+then and an else process-->
+
+<owl:Class rdf:ID="If-Then-Else">
+  <rdfs:subClassOf rdf:resource="#ControlConstruct"/>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="#components"/>
+      <owl:allValuesFrom rdf:resource="#ProcessComponentBag"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+</owl:Class>
+
+<rdf:Property rdf:ID="ifCondition">
+ <rdfs:comment> The if condition of an if-then-else</rdfs:comment> 
+  <rdfs:domain rdf:resource="#If-Then-Else"/>
+  <rdfs:range rdf:resource="#Condition"/>
+</rdf:Property>
+
+<rdf:Property rdf:ID="then">
+  <rdfs:domain rdf:resource="#If-Then-Else"/>
+  <rdfs:range rdf:resource="#ProcessComponent"/>
+</rdf:Property>
+
+<rdf:Property rdf:ID="else">
+  <rdfs:domain rdf:resource="#If-Then-Else"/>
+  <rdfs:range rdf:resource="#ProcessComponent"/> 
+</rdf:Property>
+
+<!-- 
+
+Iterate.
+
+-->
+
+<owl:Class rdf:ID="Iterate">
+  <rdfs:subClassOf rdf:resource="#ControlConstruct"/>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="#components"/>
+      <owl:allValuesFrom rdf:resource="#ProcessComponentBag"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+</owl:Class>
+
+<!-- 
+The Repeat-While class specializes the ControlConstruct class
+where the with properties "whileCondition" (range of type Condition)
+and ``whileProcess'' (range of type Repeat).  No committments are
+made about whether this is aysnchronous (w/o priortized interrupts) or
+synchronous (with specific polling/busy-wait strategies), etc.  This
+is left for the particular execution model to specify.
+
+-->
+
+<rdf:Property rdf:ID="whileCondition">
+  <rdfs:domain rdf:resource="#Repeat-While"/>
+  <rdfs:range rdf:resource="#Condition"/>
+</rdf:Property>
+
+<rdf:Property rdf:ID="whileProcess">
+  <rdfs:domain rdf:resource="#Repeat-While"/>
+  <rdfs:range rdf:resource="#ProcessComponent"/>
+</rdf:Property>
+
+<owl:Class rdf:ID="Repeat-While">
+ <rdfs:comment> The repeat while construct</rdfs:comment> 
+ <rdfs:subClassOf rdf:resource="#ControlConstruct"/>
+</owl:Class>
+
+<!-- 
+The Repeat-Until class specializes the ControlConstruct class
+where the with properties "untilCondition" (range of type Condition)
+and ``untilProcess'' (range of type Reapeat).  No committments are
+made about whether this is aysnchronous (w/o priortized interrupts) or
+synchronous (with specific polling/busy-wait strategies), etc.  This
+is left for the particular execution model to specify.  
+-->
+
+<rdf:Property rdf:ID="untilCondition">
+  <rdfs:domain rdf:resource="#Repeat-Until"/>
+  <rdfs:range rdf:resource="#Condition"/>
+</rdf:Property>
+
+<rdf:Property rdf:ID="untilProcess">
+  <rdfs:domain rdf:resource="#Repeat-Until"/>
+  <rdfs:range rdf:resource="#ProcessComponent"/>
+</rdf:Property>
+
+
+<owl:Class rdf:ID="Repeat-Until">
+  <rdfs:comment> The repeat until process</rdfs:comment> 
+  <rdfs:subClassOf rdf:resource="#ControlConstruct"/>
+</owl:Class>
+
+
+<!--######################################################
+    Argument Bindings
+    ######################################################-->
+
+<!--
+
+Property "sameValues" and Class "ValueOf" are used to denote that two
+or more parameters of (potentially, different subprocesses of) a
+ProcessComponent should have the same values when the process is
+realized.  For instance, these are used to state that the input to
+one subprocess should be the output of the previous one within a
+sequence.
+
+-->
+
+<rdf:Property rdf:ID="sameValues">
+  <rdfs:domain rdf:resource="#ProcessComponent"/>
+  <rdfs:comment>The range is to be a list of ValueOf.</rdfs:comment> 
+  <rdfs:range rdf:resource="&rdf;#List"/>
+</rdf:Property>
+
+<owl:Class rdf:ID="ValueOf"/>
+
+<!-- This property indicates the class (a Process) having the referenced 
+     property --> 
+<rdf:Property rdf:ID="atProcess">
+  <rdfs:domain rdf:resource="#ValueOf"/>
+  <rdfs:range  rdf:resource="#Process"/>
+</rdf:Property>
+
+<!-- The property (usually a parameter) whose values are 
+     referred to. -->
+<rdf:Property rdf:ID="theParameter">
+  <rdfs:domain rdf:resource="#ValueOf"/> 
+  <rdfs:range  rdf:resource="#Parameter"/>
+</rdf:Property>
+
+<!--######################################################
+    Temporal Aspects
+    ######################################################-->
+
+<!-- Since Process and ControlConstruct are subclasses of time:IntervalEvent,
+time ontology properties such as begins and ends may be used.
+We define two additional time-related properties here.
+-->
+
+<!-- timeouts are defined over intervals -->
+
+<owl:ObjectProperty rdf:ID="timeout">
+  <rdfs:domain rdf:resource="#ProcessComponent"/>
+  <rdfs:range rdf:resource="&time;#IntervalThing"/>
+</owl:ObjectProperty>
+
+<!-- We may need absolute timeout (like calender time or timeOfDay, so
+we allow for the timeoutAbsolute property -->
+
+<owl:ObjectProperty rdf:ID="timeoutAbsolute">
+  <rdfs:domain rdf:resource="#ProcessComponent"/>
+  <rdfs:range rdf:resource="&time;#InstantThing"/>
+</owl:ObjectProperty>
+
+<owl:Class rdf:about="#ProcessComponent">
+  <rdfs:comment>
+    A ProcessComponent can have at most one of each of the restricted properties.
+  </rdfs:comment>
+  <rdfs:subClassOf>
+    <owl:Restriction owl:maxCardinality="1">
+      <owl:onProperty rdf:resource="&time;#begins"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:subClassOf>
+    <owl:Restriction owl:maxCardinality="1">
+      <owl:onProperty rdf:resource="&time;#ends"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:subClassOf>
+    <owl:Restriction owl:maxCardinality="1">
+      <owl:onProperty rdf:resource="#timeout"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:subClassOf>
+    <owl:Restriction owl:maxCardinality="1">
+      <owl:onProperty rdf:resource="#timeoutAbsolute"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+</owl:Class>
+
+</rdf:RDF>
+

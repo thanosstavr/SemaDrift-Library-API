@@ -1,0 +1,601 @@
+@prefix : <http://www.semanticweb.org/owl/owlapi/turtle#> .
+@prefix lrm: <http://xrce.xerox.com/LRM#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix real: <http://xrce.xerox.com/ReAL#> .
+@prefix version: <http://xrce.xerox.com/VERSION#> .
+@base <http://xrce.xerox.com/LRM#LRM-semantic-versioning> .
+
+<http://xrce.xerox.com/LRM#LRM-semantic-versioning> rdf:type owl:Ontology ;
+                                                    
+                                                    rdfs:comment "  Model semantic versioning operation using LRM dependencies"@en ;
+                                                    
+                                                    owl:versionInfo "2.0.0" .
+
+
+#################################################################
+#
+#    Annotation properties
+#
+#################################################################
+
+
+###  http://xrce.xerox.com/LRM#body
+
+lrm:body rdf:type owl:AnnotationProperty .
+
+
+
+###  http://xrce.xerox.com/LRM#certificate
+
+lrm:certificate rdf:type owl:AnnotationProperty ;
+                
+                rdfs:subPropertyOf lrm:p .
+
+
+
+###  http://xrce.xerox.com/LRM#p
+
+lrm:p rdf:type owl:AnnotationProperty .
+
+
+
+###  http://xrce.xerox.com/ReAL#after
+
+real:after rdf:type owl:AnnotationProperty .
+
+
+
+###  http://xrce.xerox.com/ReAL#before
+
+real:before rdf:type owl:AnnotationProperty .
+
+
+
+###  http://xrce.xerox.com/ReAL#invariant
+
+real:invariant rdf:type owl:AnnotationProperty .
+
+
+
+
+
+#################################################################
+#
+#    Datatypes
+#
+#################################################################
+
+
+###  http://xrce.xerox.com/LRM#VersionKind
+
+lrm:VersionKind rdf:type rdfs:Datatype ;
+                
+                rdfs:label "lrm:VersionKind" ;
+                
+                owl:equivalentClass [ rdf:type rdfs:Datatype ;
+                                      owl:oneOf [ rdf:type rdf:List ;
+                                                  rdf:first "CREATION" ;
+                                                  rdf:rest [ rdf:type rdf:List ;
+                                                             rdf:first "MAJOR" ;
+                                                             rdf:rest [ rdf:type rdf:List ;
+                                                                        rdf:first "MICRO" ;
+                                                                        rdf:rest [ rdf:type rdf:List ;
+                                                                                   rdf:first "MINOR" ;
+                                                                                   rdf:rest rdf:nil
+                                                                                 ]
+                                                                      ]
+                                                           ]
+                                                ]
+                                    ] .
+
+
+
+
+
+#################################################################
+#
+#    Object Properties
+#
+#################################################################
+
+
+###  http://xrce.xerox.com/LRM#byAgent
+
+lrm:byAgent rdf:type owl:ObjectProperty ;
+            
+            rdfs:label "lrm:byAgent" ;
+            
+            rdfs:range lrm:Agent ;
+            
+            rdfs:domain lrm:CertificationRequest .
+
+
+
+###  http://xrce.xerox.com/LRM#certificate
+
+lrm:certificate rdf:type owl:ObjectProperty ;
+                
+                rdfs:range lrm:Certificate ;
+                
+                rdfs:domain lrm:CertificationRequest .
+
+
+
+###  http://xrce.xerox.com/LRM#describedBy
+
+lrm:describedBy rdf:type owl:ObjectProperty .
+
+
+
+###  http://xrce.xerox.com/LRM#ofResource
+
+lrm:ofResource rdf:type owl:ObjectProperty ;
+               
+               rdfs:label "lrm:ofResource" ;
+               
+               rdfs:domain lrm:CertificationRequest ;
+               
+               rdfs:range lrm:Resource .
+
+
+
+###  http://xrce.xerox.com/LRM#version
+
+lrm:version rdf:type owl:ObjectProperty ;
+            
+            rdfs:label "lrm:version" ;
+            
+            rdfs:range lrm:Version ;
+            
+            rdfs:domain lrm:VersionedResource ;
+            
+            rdfs:subPropertyOf lrm:describedBy .
+
+
+
+###  http://xrce.xerox.com/LRM#version-verifier
+
+lrm:version-verifier rdf:type owl:ObjectProperty ;
+                     
+                     rdfs:label "lrm:version-verifier" ;
+                     
+                     rdfs:comment "defines the agent responsible for verifying the compliance of the resource with its invariant and specification (optional)"@en ;
+                     
+                     rdfs:range lrm:Agent ;
+                     
+                     rdfs:domain lrm:VersionCreationEvent ;
+                     
+                     rdfs:subPropertyOf lrm:describedBy .
+
+
+
+
+
+#################################################################
+#
+#    Data properties
+#
+#################################################################
+
+
+###  http://xrce.xerox.com/LRM#definition
+
+lrm:definition rdf:type owl:DatatypeProperty .
+
+
+
+###  http://xrce.xerox.com/LRM#version-kind
+
+lrm:version-kind rdf:type owl:DatatypeProperty .
+
+
+
+###  http://xrce.xerox.com/LRM#versionKind
+
+lrm:versionKind rdf:type owl:DatatypeProperty ;
+                
+                rdfs:label "lrm:versionKind" ;
+                
+                rdfs:domain lrm:CertificationRequest ;
+                
+                rdfs:range lrm:VersionKind .
+
+
+
+###  http://xrce.xerox.com/VERSION#counter
+
+version:counter rdf:type owl:DatatypeProperty ;
+                
+                rdfs:label "version:" ;
+                
+                rdfs:range xsd:nonNegativeInteger ;
+                
+                rdfs:domain lrm:Version ;
+                
+                rdfs:subPropertyOf version:versioningDefinition .
+
+
+
+###  http://xrce.xerox.com/VERSION#label
+
+version:label rdf:type owl:DatatypeProperty ,
+                       owl:FunctionalProperty ;
+              
+              rdfs:label "version:label" ;
+              
+              rdfs:range xsd:Name ;
+              
+              rdfs:domain lrm:Version ;
+              
+              rdfs:subPropertyOf version:versioningDefinition .
+
+
+
+###  http://xrce.xerox.com/VERSION#major
+
+version:major rdf:type owl:DatatypeProperty ,
+                       owl:FunctionalProperty ;
+              
+              rdfs:label "version:major" ;
+              
+              rdfs:range xsd:nonNegativeInteger ;
+              
+              rdfs:domain lrm:Version ;
+              
+              rdfs:subPropertyOf version:counter .
+
+
+
+###  http://xrce.xerox.com/VERSION#micro
+
+version:micro rdf:type owl:DatatypeProperty ,
+                       owl:FunctionalProperty ;
+              
+              rdfs:label "version:micro" ;
+              
+              rdfs:range xsd:nonNegativeInteger ;
+              
+              rdfs:domain lrm:Version ;
+              
+              rdfs:subPropertyOf version:counter .
+
+
+
+###  http://xrce.xerox.com/VERSION#minor
+
+version:minor rdf:type owl:DatatypeProperty ,
+                       owl:FunctionalProperty ;
+              
+              rdfs:label "version:minor" ;
+              
+              rdfs:range xsd:nonNegativeInteger ;
+              
+              rdfs:domain lrm:Version ;
+              
+              rdfs:subPropertyOf version:counter .
+
+
+
+###  http://xrce.xerox.com/VERSION#stamp
+
+version:stamp rdf:type owl:DatatypeProperty ,
+                       owl:FunctionalProperty ;
+              
+              rdfs:label "version:stamp" ;
+              
+              rdfs:range xsd:nonNegativeInteger ;
+              
+              rdfs:domain lrm:Version ;
+              
+              rdfs:subPropertyOf version:versioningDefinition .
+
+
+
+###  http://xrce.xerox.com/VERSION#variant
+
+version:variant rdf:type owl:DatatypeProperty ,
+                         owl:FunctionalProperty ;
+                
+                rdfs:label "version:variant" ;
+                
+                rdfs:range xsd:nonNegativeInteger ;
+                
+                rdfs:domain lrm:Version ;
+                
+                rdfs:subPropertyOf version:versioningDefinition .
+
+
+
+###  http://xrce.xerox.com/VERSION#versioningDefinition
+
+version:versioningDefinition rdf:type owl:DatatypeProperty ;
+                             
+                             rdfs:domain lrm:Version ;
+                             
+                             rdfs:subPropertyOf lrm:definition .
+
+
+
+
+
+#################################################################
+#
+#    Classes
+#
+#################################################################
+
+
+###  http://xrce.xerox.com/LRM#Agent
+
+lrm:Agent rdf:type owl:Class .
+
+
+
+###  http://xrce.xerox.com/LRM#Certificate
+
+lrm:Certificate rdf:type owl:Class ;
+                
+                rdfs:label "Version Certificate" ;
+                
+                rdfs:subClassOf lrm:Description ;
+                
+                rdfs:comment "certificates describe (and certifies) the compliance of a given resource version with its specification (could be a formal proof)"@en .
+
+
+
+###  http://xrce.xerox.com/LRM#CertificationRequest
+
+lrm:CertificationRequest rdf:type owl:Class ;
+                         
+                         rdfs:label "lrm:CertificationRequest" ;
+                         
+                         rdfs:subClassOf lrm:ServiceInvocation .
+
+
+
+###  http://xrce.xerox.com/LRM#CertificationService
+
+lrm:CertificationService rdf:type owl:Class ;
+                         
+                         rdfs:label "lrm:CertificationService" ;
+                         
+                         rdfs:subClassOf lrm:Service .
+
+
+
+###  http://xrce.xerox.com/LRM#Description
+
+lrm:Description rdf:type owl:Class .
+
+
+
+###  http://xrce.xerox.com/LRM#DigitalResource
+
+lrm:DigitalResource rdf:type owl:Class .
+
+
+
+###  http://xrce.xerox.com/LRM#EndogenousActivity
+
+lrm:EndogenousActivity rdf:type owl:Class .
+
+
+
+###  http://xrce.xerox.com/LRM#Event
+
+lrm:Event rdf:type owl:Class .
+
+
+
+###  http://xrce.xerox.com/LRM#ImmutableResource
+
+lrm:ImmutableResource rdf:type owl:Class .
+
+
+
+###  http://xrce.xerox.com/LRM#MajorVersionEvent
+
+lrm:MajorVersionEvent rdf:type owl:Class ;
+                      
+                      owl:equivalentClass [ rdf:type owl:Restriction ;
+                                            owl:onProperty lrm:version-kind ;
+                                            owl:hasValue "MAJOR"
+                                          ] ;
+                      
+                      rdfs:subClassOf lrm:VersionCertificationEvent .
+
+
+
+###  http://xrce.xerox.com/LRM#MicroVersionEvent
+
+lrm:MicroVersionEvent rdf:type owl:Class ;
+                      
+                      owl:equivalentClass [ rdf:type owl:Restriction ;
+                                            owl:onProperty lrm:version-kind ;
+                                            owl:hasValue "MICRO"
+                                          ] ;
+                      
+                      rdfs:subClassOf lrm:VersionCertificationEvent .
+
+
+
+###  http://xrce.xerox.com/LRM#MinorVersionEvent
+
+lrm:MinorVersionEvent rdf:type owl:Class ;
+                      
+                      owl:equivalentClass [ rdf:type owl:Restriction ;
+                                            owl:onProperty lrm:version-kind ;
+                                            owl:hasValue "MINOR"
+                                          ] ;
+                      
+                      rdfs:subClassOf lrm:VersionCertificationEvent .
+
+
+
+###  http://xrce.xerox.com/LRM#Resource
+
+lrm:Resource rdf:type owl:Class .
+
+
+
+###  http://xrce.xerox.com/LRM#Service
+
+lrm:Service rdf:type owl:Class .
+
+
+
+###  http://xrce.xerox.com/LRM#ServiceInvocation
+
+lrm:ServiceInvocation rdf:type owl:Class .
+
+
+
+###  http://xrce.xerox.com/LRM#Version
+
+lrm:Version rdf:type owl:Class ;
+            
+            rdfs:label "lrm:Version" ;
+            
+            rdfs:subClassOf lrm:Description ,
+                            lrm:ImmutableResource ;
+            
+            rdfs:comment "used to describe the versioning state of a versioned resource (label, counters)"@en .
+
+
+
+###  http://xrce.xerox.com/LRM#VersionCertificationEvent
+
+lrm:VersionCertificationEvent rdf:type owl:Class ;
+                              
+                              rdfs:label "VersionCertificationEvent" ;
+                              
+                              rdfs:subClassOf lrm:VersionEvent ;
+                              
+                              owl:disjointUnionOf ( lrm:MajorVersionEvent
+                                                    lrm:MicroVersionEvent
+                                                    lrm:MinorVersionEvent
+                                                  ) .
+
+
+
+###  http://xrce.xerox.com/LRM#VersionCreationEvent
+
+lrm:VersionCreationEvent rdf:type owl:Class ;
+                         
+                         rdfs:label "VersionQualificationEvent" ;
+                         
+                         rdfs:subClassOf lrm:VersionEvent ;
+                         
+                         rdfs:comment "Starts the first qualified versioning step: qualifies to 1.0.0:0/x  "@en .
+
+
+
+###  http://xrce.xerox.com/LRM#VersionEvent
+
+lrm:VersionEvent rdf:type owl:Class ;
+                 
+                 rdfs:label "VersionEvent" ;
+                 
+                 rdfs:subClassOf lrm:Event ;
+                 
+                 rdfs:comment "All events related to the versioning management mechanisms."@en ;
+                 
+                 owl:disjointUnionOf ( lrm:VersionCertificationEvent
+                                       lrm:VersionCreationEvent
+                                       lrm:VersionQualificationEvent
+                                     ) .
+
+
+
+###  http://xrce.xerox.com/LRM#VersionQualificationEvent
+
+lrm:VersionQualificationEvent rdf:type owl:Class ;
+                              
+                              rdfs:label "VersionQualificationEvent" ;
+                              
+                              rdfs:subClassOf lrm:VersionEvent ;
+                              
+                              rdfs:comment "Starts the first qualified versioning step: qualifies to 1.0.0:0/x  "@en .
+
+
+
+###  http://xrce.xerox.com/LRM#VersionedDR
+
+lrm:VersionedDR rdf:type owl:Class ;
+                
+                rdfs:label "Versioned Digital Resource" ;
+                
+                rdfs:subClassOf lrm:DigitalResource ,
+                                lrm:VersionedResource .
+
+
+
+###  http://xrce.xerox.com/LRM#VersionedResource
+
+lrm:VersionedResource rdf:type owl:Class ;
+                      
+                      rdfs:label "lrm:VersionedResource" ;
+                      
+                      rdfs:subClassOf lrm:Resource ;
+                      
+                      rdfs:comment """
+        The lrm:invariant  and lrm:specification predicates (if defined) will be used to assess the nature of the version transformation.        
+            micro versions : semantically equivalent (according to lrm:specification)
+            minor version: backward compatible (according to lrm:specification);
+            major version: guaranties only the lrm:invariant properties.
+        """@en .
+
+
+
+###  http://xrce.xerox.com/LRM#VersioningActivity
+
+lrm:VersioningActivity rdf:type owl:Class ;
+                       
+                       rdfs:label "lrm:VersioningActivity" ;
+                       
+                       rdfs:subClassOf lrm:EndogenousActivity .
+
+
+
+###  http://xrce.xerox.com/ReAL#Template
+
+real:Template rdf:type owl:Class .
+
+
+
+[ lrm:body [ ]
+] .
+[ lrm:body [ ]
+] .
+[ rdf:type real:Template ;
+  real:after [ ] ;
+real:before [ ] ,
+[ ] ;
+real:invariant [ ]
+] .
+[ lrm:body [ ]
+] .
+
+
+#################################################################
+#
+#    Annotations
+#
+#################################################################
+
+
+lrm:certificate rdfs:label "lrm:certificate" .
+
+
+
+<http://xrce.xerox.com/LRM#LRM-semantic-versioning> rdfs:label "lrm:LRM-semantic-versioning" .
+
+
+
+
+###  Generated by the OWL API (version 3.5.1) http://owlapi.sourceforge.net
+

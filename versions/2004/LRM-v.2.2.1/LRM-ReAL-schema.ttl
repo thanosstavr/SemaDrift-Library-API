@@ -1,0 +1,429 @@
+@prefix : <http://www.semanticweb.org/owl/owlapi/turtle#> .
+@prefix lrm: <http://xrce.xerox.com/LRM#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix stx: <http://xrce.xerox.com/STX#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix real: <http://xrce.xerox.com/ReAL#> .
+@base <http://xrce.xerox.com/LRM#LRM-ReAL-schema> .
+
+<http://xrce.xerox.com/LRM#LRM-ReAL-schema> rdf:type owl:Ontology ;
+                                            
+                                            rdfs:label "LRM-ReAL-schema"@en ;
+                                            
+                                            rdfs:comment """     
+        ReAL semantic (informal explaination):
+        
+        Let us say that T is a triple pattern(eg  T =  rdf:type(?s, owl:Class) )
+        
+        T  alone is TRUE if one or several matching instances of T can be found directly in the store ; 
+        
+        -T same than T alone, but withdraw from the store all occurences matching T;  FALSE if no occurence of T can be found in the store,
+        
+        +T  means add T in the store (the triple pattern must be completely instanciated: all variables must be bound when the operation occurs);  is false if T is already in the store 
+        
+        ++T  is equivalent to  (+T EITHER TRUE) :  like +T, but do not fails if T is already in the store
+        
+        !T  is true if the triple pattern T can be solved by inference in the current context(through the underlying backward chaining mechanism)
+                      
+        brackets [A]  denotes an transactional execution of action A: 
+             if all binding of A (solution), the undertaken triple addition/deletion actions become effective in the current store; transactional actions may be embedded
+            
+         all instuctions can be articulated through order-sensitive and stream-oriented logical connectors (AND, UNION, NO, EITHER, ONE, REPEAT):
+                AND is an ordered product connector:  
+                        (T1 AND T2) returns all bindings for b(T2) for every binding b found when evaluating T1; therefore T2 is dependent on T1
+                        (T1 AND T2) will fail if the evaluation of T1 fails, or if all evaluations of b(T2) fails for all binding b returned by evaluating T1
+                UNION is an ordered inclusive-or connector:  
+                        (T1 UNION T2) returns all bindings for T1 and all bindings for T2; T2 is not dependent on T1 (T2 will not be affected by T1 bindings)
+                NO is a monadic connector:
+                        (NO T) return an empty binding if T has no solution; fails otherwise
+                EITHER is an ordered exclusive-or connector: 
+                        (T1 EITHER T2) returns all bindings for T1, or all bindings for T2 if T1 has no solution (~ T1 evaluation fails)
+                FIRST, LAST are monadic connectors:
+                        (FIRST T) return the first binding found for T ; fails if T fails
+                        (LAST T) return the last binding found for T ; fails if T fails
+                REPEAT is a monadic connector:
+                        (REPEAT T) returns an empty binding if the evaluation of T return one or more solutions (all solutions for T will be explored) ; fails if T fails
+            
+            
+        example:            
+        
+            rdf:type(?s, lrm:Resource) AND   @primitive:timestamp(?c) AND   +time:modified(?s, ?c)            
+            
+        when evaluated in the store  { ex:a1 rdf:type lrm:Resource . ex:a2 rdf:type lrm:Resource .}
+        
+        will succeed and change the store into (time is only indicative):  
+            { 
+            ex:a1 rdf:type lrm:Resource; lrm:modified \"2015-02-26T18:15:03.000Z\" . 
+            ex:a2 rdf:type lrm:Resource; lrm:modified \"2015-02-26T18:15:03.001Z\" .
+            }               
+        """@en ;
+                                            
+                                            owl:versionInfo "1.0.0" ;
+                                            
+                                            rdfs:comment "used to specify the dynamic behavior to maintain the consistency of the LRM representations (thus allowing the interpretion of changes)"@en .
+
+
+#################################################################
+#
+#    Annotation properties
+#
+#################################################################
+
+
+###  http://xrce.xerox.com/STX#grammar
+
+stx:grammar rdf:type owl:AnnotationProperty .
+
+
+
+
+
+#################################################################
+#
+#    Datatypes
+#
+#################################################################
+
+
+###  http://xrce.xerox.com/STX#BTree
+
+stx:BTree rdf:type rdfs:Datatype .
+
+
+
+###  http://xrce.xerox.com/STX#Grammar
+
+stx:Grammar rdf:type rdfs:Datatype .
+
+
+
+
+
+#################################################################
+#
+#    Object Properties
+#
+#################################################################
+
+
+###  http://xrce.xerox.com/LRM#invariant
+
+lrm:invariant rdf:type owl:ObjectProperty .
+
+
+
+###  http://xrce.xerox.com/LRM#specifiedBy
+
+lrm:specifiedBy rdf:type owl:ObjectProperty .
+
+
+
+###  http://xrce.xerox.com/ReAL#after
+
+real:after rdf:type owl:ObjectProperty ;
+           
+           rdfs:comment "should always hold after the chunk of ReAL code is executed, assuming that real:before (if any) holds, as well as does the invariant (similar to the 'after' assertion of Hoare Logic)"@en ;
+           
+           rdfs:subPropertyOf lrm:specifiedBy ;
+           
+           rdfs:range real:Specification ;
+           
+           rdfs:domain real:Template ;
+           
+           rdfs:seeAlso <https://en.wikipedia.org/wiki/Hoare_logic> .
+
+
+
+###  http://xrce.xerox.com/ReAL#before
+
+real:before rdf:type owl:ObjectProperty ;
+            
+            rdfs:comment "required to hold before the chunk of ReAL code is executed (similar to the 'before' assertion of Hoare Logic)"@en ;
+            
+            rdfs:subPropertyOf lrm:specifiedBy ;
+            
+            rdfs:range real:Specification ;
+            
+            rdfs:domain real:Template ;
+            
+            rdfs:seeAlso <https://en.wikipedia.org/wiki/Hoare_logic> .
+
+
+
+###  http://xrce.xerox.com/ReAL#code
+
+real:code rdf:type owl:FunctionalProperty ,
+                   owl:ObjectProperty ;
+          
+          rdfs:range real:Code ;
+          
+          rdfs:domain real:Template .
+
+
+
+###  http://xrce.xerox.com/ReAL#invariant
+
+real:invariant rdf:type owl:ObjectProperty ;
+               
+               rdfs:comment "should hold before and after the chunk of ReAL code is executed "@en ;
+               
+               rdfs:subPropertyOf lrm:invariant ;
+               
+               rdfs:range real:Specification ;
+               
+               rdfs:domain real:Template .
+
+
+
+###  http://xrce.xerox.com/ReAL#variables
+
+real:variables rdf:type owl:FunctionalProperty ,
+                        owl:ObjectProperty ;
+               
+               rdfs:range real:Signature ;
+               
+               rdfs:domain real:Template .
+
+
+
+###  http://xrce.xerox.com/ReAL#verifies
+
+real:verifies rdf:type owl:ObjectProperty ;
+              
+              rdfs:subPropertyOf lrm:specifiedBy ;
+              
+              rdfs:range real:Specification ;
+              
+              rdfs:domain real:Template .
+
+
+
+###  http://xrce.xerox.com/STX#axiom
+
+stx:axiom rdf:type owl:ObjectProperty ;
+          
+          rdfs:range stx:BTree ;
+          
+          rdfs:domain stx:Syntax ;
+          
+          rdfs:subPropertyOf stx:provides .
+
+
+
+###  http://xrce.xerox.com/STX#btree
+
+stx:btree rdf:type owl:ObjectProperty ;
+          
+          rdfs:domain rdfs:Datatype ;
+          
+          rdfs:range stx:BTree .
+
+
+
+###  http://xrce.xerox.com/STX#grammar
+
+stx:grammar rdf:type owl:ObjectProperty ;
+            
+            rdfs:range stx:Grammar ;
+            
+            rdfs:domain stx:Syntax .
+
+
+
+###  http://xrce.xerox.com/STX#provides
+
+stx:provides rdf:type owl:ObjectProperty ;
+             
+             rdfs:range stx:BTree ;
+             
+             rdfs:domain stx:Syntax .
+
+
+
+###  http://xrce.xerox.com/STX#requires
+
+stx:requires rdf:type owl:ObjectProperty ;
+             
+             rdfs:range stx:BTree ;
+             
+             rdfs:domain stx:Syntax .
+
+
+
+
+
+#################################################################
+#
+#    Data properties
+#
+#################################################################
+
+
+###  http://xrce.xerox.com/ReAL#code
+
+real:code rdf:type owl:DatatypeProperty ,
+                   owl:FunctionalProperty .
+
+
+
+###  http://xrce.xerox.com/ReAL#variables
+
+real:variables rdf:type owl:DatatypeProperty ,
+                        owl:FunctionalProperty .
+
+
+
+###  http://xrce.xerox.com/STX#axiom
+
+stx:axiom rdf:type owl:DatatypeProperty .
+
+
+
+###  http://xrce.xerox.com/STX#btree
+
+stx:btree rdf:type owl:DatatypeProperty .
+
+
+
+###  http://xrce.xerox.com/STX#example
+
+stx:example rdf:type owl:DatatypeProperty ;
+            
+            rdfs:range xsd:string ;
+            
+            rdfs:domain stx:Syntax .
+
+
+
+###  http://xrce.xerox.com/STX#provides
+
+stx:provides rdf:type owl:DatatypeProperty .
+
+
+
+###  http://xrce.xerox.com/STX#requires
+
+stx:requires rdf:type owl:DatatypeProperty .
+
+
+
+
+
+#################################################################
+#
+#    Classes
+#
+#################################################################
+
+
+###  http://www.w3.org/2000/01/rdf-schema#Datatype
+
+rdfs:Datatype rdf:type owl:Class .
+
+
+
+###  http://xrce.xerox.com/LRM#Description
+
+lrm:Description rdf:type owl:Class .
+
+
+
+###  http://xrce.xerox.com/LRM#Specification
+
+lrm:Specification rdf:type owl:Class .
+
+
+
+###  http://xrce.xerox.com/ReAL#Code
+
+real:Code rdf:type owl:Class ;
+          
+          rdfs:subClassOf rdfs:Datatype .
+
+
+
+###  http://xrce.xerox.com/ReAL#Signature
+
+real:Signature rdf:type owl:Class ;
+               
+               rdfs:subClassOf rdfs:Datatype .
+
+
+
+###  http://xrce.xerox.com/ReAL#Specification
+
+real:Specification rdf:type owl:Class ;
+                   
+                   rdfs:label "real:Specification"@en ;
+                   
+                   rdfs:subClassOf lrm:Specification ;
+                   
+                   rdfs:comment "Used to characterizes the behavior of ReAL code"@en .
+
+
+
+###  http://xrce.xerox.com/ReAL#Template
+
+real:Template rdf:type owl:Class ;
+              
+              rdfs:subClassOf lrm:Description ;
+              
+              rdfs:comment "Used to define a block of ReAL instructions. Open variables, if any may be specified using the open-variables property ."@en .
+
+
+
+###  http://xrce.xerox.com/STX#BTree
+
+stx:BTree rdf:type owl:Class ;
+          
+          rdfs:subClassOf rdfs:Datatype .
+
+
+
+###  http://xrce.xerox.com/STX#Grammar
+
+stx:Grammar rdf:type owl:Class ;
+            
+            rdfs:subClassOf rdfs:Datatype .
+
+
+
+###  http://xrce.xerox.com/STX#Syntax
+
+stx:Syntax rdf:type owl:Class ;
+           
+           rdfs:subClassOf rdfs:Datatype .
+
+
+
+
+
+#################################################################
+#
+#    Annotations
+#
+#################################################################
+
+
+stx:requires rdfs:comment "G stx:requires 'A'  makes use of syntactic rules with shape 'A(?)⇨ ... '  or, in binary shape, all rules matching  [STX [A ?] ?]"@en .
+
+
+
+stx:provides rdfs:comment "G stx:provides 'A'  makes visible all syntactic rules with shape 'A(?)⇨ ... '  or, in binary shape, all rules matching  [STX [A ?] ?]"@en .
+
+
+
+real:variables rdfs:comment "used to specify explicitly the open variables of the ReAL code template" .
+
+
+
+real:code rdfs:comment "ReAL code to be used as a substitution pattern" .
+
+
+
+
+###  Generated by the OWL API (version 3.5.1) http://owlapi.sourceforge.net
+

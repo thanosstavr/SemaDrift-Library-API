@@ -1,0 +1,443 @@
+@prefix : <http://www.semanticweb.org/owl/owlapi/turtle#> .
+@prefix tm: <http://www.w3.org/2006/time#> .
+@prefix tz: <http://www.w3.org/2006/timezone#> .
+@prefix lrm: <http://xrce.xerox.com/LRM#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix real: <http://xrce.xerox.com/ReAL#> .
+@prefix rule: <http://xrce.xerox.com/RULE#> .
+@prefix time: <http://xrce.xerox.com/TIME#> .
+@prefix xrce: <http://www.xrce.xerox.com/> .
+@prefix infer: <http://xrce.xerox.com/INFER#> .
+@prefix tactic: <http://xrce.xerox.com/TACTIC#> .
+@base <http://xrce.xerox.com/LRM#LRM-schema> .
+
+<http://xrce.xerox.com/LRM#LRM-schema> rdf:type owl:Ontology ;
+                                       
+                                       rdfs:comment """
+    The Linked Resource Model (LRM) aims at describing digital resources for preservation purposes. 
+    It focuses on describing the dependencies between such objects, in order to help managing the
+    evolution of the preservation ecosystem, possibly detecting inconsistency and/or weaknesses from the 
+    dependency graph or advising the curator on preventive or corrective actions. 
+    Dependencies can be very abstracts, or very concrete, like in software management systems, and their 
+    semantics is captured through domain specific ontologies derived from the root LRM ontology presented 
+    here.
+    """@en ;
+                                       
+                                       owl:versionInfo "2.0.0" ;
+                                       
+                                       owl:imports <file:///C:/Users/viondury/PERICLESEU/Ontology/LRM-ReAL-schema.ttl> ,
+                                                   <file:///C:/Users/viondury/PERICLESEU/Ontology/LRM-dynamic-schema.ttl> ,
+                                                   <file:///C:/Users/viondury/PERICLESEU/Ontology/LRM-reflexive.ttl> ,
+                                                   <file:///C:/Users/viondury/PERICLESEU/Ontology/LRM-semantic-versioning-schema.ttl> ,
+                                                   <file:///C:/Users/viondury/PERICLESEU/Ontology/LRM-static-schema.ttl> ,
+                                                   <file:///C:/Users/viondury/PERICLESEU/Ontology/time-schema.ttl> ;
+                                       
+                                       rdfs:seeAlso <http://www.pericles-project.eu> ,
+                                                    <http://www.w3.org/TR/owl-time> ,
+                                                    <http://www.w3.org/TR/owl2-primer/> ,
+                                                    <http://www.w3.org/TR/owl2-quick-reference/> ,
+                                                    <http://www.w3.org/TR/rdf-schema/> .
+
+
+#################################################################
+#
+#    Datatypes
+#
+#################################################################
+
+
+###  http://www.w3.org/2001/XMLSchema#date
+
+xsd:date rdf:type rdfs:Datatype .
+
+
+
+
+
+#################################################################
+#
+#    Object Properties
+#
+#################################################################
+
+
+###  http://www.w3.org/2006/timezone#DLSendDate
+
+tz:DLSendDate rdf:type owl:FunctionalProperty ,
+                       owl:ObjectProperty ;
+              
+              rdfs:domain tz:EnumeratedDaylightSavingsPolicy ;
+              
+              rdfs:subPropertyOf lrm:describedBy .
+
+
+
+###  http://www.w3.org/2006/timezone#DLSstartDate
+
+tz:DLSstartDate rdf:type owl:FunctionalProperty ,
+                         owl:ObjectProperty ;
+                
+                rdfs:domain tz:EnumeratedDaylightSavingsPolicy ;
+                
+                rdfs:subPropertyOf lrm:describedBy .
+
+
+
+###  http://xrce.xerox.com/TIME#around
+
+time:around rdfs:subPropertyOf lrm:describedBy .
+
+
+
+###  http://xrce.xerox.com/TIME#calendar
+
+time:calendar rdfs:subPropertyOf lrm:describedBy .
+
+
+
+###  http://xrce.xerox.com/TIME#city
+
+time:city rdfs:subPropertyOf lrm:describedBy .
+
+
+
+###  http://xrce.xerox.com/TIME#clock
+
+time:clock rdfs:subPropertyOf lrm:describedBy .
+
+
+
+###  http://xrce.xerox.com/TIME#country
+
+time:country rdfs:subPropertyOf lrm:describedBy .
+
+
+
+###  http://xrce.xerox.com/TIME#during
+
+time:during rdfs:subPropertyOf lrm:describedBy .
+
+
+
+###  http://xrce.xerox.com/TIME#ending
+
+time:ending rdfs:subPropertyOf lrm:describedBy .
+
+
+
+###  http://xrce.xerox.com/TIME#inside
+
+time:inside rdfs:subPropertyOf lrm:describedBy .
+
+
+
+###  http://xrce.xerox.com/TIME#region
+
+time:region rdfs:subPropertyOf lrm:describedBy .
+
+
+
+###  http://xrce.xerox.com/TIME#starting
+
+time:starting rdfs:subPropertyOf lrm:describedBy .
+
+
+
+###  http://xrce.xerox.com/TIME#state
+
+time:state rdfs:subPropertyOf lrm:describedBy .
+
+
+
+###  http://xrce.xerox.com/TIME#zone
+
+time:zone rdfs:subPropertyOf lrm:describedBy .
+
+
+
+
+
+#################################################################
+#
+#    Data properties
+#
+#################################################################
+
+
+###  http://www.w3.org/2006/timezone#DLSendDate
+
+tz:DLSendDate rdf:type owl:DatatypeProperty ,
+                       owl:FunctionalProperty ;
+              
+              rdfs:range xsd:date .
+
+
+
+###  http://www.w3.org/2006/timezone#DLSstartDate
+
+tz:DLSstartDate rdf:type owl:DatatypeProperty ,
+                         owl:FunctionalProperty ;
+                
+                rdfs:range xsd:date .
+
+
+
+###  http://xrce.xerox.com/TIME#day
+
+time:day rdfs:subPropertyOf time:temporalDefinition .
+
+
+
+###  http://xrce.xerox.com/TIME#days
+
+time:days rdfs:subPropertyOf time:temporalDefinition .
+
+
+
+###  http://xrce.xerox.com/TIME#ellapsed
+
+time:ellapsed rdfs:subPropertyOf time:temporalDefinition .
+
+
+
+###  http://xrce.xerox.com/TIME#granularity
+
+time:granularity rdfs:subPropertyOf lrm:definition .
+
+
+
+###  http://xrce.xerox.com/TIME#hour
+
+time:hour rdfs:subPropertyOf time:temporalDefinition .
+
+
+
+###  http://xrce.xerox.com/TIME#hours
+
+time:hours rdfs:subPropertyOf time:temporalDefinition .
+
+
+
+###  http://xrce.xerox.com/TIME#minute
+
+time:minute rdfs:subPropertyOf time:temporalDefinition .
+
+
+
+###  http://xrce.xerox.com/TIME#minutes
+
+time:minutes rdfs:subPropertyOf time:temporalDefinition .
+
+
+
+###  http://xrce.xerox.com/TIME#month
+
+time:month rdfs:subPropertyOf time:temporalDefinition .
+
+
+
+###  http://xrce.xerox.com/TIME#months
+
+time:months rdfs:subPropertyOf time:temporalDefinition .
+
+
+
+###  http://xrce.xerox.com/TIME#precision
+
+time:precision rdfs:subPropertyOf lrm:definition .
+
+
+
+###  http://xrce.xerox.com/TIME#second
+
+time:second rdfs:subPropertyOf time:temporalDefinition .
+
+
+
+###  http://xrce.xerox.com/TIME#seconds
+
+time:seconds rdfs:subPropertyOf time:temporalDefinition .
+
+
+
+###  http://xrce.xerox.com/TIME#temporalDefinition
+
+time:temporalDefinition rdf:type owl:DatatypeProperty ;
+                        
+                        rdfs:subPropertyOf lrm:definition .
+
+
+
+###  http://xrce.xerox.com/TIME#uncertainty
+
+time:uncertainty rdfs:subPropertyOf lrm:definition .
+
+
+
+###  http://xrce.xerox.com/TIME#utc
+
+time:utc rdfs:subPropertyOf time:temporalDefinition .
+
+
+
+###  http://xrce.xerox.com/TIME#when
+
+time:when rdfs:subPropertyOf time:temporalDefinition .
+
+
+
+###  http://xrce.xerox.com/TIME#year
+
+time:year rdfs:subPropertyOf time:temporalDefinition .
+
+
+
+###  http://xrce.xerox.com/TIME#years
+
+time:years rdfs:subPropertyOf time:temporalDefinition .
+
+
+
+
+
+#################################################################
+#
+#    Classes
+#
+#################################################################
+
+
+###  http://www.w3.org/2006/timezone#City
+
+tz:City rdfs:subClassOf lrm:SpatialDescription .
+
+
+
+###  http://www.w3.org/2006/timezone#Country
+
+tz:Country rdfs:subClassOf lrm:SpatialDescription .
+
+
+
+###  http://www.w3.org/2006/timezone#EnumeratedDaylightSavingsPolicy
+
+tz:EnumeratedDaylightSavingsPolicy rdf:type owl:Class ;
+                                   
+                                   rdfs:subClassOf lrm:Description .
+
+
+
+###  http://www.w3.org/2006/timezone#Region
+
+tz:Region rdfs:subClassOf lrm:SpatialDescription .
+
+
+
+###  http://www.w3.org/2006/timezone#State
+
+tz:State rdfs:subClassOf lrm:SpatialDescription .
+
+
+
+###  http://www.w3.org/2006/timezone#TimeZone
+
+tz:TimeZone rdfs:subClassOf lrm:Description .
+
+
+
+###  http://xrce.xerox.com/LRM#TemporalDescription
+
+lrm:TemporalDescription owl:equivalentClass [ rdf:type owl:Class ;
+                                              owl:unionOf ( lrm:TimeCalendar
+                                                            lrm:TimeDuration
+                                                            lrm:TimeInstant
+                                                            lrm:TimeInterval
+                                                            lrm:TimeReference
+                                                          )
+                                            ] ;
+                        
+                        rdfs:comment """an LRM Resource can be decorated with time oriented metadata (time coordinates, 
+        duration,  co-occurence with other temporal entities). 
+        Our time model is designed to smoothly handle uncertainty and variable precision, while maintaining the possibility of modeling 
+        synchronous phenomenons without precision loss (e.g. events occuring at uncertain time coordinate and/or 
+        of uncertain time duration, but still known to be exactly synchronized with other events)
+        """@en ;
+                        
+                        rdfs:seeAlso <file:///C:/Users/viondury/PERICLESEU/Ontology/LRM-dynamic-schema.ttl> ,
+                                     <file:///C:/Users/viondury/PERICLESEU/Ontology/LRM-static-schema.ttl> ,
+                                     <file:///C:/Users/viondury/PERICLESEU/Ontology/time-schema.ttl> .
+
+
+
+###  http://xrce.xerox.com/LRM#TimeCalendar
+
+lrm:TimeCalendar rdf:type owl:Class ;
+                 
+                 owl:equivalentClass time:Calendar .
+
+
+
+###  http://xrce.xerox.com/LRM#TimeDuration
+
+lrm:TimeDuration owl:equivalentClass time:Duration .
+
+
+
+###  http://xrce.xerox.com/LRM#TimeInstant
+
+lrm:TimeInstant owl:equivalentClass time:Instant .
+
+
+
+###  http://xrce.xerox.com/LRM#TimeInterval
+
+lrm:TimeInterval owl:equivalentClass time:TimeInterval .
+
+
+
+###  http://xrce.xerox.com/LRM#TimeReference
+
+lrm:TimeReference rdf:type owl:Class ;
+                  
+                  owl:equivalentClass time:Reference .
+
+
+
+###  http://xrce.xerox.com/ReAL#Template
+
+real:Template rdfs:subClassOf lrm:Plan .
+
+
+
+###  http://xrce.xerox.com/TIME#Calendar
+
+
+
+
+###  http://xrce.xerox.com/TIME#Duration
+
+
+
+
+###  http://xrce.xerox.com/TIME#Instant
+
+
+
+
+###  http://xrce.xerox.com/TIME#Reference
+
+
+
+
+###  http://xrce.xerox.com/TIME#TimeInterval
+
+
+
+
+
+###  Generated by the OWL API (version 3.5.1) http://owlapi.sourceforge.net
+

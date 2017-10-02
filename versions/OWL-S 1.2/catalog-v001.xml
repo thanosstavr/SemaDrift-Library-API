@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<catalog prefer="public" xmlns="urn:oasis:names:tc:entity:xmlns:xml:catalog">
+    <group id="Folder Repository, directory=, recursive=true, Auto-Update=true, version=2" prefer="public" xml:base="">
+        <uri id="Automatically generated entry, Timestamp=1474481026742" name="http://www.daml.org/services/owl-s/1.0DL/Grounding.owl" uri="OWL-S%201.0%20DL/Grounding%201DL.owl"/>
+        <uri id="Automatically generated entry, Timestamp=1474481026742" name="http://www.daml.org/services/owl-s/1.0DL/Process.owl" uri="OWL-S%201.0%20DL/Process%201DL.owl"/>
+        <uri id="Automatically generated entry, Timestamp=1474481026742" name="http://www.daml.org/services/owl-s/1.0DL/Profile.owl" uri="OWL-S%201.0%20DL/Profile%201DL.owl"/>
+        <uri id="Automatically generated entry, Timestamp=1474481026742" name="http://www.daml.org/services/owl-s/1.0DL/Service.owl" uri="OWL-S%201.0%20DL/Service%201DL.owl"/>
+        <uri id="Automatically generated entry, Timestamp=1474481026742" name="http://www.daml.org/services/owl-s/1.2/Grounding.owl" uri="Grounding.owl"/>
+        <uri id="Automatically generated entry, Timestamp=1474481026742" name="http://www.daml.org/services/owl-s/1.2/Process.owl" uri="Process.owl"/>
+        <uri id="Automatically generated entry, Timestamp=1474481026742" name="http://www.daml.org/services/owl-s/1.2/Profile.owl" uri="Profile.owl"/>
+        <uri id="Automatically generated entry, Timestamp=1474481026742" name="http://www.daml.org/services/owl-s/1.2/Service.owl" uri="Service.owl"/>
+    </group>
+</catalog>

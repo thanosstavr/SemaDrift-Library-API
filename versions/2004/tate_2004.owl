@@ -1,0 +1,607 @@
+<?xml version="1.0"?>
+
+
+<!DOCTYPE Ontology [
+    <!ENTITY xsd "http://www.w3.org/2001/XMLSchema#" >
+    <!ENTITY xml "http://www.w3.org/XML/1998/namespace" >
+    <!ENTITY rdfs "http://www.w3.org/2000/01/rdf-schema#" >
+    <!ENTITY rdf "http://www.w3.org/1999/02/22-rdf-syntax-ns#" >
+]>
+
+
+<Ontology xmlns="http://www.w3.org/2002/07/owl#"
+     xml:base="http://www.semanticweb.org/ontologies/mklab/2016/4/tate_2004"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:xml="http://www.w3.org/XML/1998/namespace"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     ontologyIRI="http://www.semanticweb.org/ontologies/mklab/2016/4/tate_2004">
+    <Prefix name="" IRI="http://www.w3.org/2002/07/owl#"/>
+    <Prefix name="owl" IRI="http://www.w3.org/2002/07/owl#"/>
+    <Prefix name="rdf" IRI="http://www.w3.org/1999/02/22-rdf-syntax-ns#"/>
+    <Prefix name="xsd" IRI="http://www.w3.org/2001/XMLSchema#"/>
+    <Prefix name="rdfs" IRI="http://www.w3.org/2000/01/rdf-schema#"/>
+    <Import>http://xrce.xerox.com/LRM#LRM-schema</Import>
+    <Declaration>
+        <Class IRI="#Artist"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#ComputerBased"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#DataDependency"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#DigitalArtwork"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#DisplayDevice"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Equipment"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#HardwareDependency"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Monitor"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#OperatingSystem"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Person"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#ProgrammingLanguage"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Size"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#SoftwareDependency"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#StatusFlag"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#hasProgrammingLanguage"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#hasSize"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#hasStatusFlag"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#wasAttributedTo"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="#date"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="#hasUnit"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="#value"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#artist_1"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#artwork_1"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#data_dependency_1"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#description_1"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#hardware_dependency_1"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#id_1"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#monitor_1"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#operating_system_1"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#programming_language_1"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#size_1"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#software_dependency_1"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#status_flag_1"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#status_flag_2"/>
+    </Declaration>
+    <SubClassOf>
+        <Class IRI="#Artist"/>
+        <Class IRI="#Person"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#ComputerBased"/>
+        <Class IRI="#DigitalArtwork"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#DataDependency"/>
+        <Class IRI="http://xrce.xerox.com/LRM#Dependency"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#DigitalArtwork"/>
+        <Class IRI="http://xrce.xerox.com/LRM#DigitalResource"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#DisplayDevice"/>
+        <Class IRI="#Equipment"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Equipment"/>
+        <Class IRI="http://xrce.xerox.com/LRM#ConcreteResource"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#HardwareDependency"/>
+        <Class IRI="http://xrce.xerox.com/LRM#Dependency"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Monitor"/>
+        <Class IRI="#DisplayDevice"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#OperatingSystem"/>
+        <Class IRI="http://xrce.xerox.com/LRM#SoftwareAgent"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Person"/>
+        <Class IRI="http://xrce.xerox.com/LRM#HumanAgent"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#ProgrammingLanguage"/>
+        <Class IRI="http://xrce.xerox.com/LRM#Description"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Size"/>
+        <Class IRI="http://xrce.xerox.com/LRM#Description"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#SoftwareDependency"/>
+        <Class IRI="http://xrce.xerox.com/LRM#Dependency"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#StatusFlag"/>
+        <Class IRI="http://xrce.xerox.com/LRM#Description"/>
+    </SubClassOf>
+    <DisjointClasses>
+        <Class IRI="#DataDependency"/>
+        <Class IRI="#HardwareDependency"/>
+    </DisjointClasses>
+    <DisjointClasses>
+        <Class IRI="#DataDependency"/>
+        <Class IRI="#SoftwareDependency"/>
+    </DisjointClasses>
+    <DisjointClasses>
+        <Class IRI="#HardwareDependency"/>
+        <Class IRI="#SoftwareDependency"/>
+    </DisjointClasses>
+    <ClassAssertion>
+        <Class IRI="#Artist"/>
+        <NamedIndividual IRI="#artist_1"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#ComputerBased"/>
+        <NamedIndividual IRI="#artwork_1"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#DataDependency"/>
+        <NamedIndividual IRI="#data_dependency_1"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://xrce.xerox.com/LRM#Description"/>
+        <NamedIndividual IRI="#description_1"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#HardwareDependency"/>
+        <NamedIndividual IRI="#hardware_dependency_1"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://xrce.xerox.com/LRM#Identity"/>
+        <NamedIndividual IRI="#id_1"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Monitor"/>
+        <NamedIndividual IRI="#monitor_1"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#OperatingSystem"/>
+        <NamedIndividual IRI="#operating_system_1"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#ProgrammingLanguage"/>
+        <NamedIndividual IRI="#programming_language_1"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Size"/>
+        <NamedIndividual IRI="#size_1"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#SoftwareDependency"/>
+        <NamedIndividual IRI="#software_dependency_1"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#StatusFlag"/>
+        <NamedIndividual IRI="#status_flag_1"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#StatusFlag"/>
+        <NamedIndividual IRI="#status_flag_2"/>
+    </ClassAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasProgrammingLanguage"/>
+        <NamedIndividual IRI="#artwork_1"/>
+        <NamedIndividual IRI="#programming_language_1"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasSize"/>
+        <NamedIndividual IRI="#artwork_1"/>
+        <NamedIndividual IRI="#size_1"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasStatusFlag"/>
+        <NamedIndividual IRI="#artwork_1"/>
+        <NamedIndividual IRI="#status_flag_2"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#wasAttributedTo"/>
+        <NamedIndividual IRI="#artwork_1"/>
+        <NamedIndividual IRI="#artist_1"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://xrce.xerox.com/LRM#describedBy"/>
+        <NamedIndividual IRI="#artwork_1"/>
+        <NamedIndividual IRI="#description_1"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://xrce.xerox.com/LRM#identification"/>
+        <NamedIndividual IRI="#artwork_1"/>
+        <NamedIndividual IRI="#id_1"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://xrce.xerox.com/LRM#from"/>
+        <NamedIndividual IRI="#data_dependency_1"/>
+        <NamedIndividual IRI="#programming_language_1"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://xrce.xerox.com/LRM#to"/>
+        <NamedIndividual IRI="#data_dependency_1"/>
+        <NamedIndividual IRI="#artwork_1"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://xrce.xerox.com/LRM#from"/>
+        <NamedIndividual IRI="#hardware_dependency_1"/>
+        <NamedIndividual IRI="#monitor_1"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://xrce.xerox.com/LRM#to"/>
+        <NamedIndividual IRI="#hardware_dependency_1"/>
+        <NamedIndividual IRI="#artwork_1"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://xrce.xerox.com/LRM#from"/>
+        <NamedIndividual IRI="#software_dependency_1"/>
+        <NamedIndividual IRI="#operating_system_1"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://xrce.xerox.com/LRM#to"/>
+        <NamedIndividual IRI="#software_dependency_1"/>
+        <NamedIndividual IRI="#artwork_1"/>
+    </ObjectPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#date"/>
+        <NamedIndividual IRI="#artist_1"/>
+        <Literal datatypeIRI="&xsd;string">1941</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#date"/>
+        <NamedIndividual IRI="#artwork_1"/>
+        <Literal datatypeIRI="&xsd;string">2003</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#value"/>
+        <NamedIndividual IRI="#description_1"/>
+        <Literal datatypeIRI="&xsd;string">Computer-based LCD lightbox with digital display</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#value"/>
+        <NamedIndividual IRI="#id_1"/>
+        <Literal datatypeIRI="&xsd;string">T11812</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#hasUnit"/>
+        <NamedIndividual IRI="#size_1"/>
+        <Literal datatypeIRI="&xsd;string">mm</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#value"/>
+        <NamedIndividual IRI="#size_1"/>
+        <Literal datatypeIRI="&xsd;string">390x320x110</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#date"/>
+        <NamedIndividual IRI="#status_flag_1"/>
+        <Literal datatypeIRI="&xsd;string">15-04-2003</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#date"/>
+        <NamedIndividual IRI="#status_flag_2"/>
+        <Literal datatypeIRI="&xsd;string">2004</Literal>
+    </DataPropertyAssertion>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#hasProgrammingLanguage"/>
+        <Class IRI="#ComputerBased"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#hasSize"/>
+        <Class IRI="#ComputerBased"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#hasStatusFlag"/>
+        <Class IRI="#ComputerBased"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#wasAttributedTo"/>
+        <Class IRI="#ComputerBased"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="http://xrce.xerox.com/LRM#describedBy"/>
+        <Class IRI="#ComputerBased"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="http://xrce.xerox.com/LRM#from"/>
+        <Class IRI="http://xrce.xerox.com/LRM#Dependency"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="http://xrce.xerox.com/LRM#identification"/>
+        <Class IRI="#ComputerBased"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="http://xrce.xerox.com/LRM#to"/>
+        <Class IRI="http://xrce.xerox.com/LRM#Dependency"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#hasProgrammingLanguage"/>
+        <Class IRI="#ProgrammingLanguage"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#hasSize"/>
+        <Class IRI="#Size"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#hasStatusFlag"/>
+        <Class IRI="#StatusFlag"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#wasAttributedTo"/>
+        <Class IRI="#Artist"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="http://xrce.xerox.com/LRM#describedBy"/>
+        <Class IRI="http://xrce.xerox.com/LRM#Description"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="http://xrce.xerox.com/LRM#from"/>
+        <ObjectUnionOf>
+            <Class IRI="#Monitor"/>
+            <Class IRI="#OperatingSystem"/>
+            <Class IRI="#ProgrammingLanguage"/>
+        </ObjectUnionOf>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="http://xrce.xerox.com/LRM#identification"/>
+        <Class IRI="http://xrce.xerox.com/LRM#Identity"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="http://xrce.xerox.com/LRM#to"/>
+        <Class IRI="#ComputerBased"/>
+    </ObjectPropertyRange>
+    <DataPropertyDomain>
+        <DataProperty IRI="#date"/>
+        <ObjectUnionOf>
+            <Class IRI="#Artist"/>
+            <Class IRI="#ComputerBased"/>
+            <Class IRI="#StatusFlag"/>
+        </ObjectUnionOf>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="#hasUnit"/>
+        <Class IRI="#Size"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="#value"/>
+        <ObjectUnionOf>
+            <Class IRI="#Size"/>
+            <Class IRI="http://xrce.xerox.com/LRM#Description"/>
+            <Class IRI="http://xrce.xerox.com/LRM#Identity"/>
+        </ObjectUnionOf>
+    </DataPropertyDomain>
+    <DataPropertyRange>
+        <DataProperty IRI="#date"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="#hasUnit"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="#value"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#Artist</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">Artist</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#ComputerBased</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">Computer Based Artwork</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#DataDependency</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">Data Dependency</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#DigitalArtwork</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">Digital Artwork</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#DisplayDevice</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">Display Device</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#Equipment</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">Equipment</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#HardwareDependency</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">Hardware Dependency</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#Monitor</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">Monitor</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#OperatingSystem</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">Operating System</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#Person</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">Person</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#ProgrammingLanguage</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">Programming Language</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#Size</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">Size</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#SoftwareDependency</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">Software Dependency</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#StatusFlag</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">Status Flag</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#artist_1</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">Michael Craig-Martin</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#artwork_1</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">Becoming</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#description_1</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">Becoming description</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#id_1</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">Becoming ID</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#operating_system_1</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">Windows XP</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#programming_language_1</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">LINGO</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#size_1</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">Becoming dimensions</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#status_flag_1</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">Becoming - Acquisition Candidate</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#status_flag_2</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">Becoming - Entered Main Collection</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>http://xrce.xerox.com/LRM#ConcreteResource</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">Concrete Resource</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>http://xrce.xerox.com/LRM#Dependency</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">Dependency</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>http://xrce.xerox.com/LRM#Description</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">Description</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>http://xrce.xerox.com/LRM#DigitalResource</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">Digital Resource</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>http://xrce.xerox.com/LRM#HumanAgent</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">Human Agent</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>http://xrce.xerox.com/LRM#Identity</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">Identity</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>http://xrce.xerox.com/LRM#Resource</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">Resource</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>http://xrce.xerox.com/LRM#SoftwareAgent</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">Software Agent</Literal>
+    </AnnotationAssertion>
+</Ontology>
+
+
+
+<!-- Generated by the OWL API (version 3.5.1) http://owlapi.sourceforge.net -->
+

@@ -1,0 +1,1277 @@
+@prefix : <http://www.semanticweb.org/owl/owlapi/turtle#> .
+@prefix lrm: <http://xrce.xerox.com/LRM#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix real: <http://xrce.xerox.com/ReAL#> .
+@prefix time: <http://xrce.xerox.com/TIME#> .
+@base <http://xrce.xerox.com/LRM#LRM-dynamic> .
+
+<http://xrce.xerox.com/LRM#LRM-dynamic> rdf:type owl:Ontology ;
+                                        
+                                        owl:versionInfo "2.0.0" ;
+                                        
+                                        rdfs:comment """
+    The Dynamic Linked Resource Model (DLRM) aims at describing digital resources for preservation purposes. 
+    Dependencies allow to describe the logical interconnexions between resources, and therefore express knowledge regarding the condition and impact
+    of a change inside the ecosystem. This knowledge can be directly applied to perform automated updating actions (change propagation according to
+    the various semantic of dependency) or can help analyzing the ecosystem model to detect inconsistencies and/or weaknesses to advise the curator 
+    on preventive or corrective actions. It also can be used to simulate changes inside the ecosytem and explore the potential consequences (with the help 
+    of logical inferences based on the ontological informations).
+    """@en .
+
+
+#################################################################
+#
+#    Annotation properties
+#
+#################################################################
+
+
+###  http://www.w3.org/2002/07/owl#hasValue
+
+owl:hasValue rdf:type owl:AnnotationProperty .
+
+
+
+###  http://www.w3.org/2002/07/owl#qualifiedCardinality
+
+owl:qualifiedCardinality rdf:type owl:AnnotationProperty .
+
+
+
+
+
+#################################################################
+#
+#    Datatypes
+#
+#################################################################
+
+
+###  http://xrce.xerox.com/ReAL#Signature
+
+real:Signature rdf:type rdfs:Datatype .
+
+
+
+
+
+#################################################################
+#
+#    Object Properties
+#
+#################################################################
+
+
+###  http://www.w3.org/1999/02/22-rdf-syntax-ns#object
+
+rdf:object rdf:type owl:ObjectProperty ;
+           
+           rdfs:domain rdf:Statement ;
+           
+           rdfs:range owl:Thing .
+
+
+
+###  http://www.w3.org/1999/02/22-rdf-syntax-ns#predicate
+
+rdf:predicate rdf:type owl:ObjectProperty ;
+              
+              rdfs:domain rdf:Statement ;
+              
+              rdfs:range owl:topObjectProperty .
+
+
+
+###  http://xrce.xerox.com/LRM#activity
+
+lrm:activity rdf:type owl:ObjectProperty ;
+             
+             rdfs:comment "Indicates which activities is the subject of this activity-life dedicated event "@en ;
+             
+             rdfs:range lrm:Activity ;
+             
+             rdfs:domain lrm:ActivityLifeEvent .
+
+
+
+###  http://xrce.xerox.com/LRM#body
+
+lrm:body rdf:type owl:ObjectProperty ;
+         
+         rdfs:comment "defines the content of the module (uses the formal parameters defined in the signature)"@en ,
+                      "the chunck will be statically analyzed, and all expansion will be realized when possible"@en ,
+                      "the open variables are translated after unification with signature"@en ;
+         
+         rdfs:domain lrm:Action ;
+         
+         rdfs:subPropertyOf lrm:describedBy ;
+         
+         rdfs:range real:Template .
+
+
+
+###  http://xrce.xerox.com/LRM#byAgent
+
+lrm:byAgent rdf:type owl:ObjectProperty ;
+            
+            rdfs:comment "An event is triggered by an activity, which is performed by an agent (therefore, an event is causally related to an acting entity)"@en ;
+            
+            rdfs:range lrm:Agent ;
+            
+            rdfs:domain lrm:Event .
+
+
+
+###  http://xrce.xerox.com/LRM#changedBy
+
+lrm:changedBy rdf:type owl:ObjectProperty ;
+              
+              rdfs:comment "used in addition to the lrm:subject property to indicate which other resources are involved in the derivation process"@en ;
+              
+              rdfs:range lrm:ChangeDescription ;
+              
+              rdfs:domain lrm:Resource ;
+              
+              rdfs:subPropertyOf lrm:describedBy .
+
+
+
+###  http://xrce.xerox.com/LRM#created
+
+lrm:created rdf:type owl:ObjectProperty ;
+            
+            rdfs:comment "Indicates which resources have been created by the activity"@en ;
+            
+            rdfs:domain lrm:Activity ;
+            
+            rdfs:range lrm:Resource ;
+            
+            owl:inverseOf lrm:createdBy .
+
+
+
+###  http://xrce.xerox.com/LRM#createdBy
+
+lrm:createdBy rdf:type owl:ObjectProperty .
+
+
+
+###  http://xrce.xerox.com/LRM#deleted
+
+lrm:deleted rdf:type owl:ObjectProperty ;
+            
+            rdfs:comment "Indicates which resources have been deleted by the activity"@en ;
+            
+            rdfs:domain lrm:Activity ;
+            
+            rdfs:range lrm:Resource ;
+            
+            owl:inverseOf lrm:deletedBy .
+
+
+
+###  http://xrce.xerox.com/LRM#deletedBy
+
+lrm:deletedBy rdf:type owl:ObjectProperty .
+
+
+
+###  http://xrce.xerox.com/LRM#deletion
+
+lrm:deletion rdf:type owl:ObjectProperty ;
+             
+             rdfs:comment "Defines which triples of the resource have been deleted (the rdf:subject predicate is defined by the lrm:subject one) "@en ;
+             
+             rdfs:range rdf:Statement ;
+             
+             rdfs:domain lrm:RDF-Delta ;
+             
+             rdfs:subPropertyOf lrm:describedBy .
+
+
+
+###  http://xrce.xerox.com/LRM#derivedFrom
+
+lrm:derivedFrom rdf:type owl:ObjectProperty ;
+                
+                rdfs:comment "used in addition to the lrm:subject property to indicate which other resources are involved in the derivation process"@en ;
+                
+                rdfs:domain lrm:DerivationEvent ;
+                
+                rdfs:range lrm:Resource .
+
+
+
+###  http://xrce.xerox.com/LRM#describedBy
+
+lrm:describedBy rdf:type owl:ObjectProperty .
+
+
+
+###  http://xrce.xerox.com/LRM#describes
+
+lrm:describes rdf:type owl:ObjectProperty .
+
+
+
+###  http://xrce.xerox.com/LRM#do
+
+lrm:do rdf:type owl:ObjectProperty ;
+       
+       rdfs:domain lrm:EventHandler ;
+       
+       rdfs:range lrm:HandlingAction ;
+       
+       rdfs:subPropertyOf lrm:describedBy .
+
+
+
+###  http://xrce.xerox.com/LRM#emitted
+
+lrm:emitted rdf:type owl:ObjectProperty ;
+            
+            rdfs:comment "Indicates which events were directly produced by the subject activity "@en ;
+            
+            rdfs:domain lrm:Activity ;
+            
+            rdfs:range lrm:Event ;
+            
+            owl:inverseOf lrm:emittedBy .
+
+
+
+###  http://xrce.xerox.com/LRM#emittedBy
+
+lrm:emittedBy rdf:type owl:ObjectProperty .
+
+
+
+###  http://xrce.xerox.com/LRM#error
+
+lrm:error rdf:type owl:ObjectProperty ;
+          
+          rdfs:range lrm:Message ;
+          
+          rdfs:domain lrm:ServiceInvocation ;
+          
+          rdfs:subPropertyOf lrm:output ;
+          
+          owl:propertyDisjointWith lrm:result ,
+                                   lrm:warning .
+
+
+
+###  http://xrce.xerox.com/LRM#executedBy
+
+lrm:executedBy rdf:type owl:ObjectProperty ;
+               
+               rdfs:comment "Relates the activity to the agent(s) that execute it"@en ;
+               
+               rdfs:domain lrm:Activity ;
+               
+               rdfs:range lrm:Agent .
+
+
+
+###  http://xrce.xerox.com/LRM#executes
+
+lrm:executes rdf:type owl:ObjectProperty ;
+             
+             owl:inverseOf lrm:executedBy .
+
+
+
+###  http://xrce.xerox.com/LRM#input
+
+lrm:input rdf:type owl:ObjectProperty ;
+          
+          rdfs:range lrm:Message ;
+          
+          rdfs:domain lrm:ServiceInvocation ;
+          
+          rdfs:subPropertyOf lrm:describedBy ;
+          
+          owl:propertyDisjointWith lrm:output .
+
+
+
+###  http://xrce.xerox.com/LRM#input-signature
+
+lrm:input-signature rdf:type owl:FunctionalProperty ,
+                             owl:ObjectProperty ;
+                    
+                    rdfs:domain lrm:Action ;
+                    
+                    rdfs:range real:Signature .
+
+
+
+###  http://xrce.xerox.com/LRM#insertion
+
+lrm:insertion rdf:type owl:ObjectProperty ;
+              
+              rdfs:comment "Defines which triples of the resource have been inserted (the rdf:subject predicate is defined by the lrm:subject one) "@en ;
+              
+              rdfs:range rdf:Statement ;
+              
+              rdfs:domain lrm:RDF-Delta ;
+              
+              rdfs:subPropertyOf lrm:describedBy .
+
+
+
+###  http://xrce.xerox.com/LRM#isConsequenceOf
+
+lrm:isConsequenceOf rdf:type owl:ObjectProperty ,
+                             owl:TransitiveProperty ;
+                    
+                    rdfs:comment "Indicates causal relationships between events"@en ;
+                    
+                    rdfs:range lrm:Event ;
+                    
+                    rdfs:domain lrm:Event .
+
+
+
+###  http://xrce.xerox.com/LRM#maxCount
+
+lrm:maxCount rdf:type owl:FunctionalProperty ,
+                      owl:ObjectProperty ;
+             
+             rdfs:domain lrm:PeriodicEventDescription .
+
+
+
+###  http://xrce.xerox.com/LRM#modifiedBy
+
+lrm:modifiedBy rdf:type owl:ObjectProperty ;
+               
+               rdfs:comment "used in addition to the lrm:subject property to indicate which other resources are involved in the derivation process"@en ;
+               
+               rdfs:domain lrm:DigitalResource ;
+               
+               rdfs:range lrm:String-Delta ;
+               
+               rdfs:subPropertyOf lrm:describedBy .
+
+
+
+###  http://xrce.xerox.com/LRM#on
+
+lrm:on rdf:type owl:ObjectProperty ;
+       
+       rdfs:domain lrm:EventHandler ;
+       
+       rdfs:range lrm:EventsClass ;
+       
+       rdfs:subPropertyOf lrm:describedBy .
+
+
+
+###  http://xrce.xerox.com/LRM#output
+
+lrm:output rdf:type owl:ObjectProperty ;
+           
+           rdfs:range lrm:Message ;
+           
+           rdfs:domain lrm:ServiceInvocation ;
+           
+           rdfs:subPropertyOf lrm:describedBy .
+
+
+
+###  http://xrce.xerox.com/LRM#output-signature
+
+lrm:output-signature rdf:type owl:FunctionalProperty ,
+                              owl:ObjectProperty ;
+                     
+                     rdfs:domain lrm:Action ;
+                     
+                     rdfs:range real:Signature .
+
+
+
+###  http://xrce.xerox.com/LRM#period
+
+lrm:period rdf:type owl:FunctionalProperty ,
+                    owl:ObjectProperty ;
+           
+           rdfs:domain lrm:RecurringEvent ;
+           
+           rdfs:range lrm:TimeDuration ;
+           
+           rdfs:subPropertyOf lrm:describedBy .
+
+
+
+###  http://xrce.xerox.com/LRM#periodicity
+
+lrm:periodicity rdf:type owl:FunctionalProperty ,
+                         owl:ObjectProperty ;
+                
+                rdfs:range lrm:PeriodicEventDescription ;
+                
+                rdfs:domain lrm:RecurringEvent ;
+                
+                rdfs:subPropertyOf lrm:describedBy .
+
+
+
+###  http://xrce.xerox.com/LRM#received
+
+lrm:received rdf:type owl:ObjectProperty ;
+             
+             rdfs:comment "Indicates which events were directly received by the subject activity "@en ;
+             
+             rdfs:domain lrm:Activity ;
+             
+             rdfs:range lrm:Event ;
+             
+             owl:inverseOf lrm:receivedBy .
+
+
+
+###  http://xrce.xerox.com/LRM#receivedBy
+
+lrm:receivedBy rdf:type owl:ObjectProperty .
+
+
+
+###  http://xrce.xerox.com/LRM#requestedService
+
+lrm:requestedService rdf:type owl:FunctionalProperty ,
+                              owl:ObjectProperty ;
+                     
+                     rdfs:range lrm:Service ;
+                     
+                     rdfs:domain lrm:ServiceInvocation ;
+                     
+                     rdfs:subPropertyOf lrm:describedBy .
+
+
+
+###  http://xrce.xerox.com/LRM#result
+
+lrm:result rdf:type owl:ObjectProperty ;
+           
+           rdfs:range lrm:Message ;
+           
+           rdfs:domain lrm:ServiceInvocation ;
+           
+           rdfs:subPropertyOf lrm:output ;
+           
+           owl:propertyDisjointWith lrm:warning .
+
+
+
+###  http://xrce.xerox.com/LRM#resumed
+
+lrm:resumed rdf:type owl:ObjectProperty ;
+            
+            rdfs:comment "Indicates which activities were directly resumed by the appearance of the subject event "@en ;
+            
+            rdfs:domain lrm:ActivityResumed ;
+            
+            rdfs:subPropertyOf lrm:activity ;
+            
+            owl:inverseOf lrm:resumedBy .
+
+
+
+###  http://xrce.xerox.com/LRM#resumedBy
+
+lrm:resumedBy rdf:type owl:ObjectProperty .
+
+
+
+###  http://xrce.xerox.com/LRM#started
+
+lrm:started rdf:type owl:ObjectProperty ;
+            
+            rdfs:comment "Indicates which activities were directly triggered by the appearance of the subject event "@en ;
+            
+            rdfs:domain lrm:ActivityStarted ;
+            
+            rdfs:subPropertyOf lrm:activity ;
+            
+            owl:inverseOf lrm:startedBy .
+
+
+
+###  http://xrce.xerox.com/LRM#startedBy
+
+lrm:startedBy rdf:type owl:ObjectProperty .
+
+
+
+###  http://xrce.xerox.com/LRM#stopped
+
+lrm:stopped rdf:type owl:ObjectProperty ;
+            
+            rdfs:comment "Indicates which activities were directly stopped by the appearance of the subject event "@en ;
+            
+            rdfs:domain lrm:ActivityStopped ;
+            
+            rdfs:subPropertyOf lrm:activity ;
+            
+            owl:inverseOf lrm:stoppedBy .
+
+
+
+###  http://xrce.xerox.com/LRM#stoppedBy
+
+lrm:stoppedBy rdf:type owl:ObjectProperty .
+
+
+
+###  http://xrce.xerox.com/LRM#stringCopy
+
+lrm:stringCopy rdf:type owl:ObjectProperty ;
+               
+               rdfs:comment "should be used only if the target resource has an explicit definition  through the lrm:definition predicate "@en ;
+               
+               rdfs:seeAlso <file:///C:/Users/viondury/PERICLESEU/Ontology/LRM-static-schema.ttl> ;
+               
+               rdfs:domain lrm:String-Delta ;
+               
+               rdfs:range lrm:StringOperation .
+
+
+
+###  http://xrce.xerox.com/LRM#stringDeletion
+
+lrm:stringDeletion rdf:type owl:ObjectProperty ;
+                   
+                   rdfs:comment "in order to be reversible, the deleted string chunk must be explicit (through the lrm:chunkString property)"@en ,
+                                "should be used only if the target resource has an explicit definition through the lrm:definition predicate "@en ;
+                   
+                   rdfs:seeAlso <file:///C:/Users/viondury/PERICLESEU/Ontology/LRM-static-schema.ttl> ;
+                   
+                   rdfs:domain lrm:String-Delta ;
+                   
+                   rdfs:range lrm:StringOperation .
+
+
+
+###  http://xrce.xerox.com/LRM#stringInsertion
+
+lrm:stringInsertion rdf:type owl:ObjectProperty ;
+                    
+                    rdfs:comment "should be used only if the target resource has an explicit definition  through the lrm:definition predicate "@en ;
+                    
+                    rdfs:seeAlso <file:///C:/Users/viondury/PERICLESEU/Ontology/LRM-static-schema.ttl> ;
+                    
+                    rdfs:domain lrm:String-Delta ;
+                    
+                    rdfs:range lrm:StringOperation .
+
+
+
+###  http://xrce.xerox.com/LRM#stringMove
+
+lrm:stringMove rdf:type owl:ObjectProperty ;
+               
+               rdfs:comment "should be used only if the target resource has an explicit definition  through the lrm:definition predicate "@en ;
+               
+               rdfs:seeAlso <file:///C:/Users/viondury/PERICLESEU/Ontology/LRM-static-schema.ttl> ;
+               
+               rdfs:domain lrm:String-Delta ;
+               
+               rdfs:range lrm:StringOperation .
+
+
+
+###  http://xrce.xerox.com/LRM#subject
+
+lrm:subject rdf:type owl:ObjectProperty ;
+            
+            rdfs:comment "Defines the resource(s)that changed"@en ;
+            
+            rdfs:domain lrm:ChangeEvent ;
+            
+            rdfs:range lrm:Resource ;
+            
+            rdfs:subPropertyOf lrm:describes .
+
+
+
+###  http://xrce.xerox.com/LRM#suspended
+
+lrm:suspended rdf:type owl:ObjectProperty ;
+              
+              rdfs:comment "Indicates which activities were directly suspended by the appearance of the subject event "@en ;
+              
+              rdfs:domain lrm:ActivitySuspended ;
+              
+              rdfs:subPropertyOf lrm:activity ;
+              
+              owl:inverseOf lrm:suspendedBy .
+
+
+
+###  http://xrce.xerox.com/LRM#suspendedBy
+
+lrm:suspendedBy rdf:type owl:ObjectProperty .
+
+
+
+###  http://xrce.xerox.com/LRM#timeout
+
+lrm:timeout rdf:type owl:FunctionalProperty ,
+                     owl:ObjectProperty ;
+            
+            rdfs:domain lrm:ServiceInvocation ;
+            
+            rdfs:range lrm:TimeDuration ;
+            
+            rdfs:subPropertyOf lrm:describedBy .
+
+
+
+###  http://xrce.xerox.com/LRM#transformed
+
+lrm:transformed rdf:type owl:ObjectProperty ;
+                
+                rdfs:comment "Indicates which resources have been modified by the activity"@en ;
+                
+                rdfs:domain lrm:Activity ;
+                
+                rdfs:range lrm:Resource ;
+                
+                owl:inverseOf lrm:transformedBy .
+
+
+
+###  http://xrce.xerox.com/LRM#transformedBy
+
+lrm:transformedBy rdf:type owl:ObjectProperty .
+
+
+
+###  http://xrce.xerox.com/LRM#triggeredBy
+
+lrm:triggeredBy rdf:type owl:ObjectProperty ;
+                
+                rdfs:comment "Relates the activity to event(s) that triggered it"@en ;
+                
+                rdfs:domain lrm:Activity ;
+                
+                rdfs:range lrm:Event .
+
+
+
+###  http://xrce.xerox.com/LRM#triggers
+
+lrm:triggers rdf:type owl:ObjectProperty ;
+             
+             owl:inverseOf lrm:triggeredBy .
+
+
+
+###  http://xrce.xerox.com/LRM#used
+
+lrm:used rdf:type owl:ObjectProperty ;
+         
+         rdfs:comment "Indicates which resources  have been used by the activity"@en ;
+         
+         rdfs:domain lrm:Activity ;
+         
+         rdfs:range lrm:Resource ;
+         
+         owl:inverseOf lrm:usedBy .
+
+
+
+###  http://xrce.xerox.com/LRM#usedBy
+
+lrm:usedBy rdf:type owl:ObjectProperty .
+
+
+
+###  http://xrce.xerox.com/LRM#usedPlan
+
+lrm:usedPlan rdf:type owl:FunctionalProperty ,
+                      owl:ObjectProperty ;
+             
+             rdfs:comment "Indicates which plan is executed by the activity"@en ;
+             
+             rdfs:range lrm:Plan ;
+             
+             rdfs:subPropertyOf lrm:used .
+
+
+
+###  http://xrce.xerox.com/LRM#warning
+
+lrm:warning rdf:type owl:ObjectProperty ;
+            
+            rdfs:range lrm:Message ;
+            
+            rdfs:domain lrm:ServiceInvocation ;
+            
+            rdfs:subPropertyOf lrm:output .
+
+
+
+
+
+#################################################################
+#
+#    Data properties
+#
+#################################################################
+
+
+###  http://xrce.xerox.com/LRM#chunkString
+
+lrm:chunkString rdf:type owl:DatatypeProperty ;
+                
+                rdfs:comment "the substring that have been inserted, deleted, moved or copied"@en ;
+                
+                rdfs:range rdfs:Literal ;
+                
+                rdfs:domain lrm:StringOperation .
+
+
+
+###  http://xrce.xerox.com/LRM#definition
+
+lrm:definition rdf:type owl:DatatypeProperty .
+
+
+
+###  http://xrce.xerox.com/LRM#destinationPosition
+
+lrm:destinationPosition rdf:type owl:DatatypeProperty ;
+                        
+                        rdfs:comment "the target offset in the string (0 refers to the start of the string)"@en ;
+                        
+                        rdfs:range xsd:nonNegativeInteger ;
+                        
+                        rdfs:domain lrm:StringOperation .
+
+
+
+###  http://xrce.xerox.com/LRM#input-signature
+
+lrm:input-signature rdf:type owl:DatatypeProperty ,
+                             owl:FunctionalProperty .
+
+
+
+###  http://xrce.xerox.com/LRM#maxCount
+
+lrm:maxCount rdf:type owl:DatatypeProperty ,
+                      owl:FunctionalProperty ;
+             
+             rdfs:range xsd:positiveInteger .
+
+
+
+###  http://xrce.xerox.com/LRM#originPosition
+
+lrm:originPosition rdf:type owl:DatatypeProperty ;
+                   
+                   rdfs:comment "the origin offset in the string (0 refers to the start of the string)"@en ;
+                   
+                   rdfs:range xsd:nonNegativeInteger ;
+                   
+                   rdfs:domain lrm:StringOperation .
+
+
+
+###  http://xrce.xerox.com/LRM#output-signature
+
+lrm:output-signature rdf:type owl:DatatypeProperty ,
+                              owl:FunctionalProperty .
+
+
+
+###  http://xrce.xerox.com/LRM#parameter
+
+lrm:parameter rdf:type owl:DatatypeProperty ;
+              
+              rdfs:domain lrm:Message ;
+              
+              rdfs:subPropertyOf lrm:definition .
+
+
+
+
+
+#################################################################
+#
+#    Classes
+#
+#################################################################
+
+
+###  http://www.w3.org/1999/02/22-rdf-syntax-ns#Statement
+
+rdf:Statement rdf:type owl:Class ;
+              
+              rdfs:subClassOf lrm:Description .
+
+
+
+###  http://www.w3.org/2002/07/owl#topObjectProperty
+
+owl:topObjectProperty rdf:type owl:Class .
+
+
+
+###  http://xrce.xerox.com/LRM#AbstractResource
+
+lrm:AbstractResource rdf:type owl:Class .
+
+
+
+###  http://xrce.xerox.com/LRM#Action
+
+lrm:Action rdf:type owl:Class ;
+           
+           rdfs:subClassOf lrm:Plan ;
+           
+           owl:disjointWith lrm:EventHandler ;
+           
+           rdfs:comment "allows defining modular constructs" .
+
+
+
+###  http://xrce.xerox.com/LRM#Activity
+
+lrm:Activity rdf:type owl:Class ;
+             
+             rdfs:subClassOf lrm:AbstractResource ;
+             
+             owl:disjointUnionOf ( lrm:EndogenousActivity
+                                   lrm:ExogenousActivity
+                                 ) .
+
+
+
+###  http://xrce.xerox.com/LRM#ActivityLifeEvent
+
+lrm:ActivityLifeEvent rdf:type owl:Class ;
+                      
+                      rdfs:subClassOf lrm:Event ;
+                      
+                      owl:disjointUnionOf ( lrm:ActivityResumed
+                                            lrm:ActivityStarted
+                                            lrm:ActivityStopped
+                                            lrm:ActivitySuspended
+                                          ) .
+
+
+
+###  http://xrce.xerox.com/LRM#ActivityResumed
+
+lrm:ActivityResumed rdf:type owl:Class ;
+                    
+                    rdfs:subClassOf lrm:ActivityLifeEvent .
+
+
+
+###  http://xrce.xerox.com/LRM#ActivityStarted
+
+lrm:ActivityStarted rdf:type owl:Class ;
+                    
+                    rdfs:subClassOf lrm:ActivityLifeEvent .
+
+
+
+###  http://xrce.xerox.com/LRM#ActivityStopped
+
+lrm:ActivityStopped rdf:type owl:Class ;
+                    
+                    rdfs:subClassOf lrm:ActivityLifeEvent .
+
+
+
+###  http://xrce.xerox.com/LRM#ActivitySuspended
+
+lrm:ActivitySuspended rdf:type owl:Class ;
+                      
+                      rdfs:subClassOf lrm:ActivityLifeEvent .
+
+
+
+###  http://xrce.xerox.com/LRM#Agent
+
+lrm:Agent rdf:type owl:Class .
+
+
+
+###  http://xrce.xerox.com/LRM#ChangeDescription
+
+lrm:ChangeDescription rdf:type owl:Class ;
+                      
+                      rdfs:subClassOf lrm:Description ;
+                      
+                      rdfs:comment "Used to describe the differences between two resources"@en .
+
+
+
+###  http://xrce.xerox.com/LRM#ChangeEvent
+
+lrm:ChangeEvent rdf:type owl:Class ;
+                
+                rdfs:subClassOf lrm:ChangeDescription ,
+                                lrm:Event .
+
+
+
+###  http://xrce.xerox.com/LRM#CreationEvent
+
+lrm:CreationEvent rdf:type owl:Class ;
+                  
+                  rdfs:subClassOf lrm:ChangeEvent ;
+                  
+                  owl:disjointWith lrm:DestructionEvent ,
+                                   lrm:UnfreezeEvent .
+
+
+
+###  http://xrce.xerox.com/LRM#DerivationEvent
+
+lrm:DerivationEvent rdf:type owl:Class ;
+                    
+                    rdfs:subClassOf lrm:CreationEvent ,
+                                    lrm:TransformationEvent .
+
+
+
+###  http://xrce.xerox.com/LRM#Description
+
+lrm:Description rdf:type owl:Class .
+
+
+
+###  http://xrce.xerox.com/LRM#DestructionEvent
+
+lrm:DestructionEvent rdf:type owl:Class ;
+                     
+                     rdfs:subClassOf lrm:ChangeEvent ;
+                     
+                     owl:disjointWith lrm:FreezeEvent ,
+                                      lrm:UnfreezeEvent .
+
+
+
+###  http://xrce.xerox.com/LRM#DigitalResource
+
+lrm:DigitalResource rdf:type owl:Class .
+
+
+
+###  http://xrce.xerox.com/LRM#EndogenousActivity
+
+lrm:EndogenousActivity rdf:type owl:Class ;
+                       
+                       rdfs:subClassOf lrm:Activity ,
+                                       lrm:EndogenousResource .
+
+
+
+###  http://xrce.xerox.com/LRM#EndogenousChange
+
+lrm:EndogenousChange rdf:type owl:Class ;
+                     
+                     rdfs:subClassOf lrm:ChangeEvent ,
+                                     lrm:EndogenousEvent ;
+                     
+                     rdfs:comment "Event generated by the underlying system to track and process internal changes"@en .
+
+
+
+###  http://xrce.xerox.com/LRM#EndogenousEvent
+
+lrm:EndogenousEvent rdf:type owl:Class ;
+                    
+                    rdfs:subClassOf lrm:Event .
+
+
+
+###  http://xrce.xerox.com/LRM#EndogenousResource
+
+lrm:EndogenousResource rdf:type owl:Class .
+
+
+
+###  http://xrce.xerox.com/LRM#EndogenousService
+
+lrm:EndogenousService rdf:type owl:Class ;
+                      
+                      rdfs:subClassOf lrm:Service .
+
+
+
+###  http://xrce.xerox.com/LRM#Event
+
+lrm:Event rdf:type owl:Class ;
+          
+          rdfs:subClassOf lrm:AbstractResource ,
+                          lrm:TimeInstant ;
+          
+          owl:disjointUnionOf ( lrm:EndogenousEvent
+                                lrm:ExogenousEvent
+                              ) .
+
+
+
+###  http://xrce.xerox.com/LRM#EventHandler
+
+lrm:EventHandler rdf:type owl:Class ;
+                 
+                 owl:equivalentClass [ rdf:type owl:Class ;
+                                       owl:intersectionOf ( [ rdf:type owl:Restriction ;
+                                                              owl:onProperty lrm:do ;
+                                                              owl:onClass lrm:HandlingAction ;
+                                                              owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger
+                                                            ]
+                                                            [ rdf:type owl:Restriction ;
+                                                              owl:onProperty lrm:on ;
+                                                              owl:onClass lrm:EventsClass ;
+                                                              owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger
+                                                            ]
+                                                          )
+                                     ] ;
+                 
+                 rdfs:subClassOf lrm:Plan .
+
+
+
+###  http://xrce.xerox.com/LRM#EventsClass
+
+lrm:EventsClass rdf:type owl:Class .
+
+
+
+###  http://xrce.xerox.com/LRM#ExogenousActivity
+
+lrm:ExogenousActivity rdf:type owl:Class ;
+                      
+                      rdfs:subClassOf lrm:Activity ,
+                                      lrm:ExogenousResource .
+
+
+
+###  http://xrce.xerox.com/LRM#ExogenousChange
+
+lrm:ExogenousChange rdf:type owl:Class ;
+                    
+                    rdfs:subClassOf lrm:ChangeEvent ,
+                                    lrm:ExogenousEvent ;
+                    
+                    rdfs:comment "Event generated through explicit requests to signal changes that occured in the external world"@en .
+
+
+
+###  http://xrce.xerox.com/LRM#ExogenousEvent
+
+lrm:ExogenousEvent rdf:type owl:Class ;
+                   
+                   rdfs:subClassOf lrm:Event .
+
+
+
+###  http://xrce.xerox.com/LRM#ExogenousResource
+
+lrm:ExogenousResource rdf:type owl:Class .
+
+
+
+###  http://xrce.xerox.com/LRM#ExogenousService
+
+lrm:ExogenousService rdf:type owl:Class ;
+                     
+                     rdfs:subClassOf lrm:Service .
+
+
+
+###  http://xrce.xerox.com/LRM#FreezeEvent
+
+lrm:FreezeEvent rdf:type owl:Class ;
+                
+                rdfs:subClassOf lrm:ChangeEvent ;
+                
+                owl:disjointWith lrm:UnfreezeEvent .
+
+
+
+###  http://xrce.xerox.com/LRM#HandlingAction
+
+lrm:HandlingAction rdf:type owl:Class ;
+                   
+                   rdfs:subClassOf lrm:Action ;
+                   
+                   owl:qualifiedCardinality 1 ;
+                   
+                   owl:hasValue "?EVENT"^^real:Signature ;
+                   
+                   rdfs:comment "allows defining actions which signature are dedicated to event handling (receive the instanciated event IRI as input parameter)" .
+
+
+
+###  http://xrce.xerox.com/LRM#Message
+
+lrm:Message rdf:type owl:Class ;
+            
+            rdfs:subClassOf lrm:Description ;
+            
+            rdfs:comment "used to send or receive information from services" .
+
+
+
+###  http://xrce.xerox.com/LRM#PeriodicEventDescription
+
+lrm:PeriodicEventDescription rdf:type owl:Class ;
+                             
+                             rdfs:subClassOf lrm:Description .
+
+
+
+###  http://xrce.xerox.com/LRM#Plan
+
+lrm:Plan rdf:type owl:Class .
+
+
+
+###  http://xrce.xerox.com/LRM#RDF-Delta
+
+lrm:RDF-Delta rdf:type owl:Class ;
+              
+              rdfs:subClassOf lrm:ChangeDescription ;
+              
+              rdfs:comment "Used to describe the differences between two RDF 'star-shaped' subgraphs (i.e having a common subject) "@en .
+
+
+
+###  http://xrce.xerox.com/LRM#RecurringEvent
+
+lrm:RecurringEvent rdf:type owl:Class ;
+                   
+                   rdfs:subClassOf lrm:Event .
+
+
+
+###  http://xrce.xerox.com/LRM#Resource
+
+lrm:Resource rdf:type owl:Class .
+
+
+
+###  http://xrce.xerox.com/LRM#Service
+
+lrm:Service rdf:type owl:Class ;
+            
+            rdfs:subClassOf lrm:Description ;
+            
+            rdfs:comment "describes a service: name, function, inputs/outputs,.... (yet do be defined)"@en ;
+            
+            owl:disjointUnionOf ( lrm:EndogenousService
+                                  lrm:ExogenousService
+                                ) .
+
+
+
+###  http://xrce.xerox.com/LRM#ServiceInvocation
+
+lrm:ServiceInvocation rdf:type owl:Class ;
+                      
+                      rdfs:subClassOf lrm:EndogenousActivity .
+
+
+
+###  http://xrce.xerox.com/LRM#String-Delta
+
+lrm:String-Delta rdf:type owl:Class ;
+                 
+                 rdfs:subClassOf lrm:ChangeDescription ;
+                 
+                 rdfs:comment "Used to describe the differences between two resources"@en .
+
+
+
+###  http://xrce.xerox.com/LRM#StringOperation
+
+lrm:StringOperation rdf:type owl:Class ;
+                    
+                    rdfs:subClassOf lrm:Description .
+
+
+
+###  http://xrce.xerox.com/LRM#TimeDuration
+
+lrm:TimeDuration rdf:type owl:Class .
+
+
+
+###  http://xrce.xerox.com/LRM#TimeInstant
+
+lrm:TimeInstant rdf:type owl:Class .
+
+
+
+###  http://xrce.xerox.com/LRM#TransformationEvent
+
+lrm:TransformationEvent rdf:type owl:Class ;
+                        
+                        rdfs:subClassOf lrm:ChangeEvent .
+
+
+
+###  http://xrce.xerox.com/LRM#UnfreezeEvent
+
+lrm:UnfreezeEvent rdf:type owl:Class ;
+                  
+                  rdfs:subClassOf lrm:ChangeEvent ;
+                  
+                  rdfs:comment "A resource has been unfrozen: it can evolve again"@en .
+
+
+
+###  http://xrce.xerox.com/LRM#UpdateEvent
+
+lrm:UpdateEvent rdf:type owl:Class ;
+                
+                rdfs:subClassOf lrm:TransformationEvent .
+
+
+
+###  http://xrce.xerox.com/ReAL#Signature
+
+real:Signature rdf:type owl:Class .
+
+
+
+###  http://xrce.xerox.com/ReAL#Template
+
+real:Template rdf:type owl:Class .
+
+
+
+
+
+#################################################################
+#
+#    Annotations
+#
+#################################################################
+
+
+lrm:output-signature rdfs:comment "defines the variables that will be bound after calling the action (and if the action is successful ; order is significant) "@en .
+
+
+
+lrm:input-signature rdfs:comment "defines the variables that must be bound when calling the action (order is significant) "@en .
+
+
+
+
+###  Generated by the OWL API (version 3.5.1) http://owlapi.sourceforge.net
+

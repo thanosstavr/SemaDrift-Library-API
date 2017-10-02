@@ -1,0 +1,574 @@
+@prefix : <http://www.semanticweb.org/owl/owlapi/turtle#> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix lrm: <http://xrce.xerox.com/LRM#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix sto: <http://xrce.xerox.com/STORAGE#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix file: <http://xrce.xerox.com/FILE#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix real: <http://xrce.xerox.com/ReAL#> .
+@prefix time: <http://xrce.xerox.com/TIME#> .
+@prefix xrce: <http://www.xrce.xerox.com/> .
+@base <http://xrce.xerox.com/LRM#LRM-reflexive> .
+
+<http://xrce.xerox.com/LRM#LRM-reflexive> rdf:type owl:Ontology ;
+                                          
+                                          owl:versionInfo "1.0.0" .
+
+
+#################################################################
+#
+#    Annotation properties
+#
+#################################################################
+
+
+###  http://xrce.xerox.com/LRM#accessProtocol
+
+lrm:accessProtocol rdf:type owl:AnnotationProperty .
+
+
+
+###  http://xrce.xerox.com/LRM#creationTime
+
+lrm:creationTime rdf:type owl:AnnotationProperty .
+
+
+
+###  http://xrce.xerox.com/LRM#definition
+
+lrm:definition rdf:type owl:AnnotationProperty .
+
+
+
+###  http://xrce.xerox.com/LRM#describedBy
+
+lrm:describedBy rdf:type owl:AnnotationProperty .
+
+
+
+###  http://xrce.xerox.com/LRM#encoding
+
+lrm:encoding rdf:type owl:AnnotationProperty ;
+             
+             rdfs:subPropertyOf lrm:describedBy .
+
+
+
+###  http://xrce.xerox.com/LRM#from
+
+lrm:from rdf:type owl:AnnotationProperty .
+
+
+
+###  http://xrce.xerox.com/LRM#hasPart
+
+lrm:hasPart rdf:type owl:AnnotationProperty .
+
+
+
+###  http://xrce.xerox.com/LRM#identification
+
+lrm:identification rdf:type owl:AnnotationProperty .
+
+
+
+###  http://xrce.xerox.com/LRM#intention
+
+lrm:intention rdf:type owl:AnnotationProperty .
+
+
+
+###  http://xrce.xerox.com/LRM#location
+
+lrm:location rdf:type owl:AnnotationProperty .
+
+
+
+###  http://xrce.xerox.com/LRM#mime-type
+
+lrm:mime-type rdf:type owl:AnnotationProperty ;
+              
+              rdfs:subPropertyOf lrm:describedBy .
+
+
+
+###  http://xrce.xerox.com/LRM#partOf
+
+lrm:partOf rdf:type owl:AnnotationProperty .
+
+
+
+###  http://xrce.xerox.com/LRM#specification
+
+lrm:specification rdf:type owl:AnnotationProperty .
+
+
+
+###  http://xrce.xerox.com/LRM#through
+
+lrm:through rdf:type owl:AnnotationProperty ;
+            
+            rdfs:subPropertyOf lrm:from .
+
+
+
+###  http://xrce.xerox.com/LRM#to
+
+lrm:to rdf:type owl:AnnotationProperty .
+
+
+
+###  http://xrce.xerox.com/LRM#url
+
+lrm:url rdf:type owl:AnnotationProperty .
+
+
+
+###  http://xrce.xerox.com/TIME#around
+
+time:around rdf:type owl:AnnotationProperty .
+
+
+
+###  http://xrce.xerox.com/TIME#when
+
+time:when rdf:type owl:AnnotationProperty .
+
+
+
+
+
+#################################################################
+#
+#    Object Properties
+#
+#################################################################
+
+
+###  http://xrce.xerox.com/LRM#encoding
+
+lrm:encoding rdf:type owl:ObjectProperty ;
+             
+             rdfs:domain lrm:DigitalResource ;
+             
+             rdfs:range lrm:Encoding .
+
+
+
+###  http://xrce.xerox.com/LRM#mime-type
+
+lrm:mime-type rdf:type owl:ObjectProperty ;
+              
+              rdfs:domain lrm:DigitalResource ;
+              
+              rdfs:range lrm:MimeType .
+
+
+
+###  http://xrce.xerox.com/LRM#through
+
+lrm:through rdf:type owl:ObjectProperty ;
+            
+            rdfs:range lrm:Action ;
+            
+            rdfs:domain lrm:ConvertingDependency .
+
+
+
+
+
+#################################################################
+#
+#    Classes
+#
+#################################################################
+
+
+###  http://www.w3.org/1999/02/22-rdf-syntax-ns#Statement
+
+rdf:Statement rdf:type owl:Class .
+
+
+
+###  http://www.w3.org/2002/07/owl#Class
+
+owl:Class rdf:type owl:Class ;
+          
+          rdfs:label "owl:Class" ;
+          
+          rdfs:subClassOf lrm:EndogenousClass .
+
+
+
+###  http://www.w3.org/2002/07/owl#DatatypeProperty
+
+owl:DatatypeProperty rdf:type owl:Class ;
+                     
+                     rdfs:label "owl:DatatypeProperty" ;
+                     
+                     rdfs:subClassOf lrm:EndogenousProperty .
+
+
+
+###  http://www.w3.org/2002/07/owl#Ontology
+
+owl:Ontology rdf:type owl:Class ;
+             
+             rdfs:label "owl:Ontology" ;
+             
+             rdfs:subClassOf lrm:EndogenousResource .
+
+
+
+###  http://www.w3.org/2002/07/owl#topObjectProperty
+
+owl:topObjectProperty rdf:type owl:Class ;
+                      
+                      rdfs:label "owl:topObjectProperty" ;
+                      
+                      rdfs:subClassOf lrm:EndogenousProperty .
+
+
+
+###  http://xrce.xerox.com/LRM#Action
+
+lrm:Action rdf:type owl:Class .
+
+
+
+###  http://xrce.xerox.com/LRM#AggregatedResource
+
+lrm:AggregatedResource rdf:type owl:Class .
+
+
+
+###  http://xrce.xerox.com/LRM#ConcreteResource
+
+lrm:ConcreteResource rdf:type owl:Class .
+
+
+
+###  http://xrce.xerox.com/LRM#ConjunctiveDependency
+
+lrm:ConjunctiveDependency rdf:type owl:Class .
+
+
+
+###  http://xrce.xerox.com/LRM#Converter
+
+lrm:Converter rdf:type owl:Class ;
+              
+              rdfs:subClassOf lrm:SoftwareTool .
+
+
+
+###  http://xrce.xerox.com/LRM#ConvertingDependency
+
+lrm:ConvertingDependency rdf:type owl:Class ;
+                         
+                         rdfs:subClassOf lrm:ConjunctiveDependency .
+
+
+
+###  http://xrce.xerox.com/LRM#Description
+
+lrm:Description rdf:type owl:Class .
+
+
+
+###  http://xrce.xerox.com/LRM#DigitalResource
+
+lrm:DigitalResource rdf:type owl:Class .
+
+
+
+###  http://xrce.xerox.com/LRM#Encoding
+
+lrm:Encoding rdf:type owl:Class ;
+             
+             rdfs:subClassOf lrm:Description .
+
+
+
+###  http://xrce.xerox.com/LRM#EndogenousClass
+
+lrm:EndogenousClass rdf:type owl:Class ;
+                    
+                    rdfs:subClassOf lrm:EndogenousResource .
+
+
+
+###  http://xrce.xerox.com/LRM#EndogenousProperty
+
+lrm:EndogenousProperty rdf:type owl:Class ;
+                       
+                       rdfs:subClassOf lrm:EndogenousResource .
+
+
+
+###  http://xrce.xerox.com/LRM#EndogenousResource
+
+lrm:EndogenousResource rdf:type owl:Class .
+
+
+
+###  http://xrce.xerox.com/LRM#EventsClass
+
+lrm:EventsClass rdf:type owl:Class ;
+                
+                rdfs:label "lrm:EventClass" ;
+                
+                rdfs:subClassOf lrm:EndogenousClass .
+
+
+
+###  http://xrce.xerox.com/LRM#ExogenousResource
+
+lrm:ExogenousResource rdf:type owl:Class .
+
+
+
+###  http://xrce.xerox.com/LRM#Identity
+
+lrm:Identity rdf:type owl:Class .
+
+
+
+###  http://xrce.xerox.com/LRM#Location
+
+lrm:Location rdf:type owl:Class .
+
+
+
+###  http://xrce.xerox.com/LRM#MimeType
+
+lrm:MimeType rdf:type owl:Class ;
+             
+             rdfs:subClassOf lrm:Description .
+
+
+
+###  http://xrce.xerox.com/LRM#Protocol
+
+lrm:Protocol rdf:type owl:Class .
+
+
+
+###  http://xrce.xerox.com/LRM#RDFGraph
+
+lrm:RDFGraph rdf:type owl:Class ;
+             
+             rdfs:subClassOf lrm:AggregatedResource ,
+                             lrm:EndogenousResource .
+
+
+
+###  http://xrce.xerox.com/LRM#SoftwareTool
+
+lrm:SoftwareTool rdf:type owl:Class ;
+                 
+                 rdfs:subClassOf lrm:DigitalResource .
+
+
+
+###  http://xrce.xerox.com/LRM#TemporalDescription
+
+lrm:TemporalDescription rdf:type owl:Class .
+
+
+
+###  http://xrce.xerox.com/LRM#Text
+
+lrm:Text rdf:type owl:Class ;
+         
+         rdfs:subClassOf lrm:DigitalResource .
+
+
+
+###  http://xrce.xerox.com/ReAL#Template
+
+real:Template rdf:type owl:Class .
+
+
+
+
+
+#################################################################
+#
+#    Individuals
+#
+#################################################################
+
+
+###  http://xrce.xerox.com/STORAGE#LRM-schema
+
+sto:LRM-schema rdf:type owl:NamedIndividual ,
+                        lrm:AggregatedResource ,
+                        lrm:DigitalResource ,
+                        lrm:ExogenousResource ;
+               
+               rdfs:label "LRM-schema.ttl" ;
+               
+               lrm:creationTime [ rdf:type lrm:TemporalDescription
+                                ] ;
+               
+               lrm:location [ rdf:type lrm:Location ;
+                              lrm:url <file:///C:/Users/viondury/PERICLESEU/Ontology/LRM-schema.ttl> ;
+                              lrm:accessProtocol [ rdf:type lrm:Protocol ;
+                                                   rdfs:label "HTML 1.1"
+                                                 ]
+                            ] ;
+               
+               lrm:identification [ rdf:type lrm:Identity
+                                  ] .
+
+
+
+###  http://xrce.xerox.com/STORAGE#LRM-semantic-versioning-schema
+
+sto:LRM-semantic-versioning-schema rdf:type owl:NamedIndividual ,
+                                            lrm:AggregatedResource ,
+                                            lrm:DigitalResource ,
+                                            lrm:ExogenousResource ;
+                                   
+                                   rdfs:label "LRM-semantic-versioning-schema.ttl" ;
+                                   
+                                   lrm:creationTime [ ] ;
+
+lrm:location [ rdf:type lrm:Location ;
+               lrm:url <file:///C:/Users/viondury/PERICLESEU/Ontology/LRM-semantic-versioning-schema.ttl> ;
+               lrm:accessProtocol [ rdf:type lrm:Protocol ;
+                                    rdfs:label "HTML 1.1"
+                                  ]
+             ] .
+
+
+
+###  http://xrce.xerox.com/STORAGE#LRM-static-schema
+
+sto:LRM-static-schema rdf:type owl:NamedIndividual ,
+                               lrm:AggregatedResource ,
+                               lrm:DigitalResource ,
+                               lrm:ExogenousResource ;
+                      
+                      rdfs:label "LRM-static-schema.ttl" ;
+                      
+                      lrm:creationTime [ ] ;
+
+lrm:location [ rdf:type lrm:Location ;
+               lrm:url <file:///C:/Users/viondury/PERICLESEU/Ontology/LRM-static-schema.ttl> ;
+               lrm:accessProtocol [ rdf:type lrm:Protocol ;
+                                    rdfs:label "HTML 1.1"
+                                  ]
+             ] .
+
+
+
+###  http://xrce.xerox.com/STORAGE#rEndogenousResource
+
+sto:rEndogenousResource rdf:type owl:NamedIndividual ,
+                                 lrm:AggregatedResource ,
+                                 lrm:ConcreteResource ;
+                        
+                        lrm:definition "rdf:type(lrm:AbstractResource, owl:Class) AND rdfs:" ;
+                        
+                        lrm:partOf sto:LRM-static-schema ;
+                        
+                        lrm:hasPart [ rdf:type rdf:Statement
+                                    ] .
+
+
+
+###  http://xrce.xerox.com/STORAGE#rResource
+
+sto:rResource rdf:type owl:NamedIndividual ,
+                       lrm:AggregatedResource ,
+                       lrm:ConcreteResource ;
+              
+              lrm:partOf sto:LRM-static-schema ;
+              
+              lrm:hasPart [ ] ,
+[ ] ,
+[ ] ,
+[ ] .
+
+
+
+###  http://xrce.xerox.com/STORAGE#time-schema
+
+sto:time-schema rdf:type owl:NamedIndividual ,
+                         lrm:AggregatedResource ,
+                         lrm:DigitalResource ,
+                         lrm:ExogenousResource ;
+                
+                rdfs:label "time-schema.ttl" ;
+                
+                lrm:location [ rdf:type lrm:Location ;
+                               lrm:url <file:///C:/Users/viondury/PERICLESEU/Ontology/time-schema.ttl> ;
+                               lrm:accessProtocol [ rdf:type lrm:Protocol ;
+                                                    rdfs:label "HTML 1.1"
+                                                  ]
+                             ] ;
+                
+                lrm:creationTime [ ] .
+
+
+
+[ rdf:type real:Template
+] .
+[ rdf:type lrm:ConvertingDependency ;
+  lrm:from [ rdf:type lrm:Text ;
+             rdfs:label "LRM-static-schema.ttl" ;
+             lrm:location [ lrm:url <file:///C:/Users/viondury/PERICLESEU/Ontology/LRM-static-schema.ttl>
+                          ] ;
+             lrm:mime-type [ ] ;
+           lrm:identification [ ]
+] ;
+lrm:to [ rdf:type lrm:Text ;
+         rdfs:label "LRM-static-schema.nt" ;
+         lrm:mime-type [ ] ;
+       lrm:identification [ lrm:url <file:///C:/Users/viondury/PERICLESEU/Ontology/LRM-static-schema.nt>
+                          ]
+]
+] .
+[ rdf:type lrm:ConvertingDependency ;
+  lrm:from [ rdf:type lrm:Text ;
+             rdfs:label "LRM-schema.ttl" ;
+             lrm:location [ lrm:url <file:///C:/Users/viondury/PERICLESEU/Ontology/LRM-schema.ttl>
+                          ] ;
+             lrm:identification [ ] ;
+           lrm:mime-type [ ] ;
+lrm:intention [ ] ;
+lrm:specification [ ]
+] ;
+lrm:to [ rdf:type lrm:Text ;
+         rdfs:label "LRM-schema.nt" ;
+         lrm:location [ lrm:url <file:///C:/Users/viondury/PERICLESEU/Ontology/LRM-schema.nt>
+                      ] ;
+         lrm:identification [ ] ;
+       lrm:mime-type [ ]
+]
+] .
+
+
+#################################################################
+#
+#    Annotations
+#
+#################################################################
+
+
+xrce:ontokickoff time:around xrce:pericleskickoff .
+
+
+
+xrce:pericleskickoff time:when "2014-12-01T00:00:00"^^xsd:dateTime .
+
+
+
+
+###  Generated by the OWL API (version 3.5.1) http://owlapi.sourceforge.net
+
